@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->bigInteger('user_id');
+            $table->bigInteger('item_id');
+            $table->tinyInteger('item_num')->default(1);//商品の数量
         });
     }
 
