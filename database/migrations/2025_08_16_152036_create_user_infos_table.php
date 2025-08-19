@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('prefecture', length: 4);
             $table->string('street_address', length: 50);
             $table->string('address_detail', length: 50)->nullable();
-            $table->timestamps();
         });
     }
 
