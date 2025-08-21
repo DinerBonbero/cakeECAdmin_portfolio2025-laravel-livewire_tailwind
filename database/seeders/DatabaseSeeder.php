@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
 
-        \App\Models\User::truncate();//全Userレコード削除用
+        // \App\Models\User::truncate();//全Userレコード削除用
 
         // User::factory(10)->create();
 
