@@ -16,7 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserSeeder::class,
             OrderSeeder::class,
-            //OrderDetailSeeder::class,
         ]);
 
         // \App\Models\User::truncate();//レコード削除用
