@@ -14,6 +14,7 @@ class OrderSeeder extends Seeder
     public function run(): void
     {
         $userIds = [];
+        $orderIds = [];
 
         $emails = [
             'customerA@example.com',
@@ -31,7 +32,19 @@ class OrderSeeder extends Seeder
         ];
 
         foreach ($orders as $order) { //管理者・お客様のマスタデータの登録
-            DB::table('orders')->insert($order);
+            $orderIds[] = DB::table('orders')->insertGetId($order);//登録したオーダーレコードのidを取得
+        }
+
+        $orderDetails = [
+            ['order_id' => $orderIds[0], 'item_id' => 1, 'item_num' => 1],
+            ['order_id' => $orderIds[0], 'item_id' => 6, 'item_num' => 3],
+            ['order_id' => $orderIds[1], 'item_id' => 8, 'item_num' => 4],
+            ['order_id' => $orderIds[0], 'item_id' => 4, 'item_num' => 2],
+            ['order_id' => $orderIds[1], 'item_id' => 13, 'item_num' => 5]
+        ];
+
+        foreach ($orderDetails as $orderDetaill) { //管理者・お客様のマスタデータの登録
+            DB::table('order_details')->insert($orderDetaill);
         }
     }
 }
