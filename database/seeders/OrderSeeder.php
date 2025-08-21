@@ -22,7 +22,7 @@ class OrderSeeder extends Seeder
 
         foreach ($emails as $email) { //Userシーダに登録したメールと一致するお客様A,Bのマスタデータのidを取得
             $id = DB::table('users')->where('email', $email)->value('id'); //getだとコレーション(配列ではない)が返ってくるためvalueでレコードから値を取得
-            $userIds[] = $id; //コレーションだとエラーになる
+            $userIds[] = $id; //コレーションだとエラーになる　※コレーションを入れると配列ではないためエラーなのでvalueで単一の値取得
         }
 
         $orders = [
