@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Item;
 
 class ItemController extends Controller
 {
@@ -11,7 +12,11 @@ class ItemController extends Controller
      */
     public function index()
     {
-        //
+        $items = Item::where('is_pending', 0)
+            ->orderBy('id', 'asc')
+            ->paginate(6);
+
+        return view('items.index', compact('items'));
     }
 
     /**
