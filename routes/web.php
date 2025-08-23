@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
+use App\Http\Controllers\ItemController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -20,3 +21,5 @@ Route::middleware(['auth'])->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::resource('items',ItemController::class);//Itemのリソースコントローラ
