@@ -1,5 +1,5 @@
-@component()
+<x-layouts.app.header>
     @foreach ($items as $item)
         <div>{{ $item->name }}</div>
     @endforeach
-@endcomponent
+</x-layouts.app.header>
