@@ -5,24 +5,27 @@
     @include('partials.head')
 </head>
 
-<body class="min-h-screen bg-white dark:bg-zinc-800">
-    <flux:header container class="border-b border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
-        {{-- <flux:sidebar.toggle class="lg:hidden" icon="bars-2" inset="left" /> --}}
+<body class="min-h-screen bg-amber-50 dark:bg-zinc-800">
+    <div class="flex items-center justify-center">
+        <img class="w-1/5 py-2" src="{{ asset('images/logo.png') }}" />
+    </div>
 
-        <a href="{{ route('items.index') }}" class="ms-2 me-5 flex items-center space-x-2 rtl:space-x-reverse lg:ms-0"
-            wire:navigate>
+    <flux:header container class="border-b border-zinc-200">
+
+        <a href="{{ route('items.index') }}" class="inline-block ps-2 pe-5 flex items-center lg:ms-0" wire:navigate>
             HOME
         </a>
 
         <flux:spacer />
 
-        <a href="{{ route('login') }}" class="ms-2 me-5 flex items-center space-x-2 rtl:space-x-reverse lg:ms-0"
-            wire:navigate>
+
+        <a href="{{ route('login') }}" class="inline-block ps-2 pe-5 flex items-center lg:ms-0" wire:navigate>
             ログイン
         </a>
 
-        <a href="{{ route('register') }}" class="ms-2 me-5 flex items-center space-x-2 rtl:space-x-reverse lg:ms-0"
-            wire:navigate>
+        {{-- ms-2 me-5 --}}
+
+        <a href="{{ route('register') }}" class="inline-block ps-2 pe-5 flex items-center lg:ms-0" wire:navigate>
             新規登録
         </a>
 
