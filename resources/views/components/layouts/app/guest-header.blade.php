@@ -64,8 +64,9 @@
         </flux:navlist>
     </flux:sidebar>
 
-    {{ $slot }}
-
+    <div class="mx-auto max-w-7xl text-center">
+        {{ $slot }}
+    </div>
     @fluxScripts
 </body>
 
