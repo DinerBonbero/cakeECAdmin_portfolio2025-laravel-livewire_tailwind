@@ -11,6 +11,7 @@
     </div>
 
     <flux:header container class="border-b border-zinc-200">
+        <flux:sidebar.toggle class="lg:hidden" icon="bars-2" inset="left" />
 
         <a href="{{ route('items.index') }}" class="inline-block ps-2 pe-5 flex items-center lg:ms-0" wire:navigate>
             HOME
@@ -36,7 +37,7 @@
         class="lg:hidden border-e border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
         <flux:sidebar.toggle class="lg:hidden" icon="x-mark" />
 
-        <a href="{{ route('dashboard') }}" class="ms-1 flex items-center space-x-2 rtl:space-x-reverse" wire:navigate>
+        {{-- <a href="{{ route('dashboard') }}" class="ms-1 flex items-center space-x-2 rtl:space-x-reverse" wire:navigate>
             <x-app-logo />
         </a>
 
@@ -61,7 +62,7 @@
                 target="_blank">
                 {{ __('Documentation') }}
             </flux:navlist.item>
-        </flux:navlist>
+        </flux:navlist> --}}
     </flux:sidebar>
 
     <div class="mx-auto max-w-7xl text-center">
