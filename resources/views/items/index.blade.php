@@ -1,5 +1,6 @@
 @guest
     <x-layouts.app.guest-header>
+        <div class="py-10"></div>
         <div class="grid grid-cols-3 gap-10">
             @foreach ($items as $item)
                 <div class="bg-white p-1">
@@ -21,6 +22,7 @@
 
 @auth
     <x-layouts.app.login-header>
+        <div class="py-10"></div>
         <div class="grid grid-cols-3 gap-10">
             @foreach ($items as $item)
                 <div class="bg-white p-1">
