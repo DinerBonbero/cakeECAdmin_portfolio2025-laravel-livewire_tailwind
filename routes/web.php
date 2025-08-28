@@ -5,8 +5,8 @@ use Livewire\Volt\Volt;
 use App\Http\Controllers\ItemController;
 
 Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+    return redirect()->route('items.index');
+});
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
@@ -23,3 +23,4 @@ Route::middleware(['auth'])->group(function () {
 require __DIR__.'/auth.php';
 
 Route::resource('items',ItemController::class);//Itemのリソースコントローラ
+
