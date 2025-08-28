@@ -1,7 +1,7 @@
 <x-layouts.app.guest-header>
     <div class="py-10">
         @can('is_admin')
-            <span class="text-emerald-950 text-2xl">管理者</span>
+            <span class="text-emerald-500 text-2xl">管理者</span>
         @endcan
     </div>
     <div class="grid grid-cols-3 gap-10">
