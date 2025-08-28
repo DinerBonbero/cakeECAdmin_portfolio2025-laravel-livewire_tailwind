@@ -29,17 +29,17 @@
             </a>
         @endguest
 
-        @auth
+        @can('user')
             <span class="inline-block ps-2 pe-5 flex items-center lg:ms-0 text-lg" wire:navigate>
                 {{ Auth::user()->name }}
             </span>
-        @endauth
+        @endcan
 
-        {{-- @auth('admin')
+        @can('is_admin')
             <span class="inline-block ps-2 pe-5 flex items-center lg:ms-0 text-lg" wire:navigate>
                 {{ Auth::user()->name }}
             </span>
-        @endauth --}}
+        @endcan
 
         {{-- ms-2 me-5 --}}
 
