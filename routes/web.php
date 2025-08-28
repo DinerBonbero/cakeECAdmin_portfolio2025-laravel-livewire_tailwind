@@ -4,9 +4,13 @@ use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 use App\Http\Controllers\ItemController;
 
+// Route::get('/', function () {
+//     return redirect()->route('items.index');
+// });
+
 Route::get('/', function () {
-    return redirect()->route('items.index');
-});
+    return view('welcome');
+})->name('home');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
