@@ -35,6 +35,12 @@
             </span>
         @endauth
 
+        {{-- @auth('admin')
+            <span class="inline-block ps-2 pe-5 flex items-center lg:ms-0 text-lg" wire:navigate>
+                {{ Auth::user()->name }}
+            </span>
+        @endauth --}}
+
         {{-- ms-2 me-5 --}}
 
 
