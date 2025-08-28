@@ -20,24 +20,33 @@
         <flux:spacer />
 
 
-        <a href="{{ route('login') }}" class="inline-block ps-2 pe-5 flex items-center lg:ms-0" wire:navigate>
-            ログイン
-        </a>
+        @guest
+            <a href="{{ route('login') }}" class="inline-block ps-2 pe-5 flex items-center lg:ms-0" wire:navigate>
+                ログイン
+            </a>
+            <a href="{{ route('register') }}" class="inline-block ps-2 pe-5 flex items-center lg:ms-0" wire:navigate>
+                新規登録
+            </a>
+        @endguest
+
+        @auth
+            <span class="inline-block ps-2 pe-5 flex items-center lg:ms-0 text-lg" wire:navigate>
+                {{ Auth::user()->name }}
+            </span>
+        @endauth
 
         {{-- ms-2 me-5 --}}
 
-        <a href="{{ route('register') }}" class="inline-block ps-2 pe-5 flex items-center lg:ms-0" wire:navigate>
-            新規登録
-        </a>
+
 
     </flux:header>
 
     <!-- Mobile Menu -->
-    <flux:sidebar stashable sticky
+    {{-- <flux:sidebar stashable sticky
         class="lg:hidden border-e border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
         <flux:sidebar.toggle class="lg:hidden" icon="x-mark" />
 
-        {{-- <a href="{{ route('dashboard') }}" class="ms-1 flex items-center space-x-2 rtl:space-x-reverse" wire:navigate>
+        <a href="{{ route('dashboard') }}" class="ms-1 flex items-center space-x-2 rtl:space-x-reverse" wire:navigate>
             <x-app-logo />
         </a>
 
@@ -62,8 +71,8 @@
                 target="_blank">
                 {{ __('Documentation') }}
             </flux:navlist.item>
-        </flux:navlist> --}}
-    </flux:sidebar>
+        </flux:navlist>
+    </flux:sidebar> --}}
 
     <div class="mx-auto max-w-7xl text-center">
         {{ $slot }}
