@@ -9,7 +9,7 @@
     <div class="w-auto text-center">
         <img class="w-4/9 py-2 inline" src="{{ asset('images/logo.png') }}" />
         @can('user')
-            <a href=""><img class="size-20 inline absolute right-0 top-0"src="{{ asset('images/icon_cart.png') }}" /></a>
+            <a href="route('mycart.index')"><img class="size-20 inline absolute right-0 top-0"src="{{ asset('images/icon_cart.png') }}" /></a>
         @endcan
     </div>
 
@@ -45,39 +45,6 @@
         {{-- ms-2 me-5 --}}
 
     </flux:header>
-
-    <!-- Mobile Menu -->
-    {{-- <flux:sidebar stashable sticky
-        class="lg:hidden border-e border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
-        <flux:sidebar.toggle class="lg:hidden" icon="x-mark" />
-
-        <a href="{{ route('dashboard') }}" class="ms-1 flex items-center space-x-2 rtl:space-x-reverse" wire:navigate>
-            <x-app-logo />
-        </a>
-
-        <flux:navlist variant="outline">
-            <flux:navlist.group :heading="__('Platform')">
-                <flux:navlist.item icon="layout-grid" :href="route('dashboard')"
-                    :current="request()->routeIs('dashboard')" wire:navigate>
-                    {{ __('Dashboard') }}
-                </flux:navlist.item>
-            </flux:navlist.group>
-        </flux:navlist>
-
-        <flux:spacer />
-
-        <flux:navlist variant="outline">
-            <flux:navlist.item icon="folder-git-2" href="https://github.com/laravel/livewire-starter-kit"
-                target="_blank">
-                {{ __('Repository') }}
-            </flux:navlist.item>
-
-            <flux:navlist.item icon="book-open-text" href="https://laravel.com/docs/starter-kits#livewire"
-                target="_blank">
-                {{ __('Documentation') }}
-            </flux:navlist.item>
-        </flux:navlist>
-    </flux:sidebar> --}}
 
     <div class="mx-auto max-w-7xl text-center">
         {{ $slot }}
