@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\OrderController;
 
 // Route::get('/', function () {
 //     return redirect()->route('items.index');
@@ -26,5 +28,12 @@ Route::middleware(['auth'])->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::resource('items',ItemController::class);//Itemのリソースコントローラ
+Route::resource('/items',ItemController::class);//Itemのリソースコントローラ
 
+Route::get('/user_info/create', [UserController::class, 'create'])->name('user_info.create');
+
+Route::get('/order/history', [OrderController::class, 'history'])->name('order.history');
+
+Route::get('/sales/history', [OrderController::class, 'history'])->name('sales.history');
+
+Route::get('/user_password/edit', [OrderController::class, 'history'])->name('user_password.edit');
