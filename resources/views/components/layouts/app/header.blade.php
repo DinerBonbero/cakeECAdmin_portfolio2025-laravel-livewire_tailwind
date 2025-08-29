@@ -5,12 +5,11 @@
     @include('partials.head')
 </head>
 
-<body class="min-h-screen bg-amber-50 dark:bg-zinc-800">
-    <div class="flex justify-between">
-        <span></span>
-        <img class="w-4/9 py-2" src="{{ asset('images/logo.png') }}" />
+<body class="min-h-screen bg-amber-50 dark:bg-zinc-800 relative">
+    <div class="w-auto text-center">
+        <img class="w-4/9 py-2 inline" src="{{ asset('images/logo.png') }}" />
         @can('user')
-            <img class="size-20" src="{{ asset('images/icon_cart.png') }}" />
+            <img class="size-20 inline absolute right-0 top-0" src="{{ asset('images/icon_cart.png') }}" />
         @endcan
     </div>
 
