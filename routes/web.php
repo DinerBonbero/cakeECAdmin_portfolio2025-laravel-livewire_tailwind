@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 use App\Http\Controllers\ItemController;
@@ -28,9 +29,11 @@ Route::middleware(['auth'])->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::resource('/items',ItemController::class);//Itemのリソースコントローラ
+Route::resource('/items', ItemController::class);//Itemのリソースコントローラ
 
 Route::get('/user_info/create', [UserController::class, 'create'])->name('user_info.create');
+
+Route::get('/mycart/items', [CartController::class, 'index'])->name('mycart.index');
 
 Route::get('/order/history', [OrderController::class, 'history'])->name('order.history');
 
