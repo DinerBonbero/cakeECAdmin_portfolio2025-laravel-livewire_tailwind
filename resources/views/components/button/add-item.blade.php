@@ -1,0 +1,3 @@
+<button class="py-1 @can('user') bg-cyan-500 @else @guest bg-gray-300  @endguest @endcan text-white rounded-xl w-full border-3 border-solid border-gray-200" @guest disabled @endguest>
+    カートに入れる
+</button>
