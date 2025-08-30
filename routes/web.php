@@ -35,6 +35,8 @@ Route::get('/user_info/create', [UserController::class, 'create'])->name('user_i
 
 Route::get('/mycart/items', [CartController::class, 'index'])->name('mycart_items.index');
 
+Route::post('/mycart/items/{ item }', [CartController::class, 'store'])->name('mycart_item.store');
+
 Route::get('/order/history', [OrderController::class, 'history'])->name('order.history');
 
 Route::get('/sales/history', [OrderController::class, 'history'])->name('sales.history');
