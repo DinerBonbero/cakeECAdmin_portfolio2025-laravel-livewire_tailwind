@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Order extends Model
 {
+    protected $guarded = ['id'];
+
     public function order_details(): HasMany
     {
         return $this->hasMany(OrderDetail::class);
