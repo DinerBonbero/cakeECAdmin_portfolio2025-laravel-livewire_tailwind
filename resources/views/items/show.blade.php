@@ -10,29 +10,29 @@
             <div class="flex flex-col text-left ml-5 text-lg w-full">
                 <span class="mt-1">{{ $item->name }}</span>
                 <span class="mt-4 mb-4">{{ '(税込み)' . ' ' . number_format($item->price) . '円' }}</span>
-                <form action="@can('user') route('mycart_item.store') @endcan @can('is_admin') route('items.destroy') @endcan" method="post">
-                    @csrf
-                    <input type="hidden" name="item" value="1">
-                    @auth
-                        @can('user')
+                @auth
+                    @can('user')
+                        <form action="route('mycart_item.store', $item)" method="POST">
+                            @csrf
+                            <input type="hidden" name="item" value="1">
                             <x-button.add-item />
-                        @endcan
-
-                        @can('is_admin')
+                        </form>
+                    @endcan
+                    @can('is_admin')
+                        <form action="route('items.destroy', $item)" method="POST">
+                            @csrf
+                            <input type="hidden" name="item" value="1">
                             <x-button.pending-item />
-                        @endcan
-                    @else
-                        @guest
-                            <x-button.add-item />
-                        @endguest
-
-                    @endauth
-                </form>
-                <div class="mt-4">
+                        </form>
+                    @endcan
+                @else
                     @guest
-                        <p class="text-red-500 text-base">カートに入れるにはログインまたは新規登録してください</p>
+                        <div class="mt-4">
+                            <x-button.add-item />
+                            <p class="text-red-500 text-base">カートに入れるにはログインまたは新規登録してください</p>
+                        </div>
                     @endguest
-                </div>
+                @endauth
             </div>
         </div>
         <div class="text-center pb-20">
