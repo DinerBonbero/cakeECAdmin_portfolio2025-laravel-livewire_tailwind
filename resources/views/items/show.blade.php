@@ -12,14 +12,14 @@
                 <span class="mt-4 mb-4">{{ '(税込み)' . ' ' . number_format($item->price) . '円' }}</span>
                 @auth
                     @can('user')
-                        <form action="route('mycart_item.store', $item)" method="POST">
+                    <form action="{{ route('mycart_item.store', $item) }}" method="POST">
                             @csrf
                             <input type="hidden" name="item" value="1">
                             <x-button.add-item />
                         </form>
                     @endcan
                     @can('is_admin')
-                        <form action="route('items.destroy', $item)" method="POST">
+                        <form action="{{ route('items.destroy', $item) }}" method="POST">
                             @csrf
                             <input type="hidden" name="item" value="1">
                             <x-button.pending-item />
