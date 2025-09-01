@@ -9,6 +9,8 @@ class Cart extends Model
 {
     protected $guarded = ['id'];
 
+    public $timestamps = false;//Laravelでは自動でcreated_atとupdated_atが記録される、今回のカートテーブルは取り扱わないためLaravelに自動処理をさせない処理
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
