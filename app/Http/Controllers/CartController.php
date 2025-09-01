@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\Cart;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
@@ -17,10 +18,10 @@ class CartController extends Controller
     public function store(Item $item, Request $request)
     {
         $validated = $request->validate([
-            'item' => 'required|integer|size:1',
+            'item' => 'required|integer|in:1',
         ]);
 
-        Cart::create(['user_id' => auth()->id, 'item_id' => $item->id, 'item_num' => $validated['item']]);
+        Cart::create(['user_id' => Auth::id(), 'item_id' => $item->id, 'item_num' => $validated['item']]);
 
         return redirect()->route('mycart_item.index');
     }
