@@ -13,15 +13,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call([
-            UserSeeder::class,
-            OrderSeeder::class,
-            //ItemSeeder::class,//商品のマスタシーダ
-        ]);
+        // $this->call([
+        //     UserSeeder::class,
+        //     OrderSeeder::class,
+        //     ItemSeeder::class,//商品のマスタシーダ
+        // ]);
 
         // \App\Models\User::truncate();//レコード削除用
         // \App\Models\Order::truncate();//レコード削除用
         // \App\Models\OrderDetail::truncate();//レコード削除用
+        \App\Models\Cart::truncate();//レコード削除用
 
         // User::factory(10)->create();
 
