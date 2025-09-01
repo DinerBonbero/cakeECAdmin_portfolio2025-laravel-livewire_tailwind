@@ -20,7 +20,7 @@ class ItemSeeder extends Seeder
                 ['image' => 'cherry-cake.jpg', 'name' => 'チェリーケーキ', 'price' => 450, 'description' => '古くからある家庭的なチェリーケーキです', 'is_pending' => 0],
                 ['image' => 'strawberry-eclair.jpg', 'name' => '苺のエクレア', 'price' => 400, 'description' => 'フレッシュな苺と生クリームで幸せを感じます。', 'is_pending' => 0],
                 ['image' => 'choco-cake.jpg', 'name' => 'チョコケーキ', 'price' => 550, 'description' => 'ほろ苦いチョコレートをあしらった、大人のケーキです。', 'is_pending' => 0],
-                ['image' => 'colorful-macaroons.jpg', 'name' => 'カラフルマカロンセット', 'price' => 500, 'description' => '4種(ピスタチオ、シトロン、カカオ、苺)のマカロンです、ねっちり感のない、さっくりした生地です。', 'is_pending' => 0],
+                ['image' => 'colorful-macaroons.jpg', 'name' => 'カラフルマカロンセット', 'price' => 500, 'description' => '4種(ピスタチオ、シトロン、カカオ、苺)のマカロンです。ねっちり感のないさっくりした生地です。', 'is_pending' => 0],
                 ['image' => 'raw_chocolate-cake.jpg', 'name' => '生チョコケーキ', 'price' => 500, 'description' => 'リッチな生チョコを贅沢に使った、甘すぎないかつ苦みのある上品なチョコレートケーキです。', 'is_pending' => 0],
                 ['image' => 'coffee-cupcake.jpg', 'name' => 'コーピーカップケーキ', 'price' => 300, 'description' => 'ブルーマウンテンを使ったカップケーキです。', 'is_pending' => 0],
                 ['image' => 'sparkling-kiss.jpg', 'name' => 'スパークリングキッス', 'price' => 500, 'description' => '口の中で弾けるクリームをチョコレートでコーティングしました。', 'is_pending' => 0],
