@@ -33,7 +33,7 @@ Route::resource('/items', ItemController::class);//Itemのリソースコント�
 
 Route::get('/user_info/create', [UserController::class, 'create'])->name('user_info.create');
 
-Route::get('/mycart/items', [CartController::class, 'index'])->name('mycart_items.index');
+Route::get('/mycart/items', [CartController::class, 'index'])->name('mycart_item.index');
 
 Route::post('/mycart/items/{item}', [CartController::class, 'store'])->name('mycart_item.store');
 
