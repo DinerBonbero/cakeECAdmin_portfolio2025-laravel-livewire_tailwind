@@ -13,9 +13,9 @@
                 @auth
                     @can('user')
                     <form action="{{ route('mycart_item.store', $item) }}" method="POST">
-                            @csrf
-                            <x-button.add-item />
-                        </form>
+                        @csrf
+                        <x-button.add-item />
+                    </form>
                     @endcan
                     @can('is_admin')
                         <form action="{{ route('items.destroy', $item) }}" method="POST">
@@ -36,8 +36,11 @@
                 @endauth
             </div>
         </div>
-        <div class="text-center pb-20">
-            <p>{{ $item->description }}</p>
+        <div class="text-center pb-10 w-full">
+            <p class="pb-5">{{ $item->description }}</p>
+            @component('components.button.return')
+            戻る
+            @endcomponent
         </div>
     </div>
 </x-layouts.app.header>
