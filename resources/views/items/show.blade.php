@@ -40,6 +40,9 @@
             <p class="pb-5">{{ $item->description }}</p>
             @component('components.button.return')
             戻る
+            @slot('message')
+            href=" {{ route('items.index') }} "
+            @endslot
             @endcomponent
         </div>
     </div>
