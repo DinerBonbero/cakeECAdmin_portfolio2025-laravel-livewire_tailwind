@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Item;
+use App\Models\Cart;
 
 class ItemController extends Controller
 {
@@ -62,8 +63,13 @@ class ItemController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Item $item)
     {
-        //
+        
+        Item::where('id', $item->id)->update(['is_pending' => 1]); //該当商品の掲載停止
+
+        Cart::where('item_id', $item->id)->delete();
+
+        return redirect()->route('items.index');
     }
 }
