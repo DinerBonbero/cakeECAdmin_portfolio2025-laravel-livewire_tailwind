@@ -14,15 +14,16 @@
                     @can('user')
                     <form action="{{ route('mycart_item.store', $item) }}" method="POST">
                             @csrf
-                            <input type="hidden" name="item" value="1">
                             <x-button.add-item />
                         </form>
                     @endcan
                     @can('is_admin')
                         <form action="{{ route('items.destroy', $item) }}" method="POST">
+                            @method('DELETE')
                             @csrf
-                            <input type="hidden" name="item" value="1">
-                            <x-button.pending-item />
+                            @component('components.button.red')
+                            商品掲載停止
+                            @endcomponent
                         </form>
                     @endcan
                 @else
