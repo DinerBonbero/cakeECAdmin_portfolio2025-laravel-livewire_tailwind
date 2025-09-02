@@ -15,13 +15,10 @@ class CartController extends Controller
         return view('mycart.index');
     }
 
-    public function store(Item $item, Request $request)
+    public function store(Item $item)
     {
-        $validated = $request->validate([
-            'item' => 'required|integer|in:1',
-        ]);
 
-        Cart::create(['user_id' => Auth::id(), 'item_id' => $item->id, 'item_num' => $validated['item']]);
+        Cart::create(['user_id' => Auth::id(), 'item_id' => $item->id, 'item_num' => 1]);
 
         return redirect()->route('mycart_item.index');
     }
