@@ -9,6 +9,8 @@ class OrderDetail extends Model
 {
     protected $guarded = ['id'];
 
+    public $timestamps = false;
+
     public function order(): BelongsTo
     {
         return $this->belongsTo(Order::class);

@@ -10,6 +10,8 @@ class Order extends Model
 {
     protected $guarded = ['id'];
 
+    public $timestamps = false;
+
     public function order_details(): HasMany
     {
         return $this->hasMany(OrderDetail::class);
