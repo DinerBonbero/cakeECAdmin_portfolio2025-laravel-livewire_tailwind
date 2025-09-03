@@ -38,12 +38,13 @@
         </div>
         <div class="text-center pb-10 w-full">
             <p class="pb-5">{{ $item->description }}</p>
-            @component('components.button.return')
+            {{-- @component('components.button.return')
             戻る
             @slot('message')
-            href=" {{ route('items.index') }} "
+            href="戻る"
             @endslot
-            @endcomponent
+            @endcomponent --}}
+            <x-button.return message="戻る" href="{{ route('items.index') }}" />
         </div>
     </div>
 </x-layouts.app.header>
