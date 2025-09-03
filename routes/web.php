@@ -42,3 +42,5 @@ Route::get('/order/history', [OrderController::class, 'history'])->name('order.h
 Route::get('/sales/history', [OrderController::class, 'history'])->name('sales.history');
 
 Route::get('/user_password/edit', [OrderController::class, 'history'])->name('user_password.edit');
+
+Route::get('/user_info/create', [UserController::class, 'create'])->name('user_info.create');
