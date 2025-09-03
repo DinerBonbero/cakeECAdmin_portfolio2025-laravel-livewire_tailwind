@@ -41,9 +41,9 @@
             {{-- @component('components.button.return')
             戻る
             @slot('message')
-            href="戻る"
+            href="{{ route('items.index') }}"
             @endslot
-            @endcomponent --}}
+            @endcomponent--}}
             <x-button.return message="戻る" href="{{ route('items.index') }}" />
         </div>
     </div>
