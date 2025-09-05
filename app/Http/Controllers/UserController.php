@@ -10,4 +10,10 @@ class UserController extends Controller
 
         return view('user_info.create');
     }
+
+    public function store(Request $request){
+
+        $validated = $request->validated();
+        return redirect()->route('items.index');
+    }
 }
