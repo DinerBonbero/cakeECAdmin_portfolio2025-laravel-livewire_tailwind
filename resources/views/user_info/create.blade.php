@@ -3,7 +3,8 @@
         <div class="flex mb-7">
             <div class="ml-5 w-full">
                 <p class="my-5 text-lg">お客様の会員情報(送り先情報など)を登録してください</p>
-                <form action="{{ route('items.store') }}" method="POST">
+                <form action="{{ route('user_info.store') }}" method="POST">
+                    @csrf
                     <div class="flex grid-cols-2 justify-between text-left mb-5 text-base">
                         <div>
                             <label for="last_name" class="block">
@@ -24,7 +25,7 @@
                     <div class="text-left text-base">
                         <div class="mb-5">
                             <label for="phone_number" class="block">電話番号</label>
-                            <input type="text" id="phone_number" name="phone_number"
+                            <input type="tel" id="phone_number" name="phone_number"
                                 value="{{ old('phone_number') }}"
                                 class="bg-white border-1 border-solid border-gray-200 rounded-sm w-full"
                                 placeholder="090-1234-5678">
