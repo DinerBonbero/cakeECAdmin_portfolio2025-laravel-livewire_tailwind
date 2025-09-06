@@ -44,3 +44,7 @@ Route::get('/user_password/edit', [OrderController::class, 'history'])->name('us
 Route::get('/user_info/create', [UserController::class, 'create'])->name('user_info.create');
 
 Route::post('/user_info', [UserController::class, 'store'])->name('user_info.store');
+
+Route::get('/user_info/edit', [UserController::class, 'edit'])->name('user_info.edit');
+
+Route::post('/user_info/edit', [UserController::class, 'update'])->name('user_info.update');
