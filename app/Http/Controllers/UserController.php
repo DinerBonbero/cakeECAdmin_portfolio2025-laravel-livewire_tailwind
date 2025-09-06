@@ -42,9 +42,22 @@ class UserController extends Controller
         return view('user_info.edit');
     }
 
-    public function update(){
+    public function update(UserInfoRequest $request){
 
-        return redirect()->intended(route('items.index'));
+        $validated = $request->validated();
+
+        UserInfo::create([
+            'user_id' => Auth::id(),
+            'last_name' => $validated['last_name'],
+            'first_name' => $validated['first_name'],
+            'phone_number' => $validated['phone_number'],
+            'postal_code' => $validated['postal_code'],
+            'prefecture' => $validated['prefecture'],
+            'street_address' => $validated['street_address'],
+            'address_detail' => $validated['address_detail'],
+        ]);
+
+        return redirect()->back();
     }
 
 }
