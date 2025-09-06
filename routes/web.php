@@ -47,4 +47,4 @@ Route::post('/user_info', [UserController::class, 'store'])->name('user_info.sto
 
 Route::get('/user_info/edit', [UserController::class, 'edit'])->name('user_info.edit');
 
-Route::post('/user_info/edit', [UserController::class, 'update'])->name('user_info.update');
+Route::patch('/user_info', [UserController::class, 'update'])->name('user_info.update');
