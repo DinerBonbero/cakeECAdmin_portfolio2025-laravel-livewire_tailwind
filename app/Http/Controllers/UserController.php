@@ -36,4 +36,15 @@ class UserController extends Controller
         
         return redirect()->route('items.index');
     }
+
+    public function edit(){
+
+        return view('user_info.edit');
+    }
+
+    public function update(){
+
+        return redirect()->intended(route('items.index'));
+    }
+
 }
