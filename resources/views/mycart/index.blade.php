@@ -7,7 +7,7 @@
         <div class="py-10">
             <span class="text-2xl">カート内の商品</span>
         </div>
-        <div class="w-5/9 mx-auto">
+        <div class="w-3/5 mx-auto">
             @foreach ($items as $item)
                 <div class="flex">
                     <img class="w-1/4" src="{{ asset('/images/' . $item->item->image) }}">
