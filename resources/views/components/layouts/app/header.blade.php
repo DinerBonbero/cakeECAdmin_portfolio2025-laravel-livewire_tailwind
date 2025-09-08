@@ -9,8 +9,8 @@
     <div class="w-auto text-center">
         <img class="w-4/9 py-2 inline" src="{{ asset('images/logo.png') }}" />
         @can('user')
-            <a href="route('mycart_items.index')"><img
-                    class="size-20 inline absolute right-0 top-0"src="{{ asset('images/icon_cart.png') }}" /></a>
+            <a href="route('mycart_items.index')">
+            <img class="size-20 inline absolute right-0 top-0"src="{{ asset('images/icon_cart.png') }}" /></a>
         @endcan
     </div>
 
