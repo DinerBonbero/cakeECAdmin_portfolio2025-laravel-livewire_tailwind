@@ -39,14 +39,17 @@ class UserController extends Controller
 
     public function edit(){
 
-        return view('user_info.edit');
+        $userInfo = UserInfo::where('user_id', Auth::id())->first();//->toArray();
+        return view('user_info.edit', compact('userInfo'));
     }
 
     public function update(UserInfoRequest $request){
 
         $validated = $request->validated();
 
-        UserInfo::create([
+        $userInfo = UserInfo::where('user_id', Auth::id())->first();
+
+        $userInfo->update([
             'user_id' => Auth::id(),
             'last_name' => $validated['last_name'],
             'first_name' => $validated['first_name'],
