@@ -11,8 +11,10 @@ class CartController extends Controller
 {
     public function index()
     {
-
-        return view('mycart.index');
+        $items = Cart::with('item')->whereRelation('item', 'is_pending', 0)->where('user_id', Auth::id())->get();//テーブルが複数か単数か気を付ける
+        //dd($items);
+        // exit();
+        return view('mycart.index', compact('items'));
     }
 
     public function store(Item $item)
