@@ -35,6 +35,8 @@ Route::get('/mycart/items', [CartController::class, 'index'])->name('mycart_item
 
 Route::post('/mycart/items/{item}', [CartController::class, 'store'])->name('mycart_item.store');
 
+Route::delete('/mycart/items/{item}', [CartController::class, 'destroy'])->name('mycart_item.destroy');
+
 Route::get('/order/history', [OrderController::class, 'history'])->name('order.history');
 
 Route::get('/sales/history', [OrderController::class, 'history'])->name('sales.history');
