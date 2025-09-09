@@ -11,10 +11,11 @@ class CartController extends Controller
 {
     public function index()
     {
-        $items = Cart::with('item')->whereRelation('item', 'is_pending', 0)->where('user_id', Auth::id())->get();//テーブルが複数か単数か気を付ける
+        $cartItems = Cart::with('item')->whereRelation('item', 'is_pending', 0)->where('user_id', Auth::id())->latest('id')->get();//テーブルが複数か単数か気を付ける
+        //latest「最新の」
         //dd($items);
         // exit();
-        return view('mycart.index', compact('items'));
+        return view('mycart.index', compact('cartItems'));
     }
 
     public function store(Item $item)
@@ -23,5 +24,12 @@ class CartController extends Controller
         Cart::create(['user_id' => Auth::id(), 'item_id' => $item->id, 'item_num' => 1]);
 
         return redirect()->route('mycart_item.index');
+    }
+
+    public function destroy(Cart $item){
+        
+        Cart::where('user_id', Auth::id())->find($item->id)->delete();
+
+        return redirect()->back();
     }
 }
