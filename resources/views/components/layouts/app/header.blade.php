@@ -57,6 +57,7 @@
     <div class="mx-auto max-w-7xl text-center">
         {{ $slot }}
     </div>
+    @livewireScripts
     @fluxScripts
 </body>
 
