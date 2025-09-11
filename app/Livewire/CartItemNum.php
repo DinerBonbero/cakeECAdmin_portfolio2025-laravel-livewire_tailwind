@@ -3,21 +3,21 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use App\Models\Cart;
 
 class CartItemNum extends Component
 {
-    public function render()
-    {
-        return view('mycart.index');
-    }
+    public $count = 0;
 
-        public function increment($count)
+    public function update($count)
     {
         $this->$count++;
-    }
- 
-    public function decrement($count)
-    {
         $this->$count--;
+    }
+
+    public function render()
+    {
+        return view('livewire.increment');
+        return view('livewire.decrement');
     }
 }
