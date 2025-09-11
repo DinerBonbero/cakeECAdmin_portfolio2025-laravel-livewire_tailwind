@@ -6,6 +6,7 @@ use Livewire\Volt\Volt;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
+use App\Livewire\CartItemNum;
 
 // Route::get('/', function () {
 //     return redirect()->route('items.index');
@@ -36,6 +37,8 @@ Route::get('/mycart/items', [CartController::class, 'index'])->name('mycart_item
 Route::post('/mycart/items/{item}', [CartController::class, 'store'])->name('mycart_item.store');
 
 Route::delete('/mycart/items/{item}', [CartController::class, 'destroy'])->name('mycart_item.destroy');
+ 
+Route::patch('/mycart/items/{item}', [CartItemNum::class, 'update'])->name('mycart_item.update');
 
 Route::get('/order/history', [OrderController::class, 'history'])->name('order.history');
 
