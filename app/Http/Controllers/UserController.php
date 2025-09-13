@@ -50,7 +50,6 @@ class UserController extends Controller
         $userInfo = UserInfo::where('user_id', Auth::id())->first();
 
         $userInfo->update([
-            'user_id' => Auth::id(),
             'last_name' => $validated['last_name'],
             'first_name' => $validated['first_name'],
             'phone_number' => $validated['phone_number'],
