@@ -26,6 +26,18 @@ class CartController extends Controller
         return redirect()->route('mycart_item.index');
     }
 
+    public function update(Request $request, Item $item)
+    {
+        $cart = Cart::where('user_id', Auth::id())->where('item_id', $item->id)->first();
+        dd($cart);
+        exit();
+        $cart->update([
+            'item_num' => $request->item_num
+        ]);
+
+        return redirect()->back();
+    }
+
     public function destroy(Cart $item){
         
         Cart::where('user_id', Auth::id())->find($item->id)->delete();
