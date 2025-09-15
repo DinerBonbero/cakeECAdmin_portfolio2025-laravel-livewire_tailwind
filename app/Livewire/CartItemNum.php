@@ -11,31 +11,31 @@ class CartItemNum extends Component
 
     public $cartItem;
 
-    public function update($CartId, $delta)
-    {
-        if ($delta == '+') {
+    // public function update($CartId, $delta)
+    // {
+    //     if ($delta == '+') {
 
-            $cart = Cart::where('user_id', Auth::id())->where('id', $CartId)->first();
-            dd($cart);
-            exit();
+    //         $cart = Cart::where('user_id', Auth::id())->where('id', $CartId)->first();
+    //         dd($cart);
+    //         exit();
 
-            $cart->update([
-                'item_num' => $cart->item_num + 1,
-            ]);
+    //         $cart->update([
+    //             'item_num' => $cart->item_num + 1,
+    //         ]);
 
-        } elseif ($delta == '-') {
+    //     } elseif ($delta == '-') {
 
-            $cart = Cart::where('user_id', Auth::id())->where('id', $CartId)->first();
-            dd($cart);
-            exit();
+    //         $cart = Cart::where('user_id', Auth::id())->where('id', $CartId)->first();
+    //         dd($cart);
+    //         exit();
 
-            $cart->update([
-                'item_num' => $cart->item_num - 1,
-            ]);
-         }
+    //         $cart->update([
+    //             'item_num' => $cart->item_num - 1,
+    //         ]);
+    //      }
 
 
-    }
+    // }
 
     public function render()
     {
