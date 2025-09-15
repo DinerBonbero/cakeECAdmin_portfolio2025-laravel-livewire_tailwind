@@ -28,9 +28,8 @@ class CartController extends Controller
 
     public function update(Request $request, Item $item)
     {
-        $cart = Cart::where('user_id', Auth::id())->where('item_id', $item->id)->first();
-        dd($cart);
-        exit();
+        $cart = Cart::where('user_id', Auth::id())->where('id', $item->id)->first();
+
         $cart->update([
             'item_num' => $request->item_num
         ]);
