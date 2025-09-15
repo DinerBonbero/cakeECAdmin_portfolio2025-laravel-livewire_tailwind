@@ -36,13 +36,9 @@ Route::get('/mycart/items', [CartController::class, 'index'])->name('mycart_item
 
 Route::post('/mycart/items/{item}', [CartController::class, 'store'])->name('mycart_item.store');
 
+Route::patch('/mycart/items/{item}', [CartController::class, 'update'])->name('mycart_item.update');
+
 Route::delete('/mycart/items/{item}', [CartController::class, 'destroy'])->name('mycart_item.destroy');
- 
-Route::patch('/mycart/items/{item}', [CartItemNum::class, 'update'])->name('mycart_item.update');
-
-Route::get('/order/history', [OrderController::class, 'history'])->name('order.history');
-
-Route::get('/sales/history', [OrderController::class, 'history'])->name('sales.history');
 
 Route::get('/user_password/edit', [OrderController::class, 'history'])->name('user_password.edit');
 
@@ -53,3 +49,9 @@ Route::post('/user_info', [UserController::class, 'store'])->name('user_info.sto
 Route::get('/user_info/edit', [UserController::class, 'edit'])->name('user_info.edit');
 
 Route::patch('/user_info', [UserController::class, 'update'])->name('user_info.update');//Route::postでは上書きされてしまうためgetのeditに揃えてURLを/user_info/editにするかpostをpatchに変更する
+
+Route::get('/order/confirm', [OrderController::class, 'confirm'])->name('order.confirm');
+
+Route::get('/order/history', [OrderController::class, 'history'])->name('order.history');
+
+Route::get('/sales/history', [OrderController::class, 'history'])->name('sales.history');
