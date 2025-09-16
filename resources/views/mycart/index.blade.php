@@ -1,5 +1,5 @@
 {{-- @php
-    dd($items);
+    var_dump($errors);
     exit();
 @endphp --}}
 @php
@@ -25,10 +25,9 @@
                                 <form action="{{ route('mycart_item.update', $cartItem) }}" method="POST">
                                     @method('PATCH')
                                     @csrf
-                                    <input type="number" id="item_num" name="item_num"
-                                        value="{{ old('item_num', $cartItem->item_num) }}" min="1" max="10"
-                                        step="1"
+                                    <input type="number" id="item_num" name="item_num[{{ $cartItem->id }}]" value="{{ old('item_num.' . $cartItem->id, $cartItem->item_num) }}" min="1" max="10" step="1"
                                         class="w-3/11 bg-white border-3 border-solid border-gray-300 rounded-sm text-center">
+                                    {{-- formのnameが同一によりエラーメッセージが一つにまとまってしまうため、nameを配列に変更item_num[{{ $cartItem->id }}] --}}
                                     <label for="item_num" class="mx-1 inline">個</label>
                                     <button class="inline mx-1 py-1 w-4/11 bg-lime-500 text-white rounded-xl border-3 border-solid border-gray-200">
                                         数量更新
@@ -50,7 +49,11 @@
                 </div>
                 <div class="border-b-3 border-solid border-gray-200 flex justify-between">
                     <span></span>
-                    <span class="text-rose-500">エラーメッセージ</span>
+                    {{-- エラーメッセージの表示 --}}
+                    {{-- 配列に変更したため、エラーメッセージの表示も変更 @error('item_num.' . $cartItem->id)ドットを付けてitem_num[{{ $cartItem->id }}]のエラー呼び出し--}}
+                    @error('item_num.' . $cartItem->id)
+                        <span class="text-rose-500">{{ $message }}</span>
+                    @enderror
                     <span>{{ '小計(税込み)' . ' ' . number_format($subtotal) . '円' }}</span>
                 </div>
             @endforeach
@@ -59,7 +62,7 @@
             </div>
             <div class="text-center pb-10 w-full">
                 <x-button.return message="戻る" href="{{ url()->previous() }}" />
-                <a href="{{ route('order.confirm') }}" class="py-1 px-10 bg-[#7cc7f4] text-white rounded-lg w-full border-3 border-solid border-gray-200">
+                <a href="{{ route('order.confirm') }}" class="ml-2 py-1 px-10 bg-[#7cc7f4] text-white rounded-lg w-full border-3 border-solid border-gray-200">
                     注文
                 </a>
             </div>
