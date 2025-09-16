@@ -38,7 +38,7 @@
         </div>
         <div class="text-center pb-10 w-full">
             <p class="pb-5">{{ $item->description }}</p>
-            <x-button.return message="戻る" href="{{ route('items.index') }}" />
+            <x-button.brown-link message="戻る" href="{{ route('items.index') }}" />
         </div>
     </div>
 </x-layouts.app.header>
