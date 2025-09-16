@@ -52,6 +52,8 @@ Route::patch('/user_info', [UserController::class, 'update'])->name('user_info.u
 
 Route::get('/order/confirm', [OrderController::class, 'confirm'])->name('order.confirm');
 
+Route::post('/order', [OrderController::class, 'store'])->name('order.store');
+
 Route::get('/order/history', [OrderController::class, 'history'])->name('order.history');
 
 Route::get('/sales/history', [OrderController::class, 'history'])->name('sales.history');
