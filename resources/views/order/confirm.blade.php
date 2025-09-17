@@ -86,7 +86,11 @@
                     </div>
                 </div>
                 <div class="text-right mt-2">
-                    <x-button.brown-link message="送り先修正" href="{{ route('mycart_item.index') }}" />
+                    @if ($userInfo !== null)
+                        <x-button.brown-link message="送り先の修正" href="{{ route('user_info.edit') }}" />
+                    @else
+                        <x-button.brown-link message="送り先の登録" href="{{ route('user_info.create') }}" />
+                    @endif
                 </div>
                 <div class="w-1/5 mx-auto mt-10">
                     <form action="{{ route('order.store') }}" method="POST">
