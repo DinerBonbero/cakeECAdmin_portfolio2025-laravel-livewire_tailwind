@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 class CartItemNum extends Component
 {
 
-    public $cartItem;
+    // public $cartItem;
 
     // public function update($CartId, $delta)
     // {
