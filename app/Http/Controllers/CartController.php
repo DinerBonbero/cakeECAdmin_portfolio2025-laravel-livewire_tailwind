@@ -26,8 +26,12 @@ class CartController extends Controller
         return redirect()->route('mycart_item.index');
     }
 
-    public function update(Request $request, Item $item)
+    public function update(Request $request, Cart $item)
     {
+        // echo 'update';
+        // // dd($request);
+        // exit();
+
         $rules = [
             'item_num' => 'required|array',
             'item_num.' . $item->id => 'required|integer|min:1|max:10',
@@ -46,8 +50,7 @@ class CartController extends Controller
 
         $validated = $request->validate($rules, $messages);
 
-        // dd($validated);
-        // exit();
+        
 
         $cart = Cart::where('user_id', Auth::id())->where('id', $item->id)->first();
 
