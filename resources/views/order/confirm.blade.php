@@ -85,16 +85,20 @@
                         @endif
                     </div>
                 </div>
-
                 <div class="text-right mt-2">
                     <x-button.brown-link message="送り先修正" href="{{ route('mycart_item.index') }}" />
                 </div>
-                <div class="w-1/5 mx-auto mt-10 mb-10">
+                <div class="w-1/5 mx-auto mt-10">
                     <form action="{{ route('order.store') }}" method="POST">
                         @csrf
                         <x-button.blue message="注文確定" />
                     </form>
                 </div>
+                @if ($userInfo === null)
+                    <div class="text-center w-full mb-5">
+                        <span class="text-rose-500">ユーザー情報を登録してください</span>
+                    </div>
+                @endif
             @endif
         </div>
     </x-layouts.app.header>
