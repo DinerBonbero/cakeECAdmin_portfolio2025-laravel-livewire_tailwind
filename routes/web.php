@@ -54,6 +54,8 @@ Route::get('/order/confirm', [OrderController::class, 'confirm'])->name('order.c
 
 Route::post('/order', [OrderController::class, 'store'])->name('order.store');
 
+Route::get('/order/thank_you', [OrderController::class, 'thankYou'])->name('order.thank_you');
+
 Route::get('/order/history', [OrderController::class, 'history'])->name('order.history');
 
 Route::get('/sales/history', [OrderController::class, 'history'])->name('sales.history');
