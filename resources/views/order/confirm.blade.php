@@ -92,13 +92,25 @@
                         <x-button.brown-link message="送り先の登録" href="{{ route('user_info.create') }}" />
                     @endif
                 </div>
-                <div class="w-1/5 mx-auto mt-10">
-                    <form action="{{ route('order.store') }}" method="POST">
-                        @csrf
-                        <x-button.blue message="注文確定" />
-                    </form>
-                </div>
-                @if ($userInfo === null)
+
+                @if ($userInfo !== null)
+                    <div class="w-1/5 mx-auto mt-10 mb-5">
+                        <form action="{{ route('order.store') }}" method="POST">
+                            @csrf
+                            <button class="bg-[#7cc7f4] py-1 w-full text-white rounded-xl border-3 border-solid border-gray-200">
+                                注文確定
+                            </button>
+                        </form>
+                    </div>
+                @else
+                    <div class="w-1/5 mx-auto mt-10">
+                        <form action="{{ route('order.store') }}" method="POST">
+                            @csrf
+                            <button class="bg-gray-300 py-1 w-full text-white rounded-xl border-3 border-solid border-gray-200" disabled>
+                                注文確定
+                            </button>
+                        </form>
+                    </div>
                     <div class="text-center w-full mb-5">
                         <span class="text-rose-500">ユーザー情報を登録してください</span>
                     </div>
