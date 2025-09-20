@@ -7,6 +7,7 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
 use App\Livewire\CartItemNum;
+use App\Http\Controllers\ErrorController;
 
 // Route::get('/', function () {
 //     return redirect()->route('items.index');
@@ -59,3 +60,5 @@ Route::get('/order/thank_you', [OrderController::class, 'thankYou'])->name('orde
 Route::get('/order/history', [OrderController::class, 'history'])->name('order.history');
 
 Route::get('/sales/history', [OrderController::class, 'history'])->name('sales.history');
+
+Route::get('/error', [ErrorController::class, 'error'])->name('errors.error');
