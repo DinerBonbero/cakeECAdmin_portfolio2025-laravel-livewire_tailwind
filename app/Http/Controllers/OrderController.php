@@ -78,7 +78,7 @@ class OrderController extends Controller
 
     public function thankYou()
     {
-        $orders = Order::with('order_details.item')->where('user_id', Auth::id())->first();
+        $orders = Order::with('order_details.item')->where('user_id', Auth::id())->latest('id')->first();
         return view('order.thank_you', compact('orders'));
     }
 }
