@@ -35,9 +35,13 @@ class OrderController extends Controller
             return redirect()->route('order.confirm');
         }
 
+        //$order = null;
+
         try {
 
             DB::transaction(function () {
+
+                //dd($order);
 
                 $cartItems = Cart::with('item')->where('user_id', Auth::id())->get();
 
@@ -45,6 +49,8 @@ class OrderController extends Controller
 
                     'user_id' => Auth::id()
                 ]);
+
+                //dd($order);
 
                 foreach ($cartItems as $cartItem) {
 
@@ -58,9 +64,6 @@ class OrderController extends Controller
 
                 Cart::where('user_id', Auth::id())->delete();
 
-                $orders = Order::with('order_details.item')->where('user_id', Auth::id())->where('id', $order->id)->get();
-                
-                return redirect()->route('order.thank_you', compact('orders'));
             }, 5);
         } catch (\Exception $e) {
 
@@ -68,10 +71,14 @@ class OrderController extends Controller
             return redirect()->route('errors.error');
         }
 
+        // dd($order);
+
+        return redirect()->route('order.thank_you');
     }
 
     public function thankYou()
     {
-        return view('order.thank_you');
+        $orders = Order::with('order_details.item')->where('user_id', Auth::id())->first();
+        return view('order.thank_you', compact('orders'));
     }
 }
