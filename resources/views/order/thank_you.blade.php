@@ -1,10 +1,13 @@
 @php
-    var_dump($orders);
+    dd($orders);
     exit();
 @endphp
-@php
+{{-- @php
     $total = 0;
-@endphp
+    foreach ($orders as $key => ) {
+            
+    }
+@endphp --}}
 @can('user')
     <x-layouts.app.header>
         <div class="w-5/8 mx-auto">
