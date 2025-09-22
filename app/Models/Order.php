@@ -12,6 +12,10 @@ class Order extends Model
 
     public $timestamps = false;
 
+    protected $casts = [
+        'date' => 'datetime'
+    ];
+
     public function order_details(): HasMany
     {
         return $this->hasMany(OrderDetail::class);
