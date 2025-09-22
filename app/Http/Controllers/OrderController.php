@@ -78,7 +78,17 @@ class OrderController extends Controller
 
     public function thankYou()
     {
+
         $orders = Order::with('order_details.item')->where('user_id', Auth::id())->latest('id')->first();
         return view('order.thank_you', compact('orders'));
+    }
+
+    public function history(){
+
+        $orderHistories = Order::with('order_details.item')->where('user_id', Auth::id())->latest('id')->get();
+
+        // dd($orderHistories);
+        // exit();
+        return  view('order.history', compact('orderHistories'));
     }
 }
