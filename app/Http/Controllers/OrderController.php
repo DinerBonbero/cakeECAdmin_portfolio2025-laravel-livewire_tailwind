@@ -79,13 +79,13 @@ class OrderController extends Controller
     public function thankYou()
     {
 
-        $orders = Order::with('order_details.item')->where('user_id', Auth::id())->latest('id')->first();
+        $orders = Order::with('order_details.item')->where('user_id', Auth::id())->latest('date')->first();
         return view('order.thank_you', compact('orders'));
     }
 
     public function history(){
 
-        $orderHistories = Order::with('order_details.item')->where('user_id', Auth::id())->latest('id')->get();
+        $orderHistories = Order::with('order_details.item')->where('user_id', Auth::id())->latest('date')->paginate(3);
 
         // dd($orderHistories);
         // exit();
