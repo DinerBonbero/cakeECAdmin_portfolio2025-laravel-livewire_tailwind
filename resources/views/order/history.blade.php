@@ -2,9 +2,7 @@
     dd($orderHistories);
     exit();
 @endphp --}}
-@php
-    $total = 0;
-@endphp
+
 @can('user')
     <x-layouts.app.header>
         <div class="py-3">
@@ -15,14 +13,17 @@
                 <p class="text-center mt-10 p-5 bg-lime-100">注文履歴がありません</p>
             @else
                 @foreach ($orderHistories as $orderHistory)
+                    @php
+                        $total = 0;
+                    @endphp
                     <div class="w-full text-left mt-1">
-                        <span class="text-lg">{{$orderHistory->date->format('Y年m月d日')}}</span>{{-- {{var_dump($orderHistory->date)}}文字型のためモデルファイルでdatetimeキャスト --}}
+                        <span class="text-lg">{{ $orderHistory->date->format('Y年m月d日') }}</span>{{-- {{var_dump($orderHistory->date)}}文字型のためモデルファイルでdatetimeキャスト --}}
                     </div>
                     @foreach ($orderHistory->order_details as $order_details)
-                    @php
-                        $subtotal = $order_details->item->price * $order_details->item_num;
-                        $total += $subtotal;
-                    @endphp
+                        @php
+                            $subtotal = $order_details->item->price * $order_details->item_num;
+                            $total += $subtotal;
+                        @endphp
                         <div class="flex mt-2">
                             <img class="w-1/5" src="{{ asset('/images/' . $order_details->item->image) }}">
                             <div class="flex flex-col w-full mr-35">
@@ -45,6 +46,11 @@
                         {{ '合計(税込み)' . '　' . number_format($total) . '円' }}
                     </div>
                 @endforeach
+                <div class="flex justify-center my-5">
+                    <span>
+                        {{ $orderHistories->onEachSide(1)->links('vendor.pagination.tailwind') }}
+                    </span>
+                </div>
             @endif
         </div>
     </x-layouts.app.header>
