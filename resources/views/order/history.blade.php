@@ -19,18 +19,18 @@
                     <div class="w-full text-left mt-1">
                         <span class="text-lg">{{ $orderHistory->date->format('Y年m月d日') }}</span>{{-- {{var_dump($orderHistory->date)}}文字型のためモデルファイルでdatetimeキャスト --}}
                     </div>
-                    @foreach ($orderHistory->order_details as $order_details)
+                    @foreach ($orderHistory->order_details as $order_detail)
                         @php
-                            $subtotal = $order_details->item->price * $order_details->item_num;
+                            $subtotal = $order_detail->item->price * $order_detail->item_num;
                             $total += $subtotal;
                         @endphp
                         <div class="flex mt-2">
-                            <img class="w-1/5" src="{{ asset('/images/' . $order_details->item->image) }}">
+                            <img class="w-1/5" src="{{ asset('/images/' . $order_detail->item->image) }}">
                             <div class="flex flex-col w-full mr-35">
-                                <span class="mt-2">{{ $order_details->item->name }}</span>
+                                <span class="mt-2">{{ $order_detail->item->name }}</span>
                                 <div class="w-full">
                                     <div class="mt-5 w-full text-center">
-                                        <span class="w-3/11">{{ $order_details->item_num }}</span>
+                                        <span class="w-3/11">{{ $order_detail->item_num }}</span>
                                         <span for="item_num" class="mx-1 inline">個</span>
                                         </form>
                                     </div>
