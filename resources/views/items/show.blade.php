@@ -1,5 +1,5 @@
 <x-layouts.app.header>
-    <div class="py-10">
+    <div class="py-5">
         @can('is_admin')
             <span class="text-emerald-500 text-2xl">管理者</span>
         @endcan
