@@ -9,16 +9,17 @@ use Illuminate\Support\Facades\Auth;
 class UpdateShippingStatusButton extends Component
 {
 
-    public $saleHistory;
+    public $saleHistoryId;
+    public $isSipped;
 
-    public function update($saleHistory)
+    public function update($saleHistoryId)
     {
-        $order = Order::where('id', $saleHistory)->first();
+        $order = Order::where('id', $saleHistoryId)->first();
 
-        if($order->id === 0){
-            $order->update(['id' => 1]);
-        } elseif($order->id === 1){
-            $order->update(['id' => 0]);
+        if($order->is_shipped === 0){
+            $order->update(['is_shipped' => 1]);
+        } elseif($order->is_shipped === 1){
+            $order->update(['is_shipped' => 0]);
         } else{
             //カラムの値がもし1、0以外のとき何も行わない
         }
