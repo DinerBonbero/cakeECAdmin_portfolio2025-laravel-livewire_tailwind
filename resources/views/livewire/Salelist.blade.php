@@ -5,7 +5,7 @@
         </div>
         <div class="text-right w-2/4">
             <span
-                class="pr-5">{{ $saleHistory->user->user_info->last_name }}{{ $saleHistory->user->user_info->first_name }}</span>
+                class="pr-5">{{ $saleHistory->user->user_info->last_name }}{{ $saleHistory->user->user_info->first_name }}様</span>
         </div>
     </div>
     @foreach ($saleHistory->order_details as $order_detail)
