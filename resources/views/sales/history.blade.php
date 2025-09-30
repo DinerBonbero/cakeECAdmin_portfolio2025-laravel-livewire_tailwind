@@ -18,7 +18,7 @@
                         <span>発送状況</span>
                         <div class="flex justify-between">
                             <div>
-                                <input type="checkbox" name="un_shipped" value="0" class="bg-white border-1 border-solid border-gray-300 rounded-sm" {{ old('is_shipped') === '0' ? 'checked' : '' }}>
+                                <input type="checkbox" name="un_shipped" value="0" class="bg-white border-1 border-solid border-gray-300 rounded-sm" {{ old('un_shipped') === '0' ? 'checked' : '' }}>
                                 未発送
                             </div>
                             <div class="pl-5">
