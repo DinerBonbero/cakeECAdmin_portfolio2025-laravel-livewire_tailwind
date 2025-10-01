@@ -28,14 +28,14 @@ class SalesController extends Controller
             $validated = $request->validate([
                 'un_shipped' => Rule::in('0'),
                 'shipped' => Rule::in('1'),
-                'start_date' =>  Rule::date()->format('Y-m-d'),
-                'end_date' => Rule::date()->format('Y-m-d'),
+                'start_date' =>  [Rule::date()->format('Y-m-d'),'nullable'],
+                'end_date' => [Rule::date()->format('Y-m-d'),'nullable'],
                 'purchaser_name' => 'max:30'
             ], [
                 'un_shipped.in' => 'この値は無効です、選択肢から選んでください。',
                 'shipped.in' => 'この値は無効です、選択肢から選んでください。',
-                'start_date.date_format' => 'この値は無効です、半角数字でYYYY-MM-DD形式で入力してください。',
-                'end_date.date_format' => 'この値は無効です、半角数字YYYY-MM-DD形式で入力してください。',
+                'start_date.date_format' => '開始日は半角数字YYYY-MM-DD形式で入力してください。',
+                'end_date.date_format' => '終了日は半角数字YYYY-MM-DD形式で入力してください。',
                 'purchaser_name.max' => '入力文字は30文字以上で入力してください。',
             ]);
 
