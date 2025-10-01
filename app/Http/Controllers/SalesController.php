@@ -34,8 +34,8 @@ class SalesController extends Controller
             ], [
                 'un_shipped.in' => 'この値は無効です、選択肢から選んでください。',
                 'shipped.in' => 'この値は無効です、選択肢から選んでください。',
-                'start_date.date' => 'Y/M/D形式で入力してください。',
-                'end_date.date' => 'Y/M/D形式で入力してください。',
+                'start_date.date_format' => 'この値は無効です、半角数字でYYYY-MM-DD形式で入力してください。',
+                'end_date.date_format' => 'この値は無効です、半角数字YYYY-MM-DD形式で入力してください。',
                 'purchaser_name.max' => '入力文字は30文字以上で入力してください。',
             ]);
 
