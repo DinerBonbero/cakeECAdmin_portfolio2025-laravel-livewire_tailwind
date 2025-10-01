@@ -14,9 +14,9 @@
         <div class="pb-5">
             <span class="text-xl">販売履歴一覧</span>
         </div>
-        <div class="w-7/9 bg-green-100 border-2 border-solid border-cyan-800 mx-auto pt-1 pb-5 px-2 mb-2">
+        <div class="w-7/9 bg-green-100 border-2 border-solid border-cyan-800 mx-auto p-2 mb-2">
             <form action="{{ route('sales.history') }}" method="GET">
-                <div class="flex justify-between items-center">
+                <div class="flex justify-between">
                     <div class="flex flex-col">
                         <span>発送状況</span>
                         <div class="flex justify-between">
