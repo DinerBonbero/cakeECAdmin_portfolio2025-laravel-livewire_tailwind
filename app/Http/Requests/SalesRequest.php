@@ -25,8 +25,8 @@ class SalesRequest extends FormRequest
         return [
             ['un_shipped' => Rule::in('0')],
             ['shipped' => Rule::in('1')],
-            'start_date' => ,
-            'end_date' ,
+            // 'start_date' => ,
+            // 'end_date' ,
             'purchaser_name' => 'max:50|string',
         ];
     }
