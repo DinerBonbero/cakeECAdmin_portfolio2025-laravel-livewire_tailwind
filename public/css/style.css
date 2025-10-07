@@ -3,3 +3,12 @@
     -webkit-appearance: none;
     -moz-appearance:textfield;
 } */
+
+.auth-btn-color {
+    background-color: #e2bc96;
+    color: white;
+    border-style: solid;
+    border-color: #e5e7eb;
+    border-width: 3px;
+    border-radius: 0.75rem;
+}

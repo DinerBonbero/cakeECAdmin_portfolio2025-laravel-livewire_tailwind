@@ -115,7 +115,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
         <flux:checkbox wire:model="remember" :label="__('このブラウザに認証情報を記憶')" />
 
         <div class="flex items-center justify-end">
-            <flux:button variant="primary" type="submit" class="w-full">{{ __('ログイン') }}</flux:button>
+            <flux:button variant="primary" type="submit" class="w-full auth-btn-color">{{ __('ログイン') }}</flux:button>
         </div>
     </form>
 
