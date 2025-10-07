@@ -34,32 +34,32 @@ require __DIR__.'/auth.php';
 
 Route::resource('/items', ItemController::class);//Itemのリソースコントローラ
 
-Route::get('/mycart/items', [CartController::class, 'index'])->name('mycart_item.index');
+Route::get('/mycart/items', [CartController::class, 'index'])->name('mycart_item.index')->middleware('auth');
 
-Route::post('/mycart/items/{item}', [CartController::class, 'store'])->name('mycart_item.store');
+Route::post('/mycart/items/{item}', [CartController::class, 'store'])->name('mycart_item.store')->middleware('auth');
 
-Route::patch('/mycart/items/{item}', [CartController::class, 'update'])->name('mycart_item.update');
+Route::patch('/mycart/items/{item}', [CartController::class, 'update'])->name('mycart_item.update')->middleware('auth');
 
-Route::delete('/mycart/items/{item}', [CartController::class, 'destroy'])->name('mycart_item.destroy');
+Route::delete('/mycart/items/{item}', [CartController::class, 'destroy'])->name('mycart_item.destroy')->middleware('auth');
 
-Route::get('/user_password/edit', [OrderController::class, 'history'])->name('user_password.edit');
+Route::get('/user_password/edit', [OrderController::class, 'history'])->name('user_password.edit')->middleware('auth');
 
-Route::get('/user_info/create', [UserController::class, 'create'])->name('user_info.create');
+Route::get('/user_info/create', [UserController::class, 'create'])->name('user_info.create')->middleware('auth');
 
-Route::post('/user_info', [UserController::class, 'store'])->name('user_info.store');
+Route::post('/user_info', [UserController::class, 'store'])->name('user_info.store')->middleware('auth');
 
-Route::get('/user_info/edit', [UserController::class, 'edit'])->name('user_info.edit');
+Route::get('/user_info/edit', [UserController::class, 'edit'])->name('user_info.edit')->middleware('auth');
 
-Route::patch('/user_info', [UserController::class, 'update'])->name('user_info.update');//Route::postでは上書きされてしまうためgetのeditに揃えてURLを/user_info/editにするかpostをpatchに変更する
+Route::patch('/user_info', [UserController::class, 'update'])->name('user_info.update')->middleware('auth');//Route::postでは上書きされてしまうためgetのeditに揃えてURLを/user_info/editにするかpostをpatchに変更する
 
-Route::get('/order/confirm', [OrderController::class, 'confirm'])->name('order.confirm');
+Route::get('/order/confirm', [OrderController::class, 'confirm'])->name('order.confirm')->middleware('auth');
 
-Route::post('/order', [OrderController::class, 'store'])->name('order.store');
+Route::post('/order', [OrderController::class, 'store'])->name('order.store')->middleware('auth');
 
-Route::get('/order/thank_you', [OrderController::class, 'thankYou'])->name('order.thank_you');
+Route::get('/order/thank_you', [OrderController::class, 'thankYou'])->name('order.thank_you')->middleware('auth');
 
-Route::get('/order/history', [OrderController::class, 'history'])->name('order.history');
+Route::get('/order/history', [OrderController::class, 'history'])->name('order.history')->middleware('auth');
 
-Route::get('/sales/history', [SalesController::class, 'history'])->name('sales.history');
+Route::get('/sales/history', [SalesController::class, 'history'])->name('sales.history')->middleware('auth');
 
 Route::get('/error', [ErrorController::class, 'error'])->name('errors.error');
