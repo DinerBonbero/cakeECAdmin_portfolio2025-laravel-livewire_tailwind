@@ -7,9 +7,9 @@
 
 <body
     class="bg-amber-50 min-h-screen antialiased dark:bg-linear-to-b dark:from-neutral-950 dark:to-neutral-900">
-    <div class="w-auto text-center">
+    <div class="w-auto text-center pb-5 md:pb-10">
         <div class="pb-3"><img class="w-4/9 py-2 inline" src="{{ asset('images/logo.png') }}" /></div>
-        <div>patisserie  ポートフォリオ</div>
+        <div class="shop-name">patisserie  ポートフォリオ</div>
     </div>
     <div
         class="bg-background flex min-h-[70svh] flex-col items-center gap-6 pr-6 pl-6 md:pr-10 md:pl-10">

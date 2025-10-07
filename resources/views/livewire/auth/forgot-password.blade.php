@@ -23,7 +23,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
 }; ?>
 
 <div class="flex flex-col gap-6">
-    <x-auth-header :title="__('Forgot password')" :description="__('Enter your email to receive a password reset link')" />
+    <x-auth-header :title="__('パスワードの再発行')" :description="__('パスワードリセット用のリンクを受信するため、メールアドレスを送信してください')" />
 
     <!-- Session Status -->
     <x-auth-session-status class="text-center" :status="session('status')" />
@@ -32,7 +32,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
         <!-- Email Address -->
         <flux:input
             wire:model="email"
-            :label="__('Email Address')"
+            :label="__('メールアドレス')"
             type="email"
             required
             autofocus
@@ -40,11 +40,11 @@ new #[Layout('components.layouts.auth')] class extends Component {
             viewable
         />
 
-        <flux:button variant="primary" type="submit" class="w-full auth-btn-color">{{ __('Email password reset link') }}</flux:button>
+        <flux:button variant="primary" type="submit" class="w-full auth-btn-color">{{ __('パスワードリセットメールを送信') }}</flux:button>
     </form>
 
     <div class="space-x-1 rtl:space-x-reverse text-center text-sm text-zinc-400">
-        {{ __('Or, return to') }}
-        <flux:link :href="route('login')" wire:navigate>{{ __('log in') }}</flux:link>
+        {{ __('もしくは') }}
+        <flux:link :href="route('login')" wire:navigate>{{ __('ログイン') }}</flux:link>
     </div>
 </div>
