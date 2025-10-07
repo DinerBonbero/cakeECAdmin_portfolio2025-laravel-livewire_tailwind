@@ -12,7 +12,7 @@
         <div>patisserie  ポートフォリオ</div>
     </div>
     <div
-        class="bg-background flex min-h-[70svh] flex-col items-center justify-center gap-6 pr-6 pl-6 md:pr-10 md:pl-10">
+        class="bg-background flex min-h-[70svh] flex-col items-center gap-6 pr-6 pl-6 md:pr-10 md:pl-10">
         <div class="flex w-full max-w-sm flex-col gap-2">
             {{-- <a href="{{ route('home') }}" class="flex flex-col items-center gap-2 font-medium" wire:navigate>
                     <span class="flex h-9 w-9 mb-1 items-center justify-center rounded-md">
