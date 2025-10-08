@@ -29,7 +29,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
 
         $this->ensureIsNotRateLimited();
 
-        if (! Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
+        if (!Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
@@ -41,6 +41,8 @@ new #[Layout('components.layouts.auth')] class extends Component {
         Session::regenerate();
 
         $this->redirectIntended(default: route('items.index', absolute: false), navigate: true);
+
+        session()->forget('url.intended');
     }
 
     /**
@@ -48,7 +50,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
      */
     protected function ensureIsNotRateLimited(): void
     {
-        if (! RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
+        if (!RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
             return;
         }
 
@@ -69,10 +71,21 @@ new #[Layout('components.layouts.auth')] class extends Component {
      */
     protected function throttleKey(): string
     {
-        return Str::transliterate(Str::lower($this->email).'|'.request()->ip());
+        return Str::transliterate(Str::lower($this->email) . '|' . request()->ip());
     }
 }; ?>
 
+@php
+
+    //Voltにはビューにコントローラメソッドを直接配置するスタイルかつ、
+    //ログイン画面の表示処理のメソッドがないため直前のURLを保存するコードを直書きで記載する。
+
+    if (session()->missing('url.intended')) {
+        //セッションに遷移元URLがないとき、
+
+        session(['url.intended' => url()->previous()]); //直前のURLを保存する
+    }
+@endphp
 <div class="flex flex-col gap-6">
     {{-- <x-auth-header :title="__('Log in to your account')" :description="__('Enter your email and password below to log in')" /> --}}
 
@@ -82,27 +95,13 @@ new #[Layout('components.layouts.auth')] class extends Component {
 
     <form wire:submit="login" class="flex flex-col gap-6">
         <!-- Email Address -->
-        <flux:input
-            wire:model="email"
-            :label="__('メールアドレス')"
-            type="email"
-            required
-            autofocus
-            autocomplete="email"
-            placeholder="email@example.com"
-        />
+        <flux:input wire:model="email" :label="__('メールアドレス')" type="email" required autofocus autocomplete="email"
+            placeholder="email@example.com" />
 
         <!-- Password -->
         <div class="relative">
-            <flux:input
-                wire:model="password"
-                :label="__('パスワード')"
-                type="password"
-                required
-                autocomplete="current-password"
-                :placeholder="__('Password')"
-                viewable
-            />
+            <flux:input wire:model="password" :label="__('パスワード')" type="password" required
+                autocomplete="current-password" :placeholder="__('Password')" viewable />
 
             @if (Route::has('password.request'))
                 <flux:link class="absolute end-0 top-0 text-sm" :href="route('password.request')" wire:navigate>
@@ -115,7 +114,8 @@ new #[Layout('components.layouts.auth')] class extends Component {
         <flux:checkbox wire:model="remember" :label="__('このブラウザに認証情報を記憶')" />
 
         <div class="flex items-center justify-end">
-            <flux:button variant="primary" type="submit" class="w-full auth-btn-color">{{ __('ログイン') }}</flux:button>
+            <flux:button variant="primary" type="submit" class="w-full auth-btn-color">{{ __('ログイン') }}
+            </flux:button>
         </div>
     </form>
 
