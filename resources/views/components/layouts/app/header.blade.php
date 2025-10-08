@@ -5,7 +5,8 @@
     @include('partials.head')
 </head>
 
-<body class="min-h-screen bg-amber-50 dark:bg-zinc-800 relative">
+<body class="min-h-screen bg-amber-50 relative">
+     {{--保留 dark:bg-zinc-800 背景真っ黒 --}}
     <div class="w-auto text-center">
         <img class="w-4/9 py-2 inline" src="{{ asset('images/logo.png') }}" />
         @can('user')
