@@ -12,23 +12,33 @@
         <form action="{{ route('items.store') }}" method="POST">
             @csrf
             <div class="flex">
-                <div class="text-center w-3/5 bg-white border-1 border-solid border-gray-200 rounded-sm">
-                    <input type="file" name="" id="" class="w-full">
+                <div class="text-center w-3/5 relative mb-2">
+                    <span class="absolute top-10 left-0">添付ファイル</span>
+                    {{-- <label for="file" class="absolute bottom-0 left-0 w-1/3 py-5 px-5 bg-white border-1 border-solid border-gray-200 rounded-xl">
+                        ファイルの選択
+                    </label> --}}
+                    <input type="file" name="" id="file" class="absolute bottom-0 left-0 w-full file:py-5 file:px-5 file:mr-10 file:bg-white file:border-1 file:border-solid file:border-gray-200 file:rounded-xl hover:file:bg-gray-100">
+                    {{-- <span class="absolute bottom-5 right-20">ファイルが選択されていません</span> --}}
                 </div>
                 <div class="flex flex-col text-left ml-5 text-lg w-2/5">
                     <label for="item_name">
                         商品名
                     </label>
-                    <input type="text" name="" id="item_name"
-                        class="bg-white border-1 border-solid border-gray-200 rounded-sm" placeholder="ショートケーキ">
-                    <span class="text-red-500">エラーメッセージ</span>
+                    <div class="w-full">
+                        <input type="text" name="" id="item_name"
+                            class="w-4/5 bg-white border-1 border-solid border-gray-200 rounded-sm"
+                            placeholder="ショートケーキ">
+                    </div>
+                    <span class="text-red-500 text-base">エラーメッセージ</span>
                     <label class="mt-2" for="item_price">
                         金額税込み
                     </label>
-                    <input type="number" name="" id="item_price"
-                        class="bg-white border-1 border-solid border-gray-200 rounded-sm" placeholder="480"
-                        min="300" max="10000" step="10">
-                    <span class="text-red-500">エラーメッセージ</span>
+                    <div class="w-full">
+                        <input type="number" name="" id="item_price"
+                            class="w-4/5 bg-white border-1 border-solid border-gray-200 rounded-sm mr-2"
+                            placeholder="480" min="300" max="10000" step="10">円
+                    </div>
+                    <span class="text-red-500 text-base">エラーメッセージ</span>
                 </div>
             </div>
             <div class="text-left pl-2">
