@@ -31,9 +31,34 @@ class ItemController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store()
+    public function store(Request $request)
     {
-        // Request $request
+        $validatedImage = $request->validate(
+            [
+                'image' => 'required|image|mimes:jpeg,png,jpg|max:1800', // 画像のバリデーション
+                'name' => 'required|max:15',
+                'price' => 'required|integer|min:300|max:10000|regex:/^[1-9][0-9]*$/',
+                'description' => 'required|max:50'
+            ],
+            [
+                'image.required' => '画像は必須です。',
+                'image.image' => '画像を送信してください。',
+                'image.mimes' => '画像は拡張子がjpeg,png,jpgのものを送信してください。',
+                'image.max' => '画像のサイズは1800KB以内にしてください。',
+                'name.required' => '商品名は必須項目です。',
+                'name.max' => '商品名は15文字以内で入力してください。',
+                'price.required' => '金額(税込み)は必須項目です。',
+                'price.integer' => '金額(税込み)は整数で入力してください。',
+                'price.min' => '金額(税込み)は300円以上で入力してください',
+                'price.max' => '金額(税込み)は10,000円以下で入力してください',
+                'price.regex' => '金額(税込み)は半角数字で先頭に0を含めず入力してください',
+                'description.required' => '商品説明は必須項目です。',
+                'description.max' => '商品説明は50文字以内で入力してください。'
+            ]
+        );
+
+        $validatedImage;
+
         return redirect()->route('items.index');
     }
 
@@ -66,7 +91,7 @@ class ItemController extends Controller
      */
     public function destroy(Item $item)
     {
-        
+
         Item::where('id', $item->id)->update(['is_pending' => 1]); //該当商品の掲載停止
 
         Cart::where('item_id', $item->id)->delete();
