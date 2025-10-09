@@ -13,7 +13,7 @@
             @csrf
             <div class="flex">
                 <div class="text-center w-3/5 relative mb-2">
-                    <span class="absolute top-10 left-0">添付ファイル</span>
+                    <span class="absolute top-11 left-0">添付ファイル</span>
                     {{-- <label for="file" class="absolute bottom-0 left-0 w-1/3 py-5 px-5 bg-white border-1 border-solid border-gray-200 rounded-xl">
                         ファイルの選択
                     </label> --}}
