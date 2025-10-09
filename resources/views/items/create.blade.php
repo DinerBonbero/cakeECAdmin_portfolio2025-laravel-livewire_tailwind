@@ -13,11 +13,12 @@
             @csrf
             <div class="flex">
                 <div class="text-center w-3/5 relative mb-2">
-                    <span class="absolute top-11 left-0">添付画像</span>
+                    <span class="absolute top-2 left-0">添付画像</span>
                     {{-- <label for="file" class="absolute bottom-0 left-0 w-1/3 py-5 px-5 bg-white border-1 border-solid border-gray-200 rounded-xl">
                         ファイルの選択
                     </label> --}}
-                    <input type="file" name="image" accept="image/png, image/jpeg" class="absolute bottom-0 left-0 w-full file:py-5 file:px-5 file:mr-10 file:bg-white file:border-1 file:border-solid file:border-gray-200 file:rounded-xl hover:file:bg-gray-100">
+                    <input type="file" name="image" accept="image/png, image/jpeg"
+                        class="absolute bottom-0 left-0 w-full file:py-5 file:px-5 file:mr-10 file:bg-white file:border-1 file:border-solid file:border-gray-200 file:rounded-xl hover:file:bg-gray-100">
                     {{-- <span class="absolute bottom-5 right-20">ファイルが選択されていません</span> --}}
                 </div>
                 <div class="flex flex-col text-left ml-5 text-lg w-2/5">
@@ -29,7 +30,9 @@
                             class="w-4/5 bg-white border-1 border-solid border-gray-200 rounded-sm"
                             placeholder="ショートケーキ">
                     </div>
-                    <span class="text-red-500 text-base">エラーメッセージ</span>
+                    @error('name')
+                        <span class="text-red-500 text-base">{{ $message }}</span>
+                    @enderror
                     <label class="mt-2" for="price">
                         金額税込み
                     </label>
@@ -38,17 +41,23 @@
                             class="w-4/5 bg-white border-1 border-solid border-gray-200 rounded-sm mr-2"
                             placeholder="480" min="300" max="10000" step="10">円
                     </div>
-                    <span class="text-red-500 text-base">エラーメッセージ</span>
+                    @error('price')
+                        <span class="text-red-500 text-base">{{ $message }}</span>
+                    @enderror
                 </div>
             </div>
             <div class="text-left pl-2">
-                <span class="text-red-500">エラーメッセージ</span>
+                @error('image')
+                    <span class="text-red-500 text-base">{{ $message }}</span>
+                @enderror
             </div>
             <div class="text-left pt-7 pb-10 w-full">
                 <label class="pl-2" for="description">商品説明</label>
                 <textarea name="description" id="description" class="bg-white border-1 border-solid border-gray-200 rounded-sm w-full"
                     placeholder="ほのかな酸味の苺とあっさりしてコクのある生クリームを使用した、甘すぎないショートケーキです。"></textarea>
-                <span class="text-red-500">エラーメッセージ</span>
+                @error('description')
+                    <span class="text-red-500 text-base">{{ $message }}</span>
+                @enderror
                 <div class="text-center pt-5">
                     <x-button.brown message="商品を登録" />
                 </div>
