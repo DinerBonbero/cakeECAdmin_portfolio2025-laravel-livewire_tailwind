@@ -10,13 +10,13 @@ use App\Livewire\CartItemNum;
 use App\Http\Controllers\ErrorController;
 use App\Http\Controllers\SalesController;
 
-// Route::get('/', function () {
-//     return redirect()->route('items.index');
-// });
-
 Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+    return redirect()->route('items.index');
+});
+
+// Route::get('/', function () {
+    // return view('welcome');
+// })->name('home');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
