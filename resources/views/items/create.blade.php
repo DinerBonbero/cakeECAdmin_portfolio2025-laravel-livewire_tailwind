@@ -1,3 +1,8 @@
+@php
+if(old('image')){
+    dd(old('image'));
+}
+@endphp
 <x-layouts.app.header>
     <div class="pt-5">
         <span class="text-emerald-500 text-2xl">管理者</span>
@@ -10,13 +15,15 @@
     </div>
     <div class="w-5/9 mx-auto">
         <form action="{{ route('items.store') }}" method="POST" enctype="multipart/form-data">
+            {{-- enctype="multipart/form-data"をformに記述してファイルを送信できるようにする   --}}
             @csrf
             <div class="flex">
                 <div class="text-center w-3/5 relative mb-2">
                     <span class="absolute top-2 left-0">添付画像</span>
-                    <input type="file" name="image" accept="image/png, image/jpeg" value="{{ old('image') }}"
+                    <input type="file" name="image" accept="image/png, image/jpeg" value=""
                         class="absolute bottom-0 left-0 w-full file:py-5 file:px-5 file:mr-10 file:bg-white file:border-1 file:border-solid file:border-gray-200 file:rounded-xl hover:file:bg-gray-100">
-                </div>
+                    {{-- enctype="multipart/form-data"そ記述することでold()が作動しなくなるため、リクエストをvalueに記述 --}}
+                    </div>
                 <div class="flex flex-col text-left ml-5 text-lg w-2/5">
                     <label for="name">
                         商品名
