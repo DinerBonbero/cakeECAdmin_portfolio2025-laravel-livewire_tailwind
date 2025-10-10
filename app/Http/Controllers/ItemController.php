@@ -33,6 +33,10 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request);
+        exit();
+        //imageが存在していない
+
         $validatedImage = $request->validate(
             [
                 'image' => 'required|image|mimes:jpeg,png,jpg|max:1800', // 画像のバリデーション
