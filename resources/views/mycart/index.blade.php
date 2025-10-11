@@ -4,6 +4,11 @@
 @endphp --}}
 @php
     $total = 0;
+    $previousUrl = url()->previous();
+    $currentUrl = url()->current();
+    if ($previousUrl === $currentUrl) {
+        $previousUrl = route('items.index');
+    }
 @endphp
 @can('user')
     <x-layouts.app.header>
@@ -67,7 +72,7 @@
                     {{ '合計(税込み)' . '　' . number_format($total) . '円' }}
                 </div>
                 <div class="text-center pb-10 w-full">
-                    <x-button.brown-link message="戻る" href="{{ url()->previous() }}" />
+                    <x-button.brown-link message="戻る" href="{{ $previousUrl }}" />
                     <a href="{{ route('order.confirm') }}"
                         class="ml-2 py-1 px-10 bg-[#7cc7f4] text-white rounded-lg w-full border-3 border-solid border-gray-200">
                         注文
