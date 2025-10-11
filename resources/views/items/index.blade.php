@@ -8,7 +8,7 @@
         @foreach ($items as $item)
             <a href="{{ route('items.show', $item) }}">
                 <div class="bg-white p-1">
-                    <img src="{{ asset('images/' . $item->image) }}">
+                    <img src="{{ asset('storage/images/' . $item->image) }}">
                     <div class="flex">
                         <span class="flex-none mx-2">{{ $item->name }}</span>
                         <span class="flex-1">{{ '(税込み)' . ' ' . number_format($item->price) . '円' }}</span>

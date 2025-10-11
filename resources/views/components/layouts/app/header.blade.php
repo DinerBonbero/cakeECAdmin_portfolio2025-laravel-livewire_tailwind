@@ -9,10 +9,10 @@
 <body class="min-h-screen bg-amber-50 relative">
      {{--保留 dark:bg-zinc-800 背景真っ黒 --}}
     <div class="w-auto text-center">
-        <img class="w-4/9 py-2 inline" src="{{ asset('images/logo.png') }}" />
+        <img class="w-4/9 py-2 inline" src="{{ asset('storage/images/logo.png') }}" />
         @can('user')
             <a href="{{route('mycart_item.index')}}">
-            <img class="size-20 inline absolute right-0 top-0"src="{{ asset('images/icon_cart.png') }}" /></a>
+            <img class="size-20 inline absolute right-0 top-0"src="{{ asset('storage/images/icon_cart.png') }}" /></a>
         @endcan
     </div>
 

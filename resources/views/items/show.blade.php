@@ -6,7 +6,7 @@
     </div>
     <div class="w-5/9 mx-auto">
         <div class="flex mb-7">
-            <img class="w-1/2" src="{{ asset('/images/' . $item->image) }}">
+            <img class="w-1/2" src="{{ asset('storage/images/' . $item->image) }}">
             <div class="flex flex-col text-left ml-5 text-lg w-full">
                 <span class="mt-1">{{ $item->name }}</span>
                 <span class="mt-4 mb-4">{{ '(税込み)' . ' ' . number_format($item->price) . '円' }}</span>

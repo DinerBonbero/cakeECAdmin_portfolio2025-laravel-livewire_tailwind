@@ -20,7 +20,7 @@
                         $total += $subtotal;
                     @endphp
                     <div class="flex mt-2">
-                        <img class="w-1/5" src="{{ asset('/images/' . $cartItem->item->image) }}">
+                        <img class="w-1/5" src="{{ asset('storage/images/' . $cartItem->item->image) }}">
                         <div class="flex flex-col w-full mr-35">
                             <span class="mt-2">{{ $cartItem->item->name }}</span>
                             <div class="w-full">

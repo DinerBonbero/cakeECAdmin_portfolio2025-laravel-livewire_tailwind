@@ -43,7 +43,7 @@
                 @endif
             </div>
             <div class="w-3/9">
-                <img class="w-2/3 mx-auto" src="{{ asset('/images/' . $order_detail->item->image) }}">
+                <img class="w-2/3 mx-auto" src="{{ asset('storage/images/' . $order_detail->item->image) }}">
             </div>
             <div class="flex flex-col w-4/9 pr-30">
                 <span class="mt-2">{{ $order_detail->item->name }}</span>
