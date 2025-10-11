@@ -41,7 +41,7 @@ class ItemController extends Controller
             [
                 'image' => 'required|file|image|mimes:jpeg,png,jpg|max:1800', // 画像のバリデーション
                 'name' => 'required|max:15',
-                'price' => 'required|integer|min:300|max:10000|regex:/^[1-9][0-9]*$/',
+                'price' => 'required|integer|min:300|max:10000',
                 'description' => 'required|max:50'
             ],
             [
@@ -56,11 +56,12 @@ class ItemController extends Controller
                 'price.integer' => '金額(税込み)は整数で入力してください。',
                 'price.min' => '金額(税込み)は300円以上で入力してください',
                 'price.max' => '金額(税込み)は10,000円以下で入力してください',
-                'price.regex' => '金額(税込み)は半角数字で先頭に0を含めず入力してください',
                 'description.required' => '商品説明は必須項目です。',
                 'description.max' => '商品説明は50文字以内で入力してください。'
-            ]
-            //エラーが複数反応するときは該当のnameエラーメッセージを繰り返して表示
+                ]
+                // |regex:/^[1-9][0-9]*$/
+                // 'price.regex' => '金額(税込み)は半角数字で先頭に0を含めず入力してください',
+                //エラーが複数反応するときは該当のnameエラーメッセージを繰り返して表示
         );
 
         $validatedImage = $validated['image'];
@@ -72,13 +73,22 @@ class ItemController extends Controller
 
         $originalImageName = $validatedImage->getClientOriginalName();
 
-        $storedImage = $validatedImage->storeAs('images', $originalImageName, 'public');
+        $validatedImage->storeAs('images', $originalImageName, 'public');
         // <input type="file" name="image" />から渡される値を受け取るにはfile('name属性')関数を使用する
         //　$request->imageではなく$request->file('image')で受け取る※phpの$_FILEに該当
         //　文字の送信ではなくファイルの送信になるため同じrequestの受け取り方が異なる
         //　それが嫌であれば$validated['image'];のように配列で返ってきたバリデーションした値を使用する
 
-        $storedImage;
+        // dd($originalImageName);
+        
+        Item::create(
+            [
+                'image' => $originalImageName,
+                'name' => $validated['name'],
+                'price' => $validated['price'],
+                'description' => $validated['description']
+            ]
+        );
 
         return redirect()->route('items.index');
     }
