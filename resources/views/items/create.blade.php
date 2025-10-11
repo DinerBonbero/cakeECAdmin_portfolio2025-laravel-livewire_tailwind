@@ -23,7 +23,7 @@ if(old('image')){
                     <input type="file" name="image" accept="image/png, image/jpeg"
                         class="absolute bottom-0 left-0 w-full file:py-5 file:px-5 file:mr-10 file:bg-white file:border-1 file:border-solid file:border-gray-200 file:rounded-xl hover:file:bg-gray-100">
                     {{-- enctype="multipart/form-data"そ記述することでold()が作動しなくなるため、リクエストをvalueに記述 --}}
-                    </div>
+                </div>
                 <div class="flex flex-col text-left ml-5 text-lg w-2/5">
                     <label for="name">
                         商品名
@@ -47,6 +47,10 @@ if(old('image')){
                     @error('price')
                         <span class="text-red-500 text-base">{{ $message }}</span>
                     @enderror
+                    {{-- @foreach ($errors->get('image') as $error)
+                        <div class="error">{{ $error }}</div>
+                        imageのエラー全部
+                    @endforeach --}}
                 </div>
             </div>
             <div class="text-left pl-2">
@@ -56,7 +60,8 @@ if(old('image')){
             </div>
             <div class="text-left pt-7 pb-10 w-full">
                 <label class="pl-2" for="description">商品説明</label>
-                <textarea name="description" id="description" class="bg-white border-1 border-solid border-gray-200 rounded-sm w-full" placeholder="ほのかな酸味の苺とあっさりしてコクのある生クリームを使用した、甘すぎないショートケーキです。">{{ old('description') }}</textarea>
+                <textarea name="description" id="description" class="bg-white border-1 border-solid border-gray-200 rounded-sm w-full"
+                    placeholder="ほのかな酸味の苺とあっさりしてコクのある生クリームを使用した、甘すぎないショートケーキです。">{{ old('description') }}</textarea>
                 @error('description')
                     <span class="text-red-500 text-base">{{ $message }}</span>
                 @enderror
