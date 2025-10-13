@@ -11,14 +11,28 @@ class UserController extends Controller
 {
     public function create()
     {
+        if (Auth::check() && Auth::user()->is_admin === 0) {
 
-        return view('user_info.create');
+            $userInfo = UserInfo::where('user_id', Auth::id())->first();
+
+            // dd($userInfo);
+            // exit();
+            if (!isset($userInfo)) {
+
+                return view('user_info.create');
+            } else {
+
+                return redirect()->back();
+            }
+        } else {
+            return redirect()->back();
+        }
     }
 
     public function store(UserInfoRequest $request)
     {
 
-        $validated = $request->validated();//連想配列
+        $validated = $request->validated(); //連想配列
         // var_dump($validated);
         // $validated['first_name'];
         // exit();
@@ -33,17 +47,33 @@ class UserController extends Controller
             'street_address' => $validated['street_address'],
             'address_detail' => $validated['address_detail'],
         ]);
-        
+
         return redirect()->route('items.index');
     }
 
-    public function edit(){
+    public function edit()
+    {
+        if (Auth::check() && Auth::user()->is_admin === 0) {
 
-        $userInfo = UserInfo::where('user_id', Auth::id())->first();//->toArray();
-        return view('user_info.edit', compact('userInfo'));
+            $userInfo = UserInfo::where('user_id', Auth::id())->first();
+
+            // dd($userInfo);
+            // exit();
+            if (isset($userInfo)) {
+
+                return view('user_info.edit', compact('userInfo'));
+            } else {
+
+                return redirect()->back();
+            }
+        } else {
+            
+            return redirect()->back();
+        }
     }
 
-    public function update(UserInfoRequest $request){
+    public function update(UserInfoRequest $request)
+    {
 
         $validated = $request->validated();
 
@@ -61,5 +91,4 @@ class UserController extends Controller
 
         return redirect()->back();
     }
-
 }
