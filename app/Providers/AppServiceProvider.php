@@ -6,7 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use App\Models\User;
 use Illuminate\Support\Facades\Gate;
 use App\Views\Composers\UserComposer;
-use Illuminate\View\View;
+use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -31,8 +31,9 @@ class AppServiceProvider extends ServiceProvider
             return $user->is_admin == 0;
         });
 
+
         View::composer(
-            ['items.index', 'items.show'],
+            ['components.layouts.app.header'],
             UserComposer::class
         );
     }
