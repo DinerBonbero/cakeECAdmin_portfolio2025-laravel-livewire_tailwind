@@ -7,7 +7,7 @@
 
 <body class="min-h-screen bg-amber-50 dark:bg-zinc-800 relative">
     <div class="w-auto text-center">
-        <img class="w-4/9 py-2 inline" src="{{ asset('images/logo.png') }}" />
+        <img class="w-4/9 py-2 inline" src="{{ asset('storage/images/logo.png') }}" />
     </div>
     <div class="mx-auto max-w-7xl text-center">
         <div class="p-10 my-10 bg-white text-2xl font-serif text-gray-800">
