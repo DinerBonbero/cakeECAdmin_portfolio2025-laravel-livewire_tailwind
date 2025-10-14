@@ -9,6 +9,8 @@ use App\Http\Controllers\OrderController;
 use App\Livewire\CartItemNum;
 use App\Http\Controllers\ErrorController;
 use App\Http\Controllers\SalesController;
+use App\Http\Middleware\AdminCheckMiddleware;
+use App\Http\Middleware\UserCheckMiddleware;
 
 Route::get('/', function () {
     return redirect()->route('items.index');
@@ -55,7 +57,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/order/history', [OrderController::class, 'history'])->name('order.history');
 
-    Route::get('/sales/history', [SalesController::class, 'history'])->name('sales.history');
+    Route::get('/sales/history', [SalesController::class, 'history'])->name('sales.history')->middleware(AdminCheckMiddleware::class);
 });
 
 require __DIR__ . '/auth.php';
