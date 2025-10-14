@@ -24,7 +24,7 @@ Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth'], ['user.check'])->group(function () {
     Route::redirect('settings', 'settings/profile');
 
     Volt::route('settings/profile', 'settings.profile')->name('settings.profile');
@@ -57,12 +57,12 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/order/history', [OrderController::class, 'history'])->name('order.history');
 
-    Route::get('/sales/history', [SalesController::class, 'history'])->name('sales.history')->middleware(AdminCheckMiddleware::class);
+    Route::get('/sales/history', [SalesController::class, 'history'])->withoutMiddleware('user.check')->middleware('admin.check')->name('sales.history');
 });
 
 require __DIR__ . '/auth.php';
 
-Route::resource('/items', ItemController::class); //Itemのリソースコントローラ
+Route::resource('/items', ItemController::class)->except(['edit', 'update']);; //Itemのリソースコントローラ
 
 
 Route::get('/error', [ErrorController::class, 'error'])->name('errors.error');
