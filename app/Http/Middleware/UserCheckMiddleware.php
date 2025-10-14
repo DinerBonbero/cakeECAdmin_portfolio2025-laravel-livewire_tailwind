@@ -19,7 +19,7 @@ class UserCheckMiddleware
     {
         if (Auth::check() && Auth::user()->is_admin === 0) {
 
-            //ログインユーザーのis_adminカラムが1、つまり一般ユーザーなら次に進める
+            //ログインユーザーのis_adminカラムが0、つまり一般ユーザーなら次に進める
             return $next($request);
         } else {
 
