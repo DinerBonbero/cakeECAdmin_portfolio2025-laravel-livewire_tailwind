@@ -11,20 +11,16 @@ class UserController extends Controller
 {
     public function create()
     {
-        if (Auth::check() && Auth::user()->is_admin === 0) {
 
-            $userInfo = UserInfo::where('user_id', Auth::id())->first();
+        $userInfo = UserInfo::where('user_id', Auth::id())->first();
 
-            // dd($userInfo);
-            // exit();
-            if (!isset($userInfo)) {
+        // dd($userInfo);
+        // exit();
+        if (!isset($userInfo)) {
 
-                return view('user_info.create');
-            } else {
-
-                return redirect()->back();
-            }
+            return view('user_info.create');
         } else {
+
             return redirect()->back();
         }
     }
@@ -53,21 +49,16 @@ class UserController extends Controller
 
     public function edit()
     {
-        if (Auth::check() && Auth::user()->is_admin === 0) {
 
-            $userInfo = UserInfo::where('user_id', Auth::id())->first();
+        $userInfo = UserInfo::where('user_id', Auth::id())->first();
 
-            // dd($userInfo);
-            // exit();
-            if (isset($userInfo)) {
+        // dd($userInfo);
+        // exit();
+        if (isset($userInfo)) {
 
-                return view('user_info.edit', compact('userInfo'));
-            } else {
-
-                return redirect()->back();
-            }
+            return view('user_info.edit', compact('userInfo'));
         } else {
-            
+
             return redirect()->back();
         }
     }
