@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\Cart;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class ItemController extends Controller
 {
@@ -122,10 +124,19 @@ class ItemController extends Controller
      */
     public function destroy(Item $item)
     {
+        try {
 
-        Item::where('id', $item->id)->update(['is_pending' => 1]); //該当商品の掲載停止
+            DB::transaction(function () use($item) {
 
-        Cart::where('item_id', $item->id)->delete();
+                Item::where('id', $item->id)->update(['is_pending' => 1]); //該当商品の掲載停止
+
+                Cart::where('item_id', $item->id)->delete();
+            }, 5);
+        } catch (\Exception $e) {
+
+            Log::error('商品掲載停止処理中のエラー' . $e);
+            return redirect()->route('errors.error');
+        }
 
         return redirect()->route('items.index');
     }
