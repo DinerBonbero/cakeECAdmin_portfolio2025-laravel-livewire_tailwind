@@ -11,8 +11,8 @@ class AccountPasswordController extends Controller
         return view('user_password.edit');
     }
 
-    // public function update(Request $request)
-    // {
+    public function update(Request $request)
+    {
     //     $request->validate([
     //         'current_password' => 'required',
     //         'new_password' => 'required|min:8|confirmed',
@@ -28,7 +28,7 @@ class AccountPasswordController extends Controller
     //     $user->save();
 
     //     return redirect()->route('dashboard')->with('status', 'Password updated successfully');
-    // }
+    }
 
     public function done()
     {
