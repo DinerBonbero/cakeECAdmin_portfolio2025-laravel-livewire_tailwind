@@ -50,6 +50,7 @@ class SalesController extends Controller
                     $query->where('is_shipped', $validatedSearchInputs['un_shipped'])->orWhere('is_shipped', $validatedSearchInputs['shipped']);
                     //where(function () use() {}はwhereのクロージャーで記載するときは必ずfunction ()の引数は一つでクエリを渡す前提、
                     //なのでuse($validatedSearchInputs)を使用して固定の引数とは別に分けて引数を渡す。
+                    //クロージャはsqlの()の意味をもち()を優先してくれる。
                 });
             } elseif (isset($validatedSearchInputs['un_shipped'])) {
 
