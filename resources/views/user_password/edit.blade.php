@@ -8,8 +8,8 @@
                     @method('PATCH')
                     <div class="text-left text-base">
                         <div class="mb-10">
-                            <label for="password" class="block serif">新しいパスワードを入力してください</label>
-                            <input type="tel" id="password" name="password"
+                            <label for="password" class="block">新しいパスワードを入力してください</label>
+                            <input type="password" id="password" name="password"
                                 class="bg-white border-1 border-solid border-gray-200 rounded-sm w-full">
                             @error('password')
                                 <span class="block text-rose-500">
@@ -18,8 +18,8 @@
                             @enderror
                         </div>
                         <div class="mb-10">
-                            <label for="password_confirmation" class="block serif">新しいパスワードを再入力してください</label>
-                            <input type="text" id="password_confirmation" name="password_confirmation"
+                            <label for="password_confirmation" class="block">新しいパスワードを再入力してください</label>
+                            <input type="password" id="password_confirmation" name="password_confirmation"
                                 class="bg-white border-1 border-solid border-gray-200 rounded-sm w-full">
                             @error('password_confirmation')
                                 <span class="block text-rose-500">
