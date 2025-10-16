@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class UserPasswordController extends Controller
+class AccountPasswordController extends Controller
 {
     public function edit()
     {
@@ -32,6 +32,6 @@ class UserPasswordController extends Controller
 
     public function done()
     {
-        return view('user_info.done');
+        return view('user_password.done');
     }
 }
