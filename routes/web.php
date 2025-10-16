@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ErrorController;
 use App\Http\Controllers\SalesController;
+use App\Http\Controllers\UserPasswordController;
 use App\Http\Middleware\AdminCheckMiddleware;
 use App\Http\Middleware\UserCheckMiddleware;
 
@@ -70,10 +71,10 @@ Route::middleware(['auth', 'user.check'])->group(function () {
 
 require __DIR__ . '/auth.php';
 
-Route::get('/user_password/edit', [OrderController::class, 'edit'])->middleware('auth')->name('user_password.edit');
+Route::get('/user_password/edit', [UserPasswordController::class, 'edit'])->middleware('auth')->name('user_password.edit');
 
-Route::patch('/user_password', [OrderController::class, 'update'])->middleware('auth')->name('user_password.update');
+Route::patch('/user_password', [UserPasswordController::class, 'update'])->middleware('auth')->name('user_password.update');
 
-Route::get('/user_password/done', [OrderController::class, 'done'])->middleware('auth')->name('user_password.update');
+Route::get('/user_password/done', [UserPasswordController::class, 'done'])->middleware('auth')->name('user_password.update');
 
 Route::get('/error', [ErrorController::class, 'error'])->name('errors.error');
