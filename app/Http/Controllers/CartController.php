@@ -39,12 +39,12 @@ class CartController extends Controller
         ];
 
         $messages = [
-            'item_num.required' => '個数を入力してください',
-            'item_num.array' => 'この値は無効です',
-            'item_num.' . $item->id . '.required' => '個数を入力してください',
-            'item_num.' . $item->id . '.integer' => '個数は半角数字で入力してください',
-            'item_num.' . $item->id . '.min' => '1以上10文字以内で入力してください',
-            'item_num.' . $item->id . '.max' => '1以上10文字以内で入力してください',
+            'item_num.required' => '個数を入力してください。',
+            'item_num.array' => 'この値は無効です。',
+            'item_num.' . $item->id . '.required' => '個数を入力してください。',
+            'item_num.' . $item->id . '.integer' => '個数は半角数字で入力してください。',
+            'item_num.' . $item->id . '.min' => '1以上10文字以内で入力してください。',
+            'item_num.' . $item->id . '.max' => '1以上10文字以内で入力してください。',
             // 配列のnameから送られた値のバリデーションメッセージを指定する場合も、ルールと同様に「.」でつなげて指定する
         ];
 
