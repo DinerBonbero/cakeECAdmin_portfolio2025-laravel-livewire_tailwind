@@ -16,13 +16,12 @@ class AccountPasswordController extends Controller
     {
         $request->validate([
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
+            //Rules\Password::defaults()は引数なしの時'password.min'のみ適用される
         ],[
             'password.required' => '新しいパスワードを入力してください。',
             'password.string' => '新しいパスワードは文字列で入力してください',
             'password.confirmed' => '新しいパスワードと確認用パスワードが一致しません',
-            'password.min' => '新しいパスワードは8文字以上で入力してください',
-            'password.mixedCase' => '新しいパスワードは大文字と小文字をそれぞれ1文字以上含めてください',
-            'password.uncompromised' => '新しいパスワードは過去に流出したことのあるパスワードです。別のパスワードを設定してください',
+            'password.min' => '新しいパスワードは8文字以上で入力してください'
         ]);
 
         //     $user = $request->user();
@@ -35,6 +34,7 @@ class AccountPasswordController extends Controller
         //     $user->save();
 
         //     return redirect()->route('dashboard')->with('status', 'Password updated successfully');
+        return redirect()->route('items.index');
     }
 
     public function done()
