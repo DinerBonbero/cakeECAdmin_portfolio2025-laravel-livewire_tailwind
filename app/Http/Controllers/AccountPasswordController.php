@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class AccountPasswordController extends Controller
 {
@@ -14,7 +16,7 @@ class AccountPasswordController extends Controller
 
     public function update(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
             //Rules\Password::defaults()は引数なしの時'password.min'のみ適用される
         ],[
@@ -24,17 +26,18 @@ class AccountPasswordController extends Controller
             'password.min' => '新しいパスワードは8文字以上で入力してください'
         ]);
 
-        //     $user = $request->user();
+        $validatedPassword = $validated['password'];
 
-        //     if (!\Hash::check($request->current_password, $user->password)) {
-        //         return back()->withErrors(['current_password' => 'Current password is incorrect']);
-        //     }
+        Auth::user()->update([
+            'password' => Hash::make($validatedPassword)
+        ]);
 
-        //     $user->password = \Hash::make($request->new_password);
-        //     $user->save();
+        //前のパス　　　$2y$12$lQ3hyR6JScCF1TofHNyFbOJ7hvFb/D5.zOZM0gbWt
+        //新のパスワード$2y$12$5SyA3pZVWYejSR1mFQj0e./4R0LGvbQYyTbwQlimnBy
+        //しっかり変更済
+        //テスト　新パスワードkuupe117でログインできるか　他のユーザーとずれていないか
 
-        //     return redirect()->route('dashboard')->with('status', 'Password updated successfully');
-        return redirect()->route('items.index');
+        return redirect()->route('user_password.done');
     }
 
     public function done()
