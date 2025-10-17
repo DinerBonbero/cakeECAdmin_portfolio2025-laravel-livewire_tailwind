@@ -10,7 +10,7 @@
                         <div class="mb-10">
                             <label for="password" class="block">新しいパスワードを入力してください</label>
                             <input type="password" id="password" name="password"
-                                class="bg-white border-1 border-solid border-gray-200 rounded-sm w-full">
+                                class="bg-white border-1 border-solid border-gray-200 rounded-sm w-full" autocomplete="off">
                             @error('password')
                                 <span class="block text-rose-500">
                                     {{ $message }}
@@ -20,7 +20,7 @@
                         <div class="mb-10">
                             <label for="password_confirmation" class="block">新しいパスワードを再入力してください</label>
                             <input type="password" id="password_confirmation" name="password_confirmation"
-                                class="bg-white border-1 border-solid border-gray-200 rounded-sm w-full">
+                                class="bg-white border-1 border-solid border-gray-200 rounded-sm w-full" autocomplete="off">
                             @error('password_confirmation')
                                 <span class="block text-rose-500">
                                     {{ $message }}
