@@ -21,7 +21,7 @@ class UserController extends Controller
             return view('user_info.create');
         } else {
 
-            return redirect()->back();
+            return redirect()->route('items.index');
         }
     }
 
@@ -59,7 +59,7 @@ class UserController extends Controller
             return view('user_info.edit', compact('userInfo'));
         } else {
 
-            return redirect()->back();
+            return redirect()->route('items.index');
         }
     }
 
