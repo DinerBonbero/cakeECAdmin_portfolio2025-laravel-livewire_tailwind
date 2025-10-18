@@ -26,9 +26,9 @@ Route::get('/sales/history', [SalesController::class, 'history'])->middleware(['
 //管理者用ミドルウェア'create', 'store', 'destroy'メソッドのみadmin.checkを適用、Itemのリソースコントローラ
 Route::resource('/items', ItemController::class)->middlewareFor(['create', 'store', 'destroy'], ['auth', 'admin.check'])->except(['edit', 'update']);
 
-Route::view('dashboard', 'dashboard')
-->middleware(['auth', 'verified'])
-->name('dashboard');
+// Route::view('dashboard', 'dashboard')
+// ->middleware(['auth', 'verified'])
+// ->name('dashboard');
 
 Route::middleware(['auth'])->group(function () {
 
