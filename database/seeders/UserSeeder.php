@@ -22,7 +22,6 @@ class UserSeeder extends Seeder
             ['name' => 'Bさん', 'email' => 'customerB@example.com', 'password' => Hash::make('customerB')]
         ];
 
-
         foreach ($users as $user) {//管理者・お客様のマスタデータの登録
             DB::table('users')->insert($user);
         }
