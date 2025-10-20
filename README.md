@@ -11,7 +11,7 @@ CSS(teilwind)<br>
 ### イラスト<br>
 ibisPaintX(イラストアプリ)<br>
 ・イラストアプリを使ってプリンのイラストを作成しました。<br><br>
-<img width="600" height="600" alt="purin" src="https://github.com/user-attachments/assets/a7fbc9f5-ac72-4497-a181-e731147dc695" />
+<img width="300" height="300" alt="purin" src="https://github.com/user-attachments/assets/a7fbc9f5-ac72-4497-a181-e731147dc695" />
 ## サイトの構成<br>
 未ログインユーザー・一般ユーザー・管理者ユーザーの三つに分けて作成しました。<br>
 ### 未ログインユーザー<br>
