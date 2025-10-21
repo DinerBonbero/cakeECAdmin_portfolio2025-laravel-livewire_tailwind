@@ -13,16 +13,20 @@ class Order extends Model
     public $timestamps = false;
 
     protected $casts = [
+
         'date' => 'datetime'
+        //dateカラムをdatetime型にキャスト
     ];
 
     public function order_details(): HasMany
     {
+
         return $this->hasMany(OrderDetail::class);
     }
 
     public function user(): BelongsTo
     {
+        
         return $this->belongsTo(User::class);
     }
 }

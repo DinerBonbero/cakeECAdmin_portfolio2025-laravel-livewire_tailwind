@@ -13,11 +13,13 @@ class OrderDetail extends Model
 
     public function order(): BelongsTo
     {
+
         return $this->belongsTo(Order::class);
     }
 
     public function item(): BelongsTo
     {
+        
         return $this->belongsTo(Item::class);
     }
 }
