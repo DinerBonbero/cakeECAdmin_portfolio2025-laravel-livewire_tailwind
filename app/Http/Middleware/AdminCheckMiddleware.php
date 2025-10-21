@@ -10,25 +10,24 @@ use Illuminate\Support\Facades\Log;
 
 class AdminCheckMiddleware
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
-     */
+
     public function handle(Request $request, Closure $next): Response
     {
         if (Auth::check() && Auth::user()->is_admin === 1) {
+            //ログインユーザーでかつis_adminカラムが1(管理者)の場合
 
-            //ログインユーザーのis_adminカラムが1、つまり管理者なら次に進める
             return $next($request);
+            //次に進める
         } elseif (Auth::check() && Auth::user()->is_admin === 0) {
+            //ログインユーザーのis_adminカラムが0、つまり一般ユーザーの場合
 
-            //ログインユーザーのis_adminカラムが0、つまり一般ユーザーであれば前のページに戻す
-            Log::error('管理者権限のないユーザーが管理者ページにアクセスしようとしました。', ['ユーザーID' => Auth::id(), 'アクセスURL' => $request->fullUrl(), 'IPアドレス' => $request->ip(), '姓' => Auth::user()->last_name, '名' => Auth::user()->first_name]);
+            Log::error('管理者権限のないユーザーによる管理者ページへのアクセス', ['ユーザーID' => Auth::id(), 'アクセスURL' => $request->fullUrl(), 'IPアドレス' => $request->ip(), '姓' => Auth::user()->last_name, '名' => Auth::user()->first_name]);
             return redirect()->route('errors.error');
-        }else{
+            //エラーログを記録し、エラーページへリダイレクト
+        } else {
+            //未ログインユーザーの場合
+            //まずこの状況は通常ありえないが、念のため対応
 
-            //未ログインユーザーであればログイン画面へ
             return redirect()->route('items.index');  //未ログインユーザーはログイン画面へ
         }
     }

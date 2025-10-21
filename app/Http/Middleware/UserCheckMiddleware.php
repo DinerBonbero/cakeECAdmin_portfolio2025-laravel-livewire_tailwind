@@ -9,24 +9,21 @@ use Illuminate\Support\Facades\Auth;
 
 class UserCheckMiddleware
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
-     */
+    
     public function handle(Request $request, Closure $next): Response
     {
 
-        // dd(Auth::user()->is_admin);
-        //     exit();
         if (Auth::check() && Auth::user()->is_admin === 0) {
-
-            //ログインユーザーのis_adminカラムが0、つまり一般ユーザーなら次に進める
+            //ログインユーザーのis_adminカラムが0、つまり一般ユーザーの場合
+            
             return $next($request);
+            //次に進める
         } else {
-
-            //ログインユーザーのis_adminカラムが1、つまり管理者や未ログインであれば前のページに戻す
+            //ログインユーザーのis_adminカラムが1、つまり管理者の場合
+            //まずこの状況で未ログイン者は通常ありえないが念のためこちらで対応
+            
             return redirect()->route('items.index');
+            //商品一覧画面へリダイレクト
         }
     }
 }
