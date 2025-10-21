@@ -11,15 +11,18 @@ class AccountPasswordController extends Controller
 {
     public function edit()
     {
+
         return view('user_password.edit');
     }
 
     public function update(Request $request)
     {
         $validated = $request->validate([
+
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
             //Rules\Password::defaults()は引数なしの時'password.min'のみ適用される
-        ],[
+        ], [
+
             'password.required' => '新しいパスワードを入力してください。',
             'password.string' => '新しいパスワードは文字列で入力してください',
             'password.confirmed' => '新しいパスワードと確認用パスワードが一致しません',
@@ -29,19 +32,16 @@ class AccountPasswordController extends Controller
         $validatedPassword = $validated['password'];
 
         Auth::user()->update([
+
             'password' => Hash::make($validatedPassword)
         ]);
-
-        //前のパス　　　$2y$12$lQ3hyR6JScCF1TofHNyFbOJ7hvFb/D5.zOZM0gbWt
-        //新のパスワード$2y$12$5SyA3pZVWYejSR1mFQj0e./4R0LGvbQYyTbwQlimnBy
-        //しっかり変更済
-        //テスト　新パスワードkuupe117でログインできるか　他のユーザーとずれていないか
 
         return redirect()->route('user_password.done');
     }
 
     public function done()
     {
+
         return view('user_password.done');
     }
 }

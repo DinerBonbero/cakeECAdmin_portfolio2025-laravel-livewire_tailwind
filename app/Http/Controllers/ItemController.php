@@ -10,11 +10,10 @@ use Illuminate\Support\Facades\Log;
 
 class ItemController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
+
         $items = Item::where('is_pending', 0)
             ->orderBy('id', 'asc')
             ->paginate(6);
@@ -22,24 +21,19 @@ class ItemController extends Controller
         return view('items.index', compact('items'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
+
         return view('items.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        // dd(request()->file('image'));
-        // exit();
-        //imageが存在していない
+
+        //imageは$_FILESで送信されるため、dd()でみたときは別の形でデータが入っていることに注意
 
         $validated = $request->validate(
+
             [
                 'image' => 'required|file|image|mimes:jpeg,png,jpg|max:1800', // 画像のバリデーション
                 'name' => 'required|max:15',
@@ -60,20 +54,12 @@ class ItemController extends Controller
                 'price.max' => '金額(税込み)は10,000円以下で入力してください',
                 'description.required' => '商品説明は必須項目です。',
                 'description.max' => '商品説明は50文字以内で入力してください。'
-                ]
-                // |regex:/^[1-9][0-9]*$/
-                // 'price.regex' => '金額(税込み)は半角数字で先頭に0を含めず入力してください',
-                //エラーが複数反応するときは該当のnameエラーメッセージを繰り返して表示
+            ]
         );
 
         $validatedImage = $validated['image'];
 
-        // dd($validatedImage);
-        // exit();
-        
-        // dd($validatedImage->getClientOriginalName()); //アップロードされたファイルの元の名前を取得
-
-        $originalImageName = $validatedImage->getClientOriginalName();
+        $originalImageName = $validatedImage->getClientOriginalName();//アップロードされたファイルの元の名前を取得
 
         $validatedImage->storeAs('images', $originalImageName, 'public');
         // <input type="file" name="image" />から渡される値を受け取るにはfile('name属性')関数を使用する
@@ -81,9 +67,8 @@ class ItemController extends Controller
         //　文字の送信ではなくファイルの送信になるため同じrequestの受け取り方が異なる
         //　それが嫌であれば$validated['image'];のように配列で返ってきたバリデーションした値を使用する
 
-        // dd($originalImageName);
-        
         Item::create(
+
             [
                 'image' => $originalImageName,
                 'name' => $validated['name'],
@@ -95,38 +80,18 @@ class ItemController extends Controller
         return redirect()->route('items.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Item $item)
     {
+
         return view('items.show', compact('item'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Item $item)
     {
+
         try {
 
-            DB::transaction(function () use($item) {
+            DB::transaction(function () use ($item) {
 
                 Item::where('id', $item->id)->update(['is_pending' => 1]); //該当商品の掲載停止
 

@@ -11,10 +11,10 @@ class CartController extends Controller
 {
     public function index()
     {
+
         $cartItems = Cart::with('item')->whereRelation('item', 'is_pending', 0)->where('user_id', Auth::id())->latest('id')->get(); //テーブルが複数か単数か気を付ける
         //latest「最新の」
-        //dd($items);
-        // exit();
+
         return view('mycart.index', compact('cartItems'));
     }
 
@@ -28,17 +28,16 @@ class CartController extends Controller
 
     public function update(Request $request, Cart $item)
     {
-        // echo 'update';
-        // // dd($request);
-        // exit();
 
         $rules = [
+
             'item_num' => 'required|array',
             'item_num.' . $item->id => 'required|integer|min:1|max:10',
             // 配列のnameから送られてきた値をバリデーションする場合、配列のnameをルールに指定する際は「.」でつなげて指定する
         ];
 
         $messages = [
+
             'item_num.required' => '個数を入力してください。',
             'item_num.array' => 'この値は無効です。',
             'item_num.' . $item->id . '.required' => '個数を入力してください。',
@@ -50,11 +49,10 @@ class CartController extends Controller
 
         $validated = $request->validate($rules, $messages);
 
-        
-
         $cart = Cart::where('user_id', Auth::id())->where('id', $item->id)->first();
 
         $cart->update([
+            
             'item_num' => $validated['item_num'][$item->id]
         ]);
 
