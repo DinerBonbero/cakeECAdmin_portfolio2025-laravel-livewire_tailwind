@@ -1,13 +1,10 @@
-{{-- @php
-    var_dump($errors);
-    exit();
-@endphp --}}
 @php
     $total = 0;
     $previousUrl = url()->previous();
     $currentUrl = url()->current();
     if ($previousUrl === $currentUrl) {
         $previousUrl = route('items.index');
+        //無限ループ防止のため、直前のURLが現在のURLと同じ場合は商品一覧画面に遷移
     }
 @endphp
 <x-layouts.app.header>
@@ -57,23 +54,28 @@
                         </form>
                     </div>
                 </div>
-                <div class="border-b-3 border-solid border-gray-200 flex justify-between">
-                    <span></span>
+                <div class="border-b-3 border-solid border-gray-200 grid grid-cols-3">
                     {{-- エラーメッセージの表示 --}}
                     {{-- 配列に変更したため、エラーメッセージの表示も変更 @error('item_num.' . $cartItem->id)ドットを付けてitem_num[{{ $cartItem->id }}]のエラー呼び出し --}}
                     @error('item_num.' . $cartItem->id)
-                        <span class="text-rose-500">{{ $message }}</span>
+                        <div class="col-span-1 col-start-2 col-end-3">
+                            <span class="text-rose-500">{{ $message }}</span>
+                        </div>
                     @enderror
-                    <span>{{ '小計(税込み)' . ' ' . number_format($subtotal) . '円' }}</span>
+                    <div class="text-right col-span-1 col-end-4">
+                        {{-- cols-3の最後の列に配置したいときはcol-end-3ではなくcol-end-4と指定 --}}
+                        <span class="mr-3">小計(税込み)</span><span>{{ number_format($subtotal) }}</span><span>円</span>
+                    </div>
                 </div>
             @endforeach
             <div class="mb-7 border-b-3 border-solid border-gray-200 text-right text-xl">
-                {{ '合計(税込み)' . '　' . number_format($total) . '円' }}
+                <span class="mr-3">合計(税込み)</span><span>{{ number_format($total) }}</span><span>円</span>
             </div>
             <div class="text-center pb-10 w-full">
                 <x-button.brown-link message="戻る" href="{{ $previousUrl }}" />
-                <a href="{{ route('order.confirm') }}"
-                    class="ml-2 py-1 px-10 bg-[#7cc7f4] text-white rounded-lg w-full border-3 border-solid border-gray-200">
+                {{-- 直前のページに戻る、もしリンク先が現在のページと同じ場合は商品一覧画面に遷移。無限ループ防止。
+                リンクを渡せるコンポーネントを使用。 --}}
+                <a href="{{ route('order.confirm') }}" class="ml-2 py-1 px-10 bg-[#7cc7f4] text-white rounded-lg w-full border-3 border-solid border-gray-200">
                     注文
                 </a>
             </div>
