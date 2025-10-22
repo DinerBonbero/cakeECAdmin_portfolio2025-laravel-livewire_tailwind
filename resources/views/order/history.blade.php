@@ -7,6 +7,7 @@
             <p class="text-center mt-10 p-5 bg-lime-100">注文履歴がありません</p>
         @else
             @foreach ($orderHistories as $orderHistory)
+                {{-- 注文レコード分ループ --}}
                 @php
                     $total = 0;
                 @endphp
@@ -14,6 +15,10 @@
                     <span class="text-lg">{{ $orderHistory->date->format('Y年m月d日') }}</span>{{-- $orderHistory->date文字型のためモデルファイルでdatetimeキャスト --}}
                 </div>
                 @foreach ($orderHistory->order_details as $order_detail)
+                    {{-- 注文詳細レコード分ループ --}}
+                    {{-- 注文レコード1に対し注文詳細レコード多のforeachのネスト構造 --}}
+                    {{-- 商品レコードは1のためネスト不要 --}}
+                    {{-- $orderHistory->order_detailsの->はリレーションメソッドで取得した注文詳細レコード --}}
                     @php
                         $subtotal = $order_detail->item->price * $order_detail->item_num;
                         $total += $subtotal;

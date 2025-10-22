@@ -31,6 +31,7 @@
                             @enderror
                         </div>
                     </div>
+                    {{-- ここからチェック作業の続き --}}
                     <div class="text-left text-base">
                         <div class="mb-5">
                             <label for="phone_number" class="block">電話番号</label>
