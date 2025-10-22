@@ -16,6 +16,7 @@ class Order extends Model
 
         'date' => 'datetime'
         //dateカラムをdatetime型にキャスト
+        //Sailelist.blade.phpでの$saleHistory->date使用時にformatメソッドを使用可能にするため文字型からdatetime型に変換
     ];
 
     public function order_details(): HasMany

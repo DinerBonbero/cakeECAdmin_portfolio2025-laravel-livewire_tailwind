@@ -14,11 +14,9 @@ new #[Layout('components.layouts.auth')] class extends Component {
     public string $password = '';
     public string $password_confirmation = '';
 
-    /**
-     * Handle an incoming registration request.
-     */
     public function register(): void
     {
+
         $validated = $this->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
@@ -36,13 +34,11 @@ new #[Layout('components.layouts.auth')] class extends Component {
 }; ?>
 
 <div class="flex flex-col gap-6">
-    {{-- <x-auth-header :title="__('Create an account')" :description="__('Enter your details below to create your account')" /> --}}
 
-    <!-- Session Status -->
     <x-auth-session-status class="text-center" :status="session('status')" />
 
     <form wire:submit="register" class="flex flex-col gap-6">
-        <!-- Name -->
+
         <flux:input
             wire:model="name"
             :label="__('名前')"
@@ -53,7 +49,6 @@ new #[Layout('components.layouts.auth')] class extends Component {
             :placeholder="__('苺野　慶喜')"
         />
 
-        <!-- Email Address -->
         <flux:input
             wire:model="email"
             :label="__('メールアドレス')"
@@ -63,7 +58,6 @@ new #[Layout('components.layouts.auth')] class extends Component {
             placeholder="email@example.com"
         />
 
-        <!-- Password -->
         <flux:input
             wire:model="password"
             :label="__('パスワード')"
@@ -74,7 +68,6 @@ new #[Layout('components.layouts.auth')] class extends Component {
             viewable
         />
 
-        <!-- Confirm Password -->
         <flux:input
             wire:model="password_confirmation"
             :label="__('パスワードを再入力')"

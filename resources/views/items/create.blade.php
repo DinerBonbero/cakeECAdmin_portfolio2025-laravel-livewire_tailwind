@@ -1,8 +1,3 @@
-{{-- @php
-if(old('image')){
-    dd(old('image'));
-}
-@endphp --}}
 <x-layouts.app.header>
     <div class="pt-5">
         <span class="text-emerald-500 text-2xl">管理者</span>
@@ -22,7 +17,7 @@ if(old('image')){
                     <span class="absolute top-2 left-0">添付画像</span>
                     <input type="file" name="image" accept="image/png, image/jpeg"
                         class="absolute bottom-0 left-0 w-full file:py-5 file:px-5 file:mr-10 file:bg-white file:border-1 file:border-solid file:border-gray-200 file:rounded-xl hover:file:bg-gray-100">
-                    {{-- enctype="multipart/form-data"そ記述することでold()が作動しなくなるため、リクエストをvalueに記述 --}}
+                    {{-- enctype="multipart/form-data"を記述することでold()が作動しなくなるため、リクエストをvalueに記述 --}}
                 </div>
                 <div class="flex flex-col text-left ml-5 text-lg w-2/5">
                     <label for="name">
@@ -47,10 +42,6 @@ if(old('image')){
                     @error('price')
                         <span class="text-red-500 text-base">{{ $message }}</span>
                     @enderror
-                    {{-- @foreach ($errors->get('image') as $error)
-                        <div class="error">{{ $error }}</div>
-                        imageのエラー全部
-                    @endforeach --}}
                 </div>
             </div>
             <div class="text-left pl-2">

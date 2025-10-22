@@ -1,11 +1,12 @@
 <div class="@if ($saleHistory->is_shipped === 0) bg-red-500 @endif">
     <div class="flex">
         <div class="text-right w-2/4 pr-5">
-            <span class="text-lg">{{ $saleHistory->date->format('Y年m月d日') }}</span>{{-- {{var_dump($saleHistory->date)}}文字型のためモデルファイルでdatetimeキャスト --}}
+            <span class="text-lg">{{ $saleHistory->date->format('Y年m月d日') }}</span>{{-- $saleHistory->date 文字型のためモデルファイルでdatetimeキャスト --}}
         </div>
         <div class="text-right w-2/4">
-            <span
-                class="pr-5">{{ $saleHistory->user->user_info->last_name }}{{ $saleHistory->user->user_info->first_name }}様</span>
+            <span class="pr-5">
+                {{ $saleHistory->user->user_info->last_name }}{{ $saleHistory->user->user_info->first_name }}様
+            </span>
         </div>
     </div>
     @foreach ($saleHistory->order_details as $order_detail)
@@ -18,14 +19,6 @@
             <div class="w-2/9 flex items-center">
                 @if ($orderDetailNum === 1)
                     <div class="mx-auto">
-                        {{-- @php
-                            // echo 'ちゅうもんID' . $saleHistoryId;
-                            // echo '発送状況' . $saleHistory->is_shipped;
-
-                            // dd($saleHistoryId);
-                            // dd($isSipped);
-                            // exit();
-                        @endphp --}}
                         <form wire:submit="update">
                             @if ($saleHistory->is_shipped === 1)
                                 <button type="submit"
@@ -55,12 +48,11 @@
                 </div>
             </div>
         </div>
-        <div class="border-b-3 border-solid border-gray-200 flex justify-between">
-            <span></span>
-            <span>{{ '小計(税込み)' . ' ' . number_format($subtotal) . '円' }}</span>
+        <div class="border-b-3 border-solid border-gray-200 text-right">
+            <span class="mr-3">小計(税込み)</span><span>{{ number_format($subtotal) }}</span><span>円</span>
         </div>
     @endforeach
     <div class="border-b-3 border-solid border-[#e2bc96] text-right text-lg">
-        {{ '合計(税込み)' . '　' . number_format($total) . '円' }}
+        <span class="mr-4">合計(税込み)</span><span>{{ number_format($total) }}</span><span>円</span>
     </div>
 </div>
