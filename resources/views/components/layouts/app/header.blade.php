@@ -1,13 +1,11 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-{{-- class="dark" --}}
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
 
 <head>
     @include('partials.head')
 </head>
 
-<body class="min-h-screen bg-amber-50 relative">
-    {{-- 保留 dark:bg-zinc-800 背景真っ黒 --}}
+<body class="min-h-screen bg-amber-50 relative dark:bg-zinc-800">
     <div class="w-auto text-center">
         <img class="w-4/9 py-2 inline" src="{{ asset('storage/images/logo.png') }}" />
         @can('user')
@@ -30,8 +28,11 @@
                 <summary class="px-7 text-center lg:ms-0 text-lg list-none"><span>{{ Auth::user()->name }}</span></summary>
                 <span class="list-none text-left">
                     @can('user')
-                        <li class="py-1"><a href="{{ $isAdmin === null ? route('user_info.create') : route('user_info.edit') }}" wire:navigate>
-                            ユーザー情報の設定</a></li>
+                        <li class="py-1">
+                            <a href="{{ $isAdmin === null ? route('user_info.create') : route('user_info.edit') }}" wire:navigate>
+                                ユーザー情報の設定
+                            </a>
+                        </li>
                         {{-- ビューコンポーザでリンク分け、コンポーネントにも使える --}}
                         <li class="py-1"><a href="{{ route('order.history') }}" wire:navigate>購入履歴</a></li>
                     @endcan

@@ -16,19 +16,11 @@ Route::get('/', function () {
     return redirect()->route('items.index');
 });
 
-// Route::get('/', function () {
-// return view('welcome');
-// })->name('home');
-
-//管理者用ミドルウェアadmin.checkを適用
 Route::get('/sales/history', [SalesController::class, 'history'])->middleware(['auth', 'admin.check'])->name('sales.history');
+//管理者用ミドルウェアadmin.checkを適用
 
-//管理者用ミドルウェア'create', 'store', 'destroy'メソッドのみadmin.checkを適用、Itemのリソースコントローラ
 Route::resource('/items', ItemController::class)->middlewareFor(['create', 'store', 'destroy'], ['auth', 'admin.check'])->except(['edit', 'update']);
-
-// Route::view('dashboard', 'dashboard')
-// ->middleware(['auth', 'verified'])
-// ->name('dashboard');
+//管理者用ミドルウェア'create', 'store', 'destroy'メソッドのみadmin.checkを適用、Itemのリソースコントローラ
 
 Route::middleware(['auth'])->group(function () {
 
@@ -39,8 +31,8 @@ Route::middleware(['auth'])->group(function () {
     Volt::route('settings/appearance', 'settings.appearance')->name('settings.appearance');
 });
 
-//一般ログインユーザー用ミドルウェアuser.checkを適用
 Route::middleware(['auth', 'user.check'])->group(function () {
+//一般ログインユーザー用ミドルウェアuser.checkを適用
 //引数の渡し方に注意、公式をよく見る！一つの配列で渡すこと！二つの配列で渡したことにより時間ロス！
     
     Route::get('/mycart/items', [CartController::class, 'index'])->name('mycart_item.index');
@@ -50,7 +42,6 @@ Route::middleware(['auth', 'user.check'])->group(function () {
     Route::patch('/mycart/items/{item}', [CartController::class, 'update'])->name('mycart_item.update');
 
     Route::delete('/mycart/items/{item}', [CartController::class, 'destroy'])->name('mycart_item.destroy');
-
     
     Route::get('/user_info/create', [UserController::class, 'create'])->name('user_info.create');
     
@@ -70,6 +61,8 @@ Route::middleware(['auth', 'user.check'])->group(function () {
 });
 
 require __DIR__ . '/auth.php';
+
+//↓パスワード変更用ルート
 
 Route::get('/user_password/edit', [AccountPasswordController::class, 'edit'])->middleware('auth')->name('user_password.edit');
 
