@@ -6,12 +6,12 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+
     public function up(): void
     {
+
         Schema::create('user_infos', function (Blueprint $table) {
+
             $table->id();
             $table->bigInteger('user_id');
             $table->string('last_name', length: 30);
@@ -24,11 +24,9 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
+        
         Schema::dropIfExists('user_infos');
     }
 };

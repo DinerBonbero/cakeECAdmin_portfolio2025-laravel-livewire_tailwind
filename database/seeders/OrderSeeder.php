@@ -2,17 +2,15 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
 class OrderSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
+
     public function run(): void
     {
+
         $userIds = [];
         $orderIds = [];
 
@@ -21,8 +19,12 @@ class OrderSeeder extends Seeder
             'customerB@example.com'
         ];
 
-        foreach ($emails as $email) { //Userシーダに登録したメールと一致するお客様A,Bのマスタデータのidを取得
-            $id = DB::table('users')->where('email', $email)->value('id'); //getだとコレーション(配列ではない)が返ってくるためvalueでレコードから値を取得
+        foreach ($emails as $email) {
+            
+            $id = DB::table('users')->where('email', $email)->value('id');
+            //Userシーダに登録したメールと一致するお客様A,Bのidを取得
+            //getだとコレーション(配列ではない)が返ってくるためvalueでレコードから値を取得
+            
             $userIds[] = $id; //コレーションだとエラーになる　※コレーションを入れると配列ではないためエラーなのでvalueで単一の値取得
         }
 
@@ -31,7 +33,9 @@ class OrderSeeder extends Seeder
             ['user_id' => $userIds[1], 'date' => '2025-08-21', 'is_shipped' => 1]
         ];
 
-        foreach ($orders as $order) { //管理者・お客様のマスタデータの登録
+        foreach ($orders as $order) {
+            //管理者・お客様のマスタデータの登録
+
             $orderIds[] = DB::table('orders')->insertGetId($order);//登録したオーダーレコードのidを取得
         }
 
@@ -43,7 +47,10 @@ class OrderSeeder extends Seeder
             ['order_id' => $orderIds[1], 'item_id' => 13, 'item_num' => 5]
         ];
 
-        foreach ($orderDetails as $orderDetaill) { //管理者・お客様のマスタデータの登録
+        foreach ($orderDetails as $orderDetaill) {
+            //管理者・お客様のマスタデータの登録
+            //注文詳細シーダで分けて連動した処理での作成は不可のため一緒に作成
+
             DB::table('order_details')->insert($orderDetaill);
         }
     }
