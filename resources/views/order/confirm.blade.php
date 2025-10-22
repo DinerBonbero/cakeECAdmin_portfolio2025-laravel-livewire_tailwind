@@ -1,7 +1,3 @@
-{{-- @php
-    var_dump($cartItems);
-    exit();
-@endphp --}}
 @php
     $total = 0;
 @endphp
@@ -24,20 +20,18 @@
                         <span class="mt-2">{{ $cartItem->item->name }}</span>
                         <div class="w-full">
                             <div class="mt-5 w-full text-center">
-                                <span class="w-3/11">{{ $cartItem->item_num }}</span>
-                                <span for="item_num" class="mx-1 inline">個</span>
-                                </form>
+                                <span>{{ $cartItem->item_num }}</span>
+                                <span class="mx-1">個</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="border-b-3 border-solid border-gray-200 flex justify-between">
-                    <span></span>
-                    <span>{{ '小計(税込み)' . ' ' . number_format($subtotal) . '円' }}</span>
+                <div class="border-b-3 border-solid border-gray-200 text-right">
+                    <span class="mr-3">小計(税込み)</span><span>{{ number_format($subtotal) }}</span><span>円</span>
                 </div>
             @endforeach
             <div class="border-b-3 border-solid border-gray-200 text-right text-lg">
-                {{ '合計(税込み)' . '　' . number_format($total) . '円' }}
+                <span class="mr-4">合計(税込み)</span><span>{{ number_format($total) }}</span><span>円</span>
             </div>
             <div class="text-right mt-2">
                 <x-button.brown-link message="カートの修正" href="{{ route('mycart_item.index') }}" />
@@ -96,19 +90,17 @@
                 <div class="w-1/5 mx-auto mt-10 mb-5">
                     <form action="{{ route('order.store') }}" method="POST">
                         @csrf
-                        <button
-                            class="bg-[#7cc7f4] py-1 w-full text-white rounded-xl border-3 border-solid border-gray-200">
+                        <button class="bg-[#7cc7f4] py-1 w-full text-white rounded-xl border-3 border-solid border-gray-200">
                             注文確定
                         </button>
                     </form>
                 </div>
             @else
+            {{-- ユーザー情報が未登録の場合、注文確定ボタンを無効化してユーザー情報登録を促すメッセージを表示 --}}
                 <div class="w-1/5 mx-auto mt-10">
                     <form action="{{ route('order.store') }}" method="POST">
                         @csrf
-                        <button
-                            class="bg-gray-300 py-1 w-full text-white rounded-xl border-3 border-solid border-gray-200"
-                            disabled>
+                        <button class="bg-gray-300 py-1 w-full text-white rounded-xl border-3 border-solid border-gray-200" disabled>
                             注文確定
                         </button>
                     </form>

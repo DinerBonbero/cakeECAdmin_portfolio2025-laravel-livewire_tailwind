@@ -1,10 +1,9 @@
-{{-- @php
-    dd($orders);
-    exit();
-@endphp --}}
 @php
+
     $total = 0;
+
     foreach ($orders->order_details as $order_details) {
+        
         $total += $order_details->item->price * $order_details->item_num;
     }
 @endphp

@@ -1,7 +1,3 @@
-{{-- @php
-    dd($orderHistories);
-    exit();
-@endphp --}}
 <x-layouts.app.header>
     <div class="py-3">
         <span class="text-2xl">購入履歴</span>
@@ -15,7 +11,7 @@
                     $total = 0;
                 @endphp
                 <div class="w-full text-left mt-1">
-                    <span class="text-lg">{{ $orderHistory->date->format('Y年m月d日') }}</span>{{-- {{var_dump($orderHistory->date)}}文字型のためモデルファイルでdatetimeキャスト --}}
+                    <span class="text-lg">{{ $orderHistory->date->format('Y年m月d日') }}</span>{{-- $orderHistory->date文字型のためモデルファイルでdatetimeキャスト --}}
                 </div>
                 @foreach ($orderHistory->order_details as $order_detail)
                     @php
@@ -30,18 +26,16 @@
                                 <div class="mt-5 w-full text-center">
                                     <span class="w-3/11">{{ $order_detail->item_num }}</span>
                                     <span for="item_num" class="mx-1 inline">個</span>
-                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="border-b-3 border-solid border-gray-200 flex justify-between">
-                        <span></span>
-                        <span>{{ '小計(税込み)' . ' ' . number_format($subtotal) . '円' }}</span>
+                    <div class="border-b-3 border-solid border-gray-200 text-right">
+                        <span class="mr-3">小計(税込み)</span><span>{{ number_format($subtotal) }}</span><span>円</span>
                     </div>
                 @endforeach
                 <div class="border-b-3 border-solid border-[#e2bc96] text-right text-lg">
-                    {{ '合計(税込み)' . '　' . number_format($total) . '円' }}
+                    <span class="mr-3">合計(税込み)</span><span>{{ number_format($total) }}</span><span>円</span>
                 </div>
             @endforeach
             <div class="flex justify-center my-5">

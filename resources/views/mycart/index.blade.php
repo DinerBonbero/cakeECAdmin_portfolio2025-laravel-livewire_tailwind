@@ -69,7 +69,7 @@
                 </div>
             @endforeach
             <div class="mb-7 border-b-3 border-solid border-gray-200 text-right text-xl">
-                <span class="mr-3">合計(税込み)</span><span>{{ number_format($total) }}</span><span>円</span>
+                <span class="mr-4">合計(税込み)</span><span>{{ number_format($total) }}</span><span>円</span>
             </div>
             <div class="text-center pb-10 w-full">
                 <x-button.brown-link message="戻る" href="{{ $previousUrl }}" />
