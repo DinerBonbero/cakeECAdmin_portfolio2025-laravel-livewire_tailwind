@@ -9,8 +9,6 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ErrorController;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\AccountPasswordController;
-use App\Http\Middleware\AdminCheckMiddleware;
-use App\Http\Middleware\UserCheckMiddleware;
 
 Route::get('/', function () {
     return redirect()->route('items.index');
@@ -32,9 +30,9 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::middleware(['auth', 'user.check'])->group(function () {
-//一般ログインユーザー用ミドルウェアuser.checkを適用
-//引数の渡し方に注意、公式をよく見る！一つの配列で渡すこと！二つの配列で渡したことにより時間ロス！
-    
+    //一般ログインユーザー用ミドルウェアuser.checkを適用
+    //引数の渡し方に注意、公式をよく見る！一つの配列で渡すこと！二つの配列で渡したことにより時間ロス！
+
     Route::get('/mycart/items', [CartController::class, 'index'])->name('mycart_item.index');
 
     Route::post('/mycart/items/{item}', [CartController::class, 'store'])->name('mycart_item.store');
@@ -42,21 +40,21 @@ Route::middleware(['auth', 'user.check'])->group(function () {
     Route::patch('/mycart/items/{item}', [CartController::class, 'update'])->name('mycart_item.update');
 
     Route::delete('/mycart/items/{item}', [CartController::class, 'destroy'])->name('mycart_item.destroy');
-    
+
     Route::get('/user_info/create', [UserController::class, 'create'])->name('user_info.create');
-    
+
     Route::post('/user_info', [UserController::class, 'store'])->name('user_info.store');
 
     Route::get('/user_info/edit', [UserController::class, 'edit'])->name('user_info.edit');
-    
+
     Route::patch('/user_info', [UserController::class, 'update'])->name('user_info.update'); //Route::postでは上書きされてしまうためgetのeditに揃えてURLを/user_info/editにするかpostをpatchに変更する
-    
+
     Route::get('/order/confirm', [OrderController::class, 'confirm'])->name('order.confirm');
-    
+
     Route::post('/order', [OrderController::class, 'store'])->name('order.store');
-    
+
     Route::get('/order/thank_you', [OrderController::class, 'thankYou'])->name('order.thank_you');
-    
+
     Route::get('/order/history', [OrderController::class, 'history'])->name('order.history');
 });
 

@@ -12,7 +12,8 @@
                             {{-- 自動入力を拒否したいときautocomplete="new-password"を設定するのが効果的。『新しいパスワードの入力欄』とブラウザに伝えることで、既存のパスワード自動入力を抑制 --}}
                             <label for="password" class="block">新しいパスワードを入力してください</label>
                             <input type="password" id="password" name="password"
-                                class="bg-white border-1 border-solid border-gray-200 rounded-sm w-full" autocomplete="new-password">
+                                class="bg-white border-1 border-solid border-gray-200 rounded-sm w-full"
+                                autocomplete="new-password">
                             @error('password')
                                 <span class="block text-rose-500">
                                     {{ $message }}
@@ -22,13 +23,14 @@
                         <div class="mb-10">
                             <label for="password_confirmation" class="block">新しいパスワードを再入力してください</label>
                             <input type="password" id="password_confirmation" name="password_confirmation"
-                                class="bg-white border-1 border-solid border-gray-200 rounded-sm w-full" autocomplete="new-password">
+                                class="bg-white border-1 border-solid border-gray-200 rounded-sm w-full"
+                                autocomplete="new-password">
                             @error('password_confirmation')
                                 <span class="block text-rose-500">
                                     {{ $message }}
                                 </span>
                             @enderror
-                        </div>   
+                        </div>
                     </div>
                     <div class="mx-auto text-center">
                         <x-button.brown message="更新する" />
