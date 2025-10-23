@@ -25,11 +25,6 @@
                             <input type="password" id="password_confirmation" name="password_confirmation"
                                 class="bg-white border-1 border-solid border-gray-200 rounded-sm w-full"
                                 autocomplete="new-password">
-                            @error('password_confirmation')
-                                <span class="block text-rose-500">
-                                    {{ $message }}
-                                </span>
-                            @enderror
                         </div>
                     </div>
                     <div class="mx-auto text-center">
