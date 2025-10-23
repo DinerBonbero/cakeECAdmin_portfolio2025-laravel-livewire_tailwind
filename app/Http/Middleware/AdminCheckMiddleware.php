@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\UserInfo;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,7 +22,9 @@ class AdminCheckMiddleware
         } elseif (Auth::check() && Auth::user()->is_admin === 0) {
             //ログインユーザーのis_adminカラムが0、つまり一般ユーザーの場合
 
-            Log::error('管理者権限のないユーザーによる管理者ページへのアクセス', ['ユーザーID' => Auth::id(), 'アクセスURL' => $request->fullUrl(), 'IPアドレス' => $request->ip(), '姓' => Auth::user()->last_name, '名' => Auth::user()->first_name]);
+            $userInfo = UserInfo::where('user_id', Auth::id())->first();
+
+            Log::error('管理者権限のないユーザーによる管理者ページへのアクセス', ['ユーザーID' => Auth::id(), 'アクセスURL' => $request->fullUrl(), 'IPアドレス' => $request->ip(), '姓(nullのとき未登録)' => $userInfo->last_name, '名(nullのとき未登録)' => $userInfo->first_name]);
             return redirect()->route('errors.error');
             //エラーログを記録し、エラーページへリダイレクト
         } else {
