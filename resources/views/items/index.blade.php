@@ -19,7 +19,7 @@
     </div>
     <div class="flex justify-center my-5">
         <span>
-            {{ $items->onEachSide(1)->links('vendor.pagination.tailwind') }}
+            {{ $items->links('vendor.pagination.tailwind') }}
         </span>
     </div>
 </x-layouts.app.header>
