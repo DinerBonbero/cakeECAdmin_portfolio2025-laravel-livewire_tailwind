@@ -97,7 +97,7 @@
             @endforeach
             <div class="flex justify-center my-5">
                 <span>
-                    {{ $saleHistories->appends(request()->query())->onEachSide(1)->links('vendor.pagination.tailwind') }}
+                    {{ $saleHistories->appends(request()->query())->links('vendor.pagination.tailwind') }}
                     {{-- 検索後のページネーションでも、検索クエリパラメータを維持するためにappends(request()->query())を記述 --}}
                 </span>
             </div>

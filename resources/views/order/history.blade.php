@@ -45,7 +45,7 @@
             @endforeach
             <div class="flex justify-center my-5">
                 <span>
-                    {{ $orderHistories->onEachSide(1)->links('vendor.pagination.tailwind') }}
+                    {{ $orderHistories->links('vendor.pagination.tailwind') }}
                 </span>
             </div>
         @endif
