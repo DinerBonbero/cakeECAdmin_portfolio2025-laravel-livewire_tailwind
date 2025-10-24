@@ -35,8 +35,7 @@
                                         class="w-3/11 bg-white border-3 border-solid border-gray-300 rounded-sm text-center">
                                     {{-- formのnameが同一によりエラーメッセージが一つにまとまってしまうため、nameを配列に変更item_num[{{ $cartItem->id }}] --}}
                                     <label for="item_num" class="mx-1 inline">個</label>
-                                    <button
-                                        class="inline mx-1 py-1 w-4/11 bg-lime-500 text-white rounded-xl border-3 border-solid border-gray-200">
+                                    <button class="inline mx-1 py-1 w-4/11 bg-lime-500 text-white rounded-xl border-3 border-solid border-gray-200">
                                         数量更新
                                     </button>
                                 </form>
@@ -47,23 +46,22 @@
                         <form action="{{ route('mycart_item.destroy', $cartItem) }}" method="POST">
                             @method('DELETE')
                             @csrf
-                            <button
-                                class="py-1 bg-rose-300 text-white rounded-xl w-3/5 border-3 border-solid border-gray-200">
+                            <button class="py-1 bg-rose-300 text-white rounded-xl w-3/5 border-3 border-solid border-gray-200">
                                 削除
                             </button>
                         </form>
                     </div>
                 </div>
-                <div class="border-b-3 border-solid border-gray-200 grid grid-cols-3">
+                <div class="border-b-3 border-solid border-gray-200 grid grid-cols-4">
                     {{-- エラーメッセージの表示 --}}
                     {{-- 配列に変更したため、エラーメッセージの表示も変更 @error('item_num.' . $cartItem->id)ドットを付けてitem_num[{{ $cartItem->id }}]のエラー呼び出し --}}
                     @error('item_num.' . $cartItem->id)
-                        <div class="col-span-1 col-start-2 col-end-3">
+                        <div class="col-span-2 col-start-2 col-end-4">
                             <span class="text-rose-500">{{ $message }}</span>
                         </div>
                     @enderror
-                    <div class="text-right col-span-1 col-end-4">
-                        {{-- cols-3の最後の列に配置したいときはcol-end-3ではなくcol-end-4と指定 --}}
+                    <div class="text-right col-span-1 col-end-5">
+                        {{-- cols-4の最後の列に配置したいときはcol-end-4ではなくcol-end-5と指定 --}}
                         <span class="mr-3">小計(税込み)</span><span>{{ number_format($subtotal) }}</span><span>円</span>
                     </div>
                 </div>
