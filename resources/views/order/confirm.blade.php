@@ -106,7 +106,7 @@
                     </form>
                 </div>
                 <div class="text-center w-full mb-5">
-                    <span class="text-rose-500">ユーザー情報を登録してください</span>
+                    <span class="text-rose-500">送り先を登録してください</span>
                 </div>
             @endif
         @endif
