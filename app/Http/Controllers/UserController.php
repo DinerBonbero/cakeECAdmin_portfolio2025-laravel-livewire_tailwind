@@ -83,7 +83,7 @@ class UserController extends Controller
         ]);
         //ユーザー情報更新
 
-        return redirect()->back();
+        return redirect()->route('user_info.edit');
         //ユーザー情報編集画面へリダイレクト
     }
 }
