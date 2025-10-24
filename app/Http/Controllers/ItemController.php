@@ -49,7 +49,7 @@ class ItemController extends Controller
                 'name.required' => '商品名は必須項目です。',
                 'name.max' => '商品名は15文字以内で入力してください。',
                 'price.required' => '金額(税込み)は必須項目です。',
-                'price.integer' => '金額(税込み)は整数で入力してください。',
+                'price.integer' => '金額(税込み)は整数で先頭に0を含めずに入力してください。',
                 'price.min' => '金額(税込み)は300円以上で入力してください',
                 'price.max' => '金額(税込み)は10,000円以下で入力してください',
                 'description.required' => '商品説明は必須項目です。',
