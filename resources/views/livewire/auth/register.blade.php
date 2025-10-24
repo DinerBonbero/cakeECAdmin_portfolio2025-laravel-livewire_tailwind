@@ -29,7 +29,8 @@ new #[Layout('components.layouts.auth')] class extends Component {
 
         Auth::login($user);
 
-        $this->redirectIntended(route('user_info.create', absolute: false), navigate: true);
+        redirect()->route('user_info.create');
+        // デフォルトの$this->redirectIntended(route('user_info.create', absolute: false), navigate: true);から変更
     }
 }; ?>
 
