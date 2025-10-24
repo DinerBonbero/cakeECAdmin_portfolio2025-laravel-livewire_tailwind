@@ -10,6 +10,7 @@ use App\Models\UserInfo;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Throwable;
 
 class OrderController extends Controller
 {
@@ -64,9 +65,9 @@ class OrderController extends Controller
                 Cart::where('user_id', Auth::id())->delete();
                 //注文情報登録後、カート情報を削除
             }, 5);
-        } catch (\Exception $e) {
+        } catch (Throwable $ex) {
 
-            Log::error('購入処理中のエラー' . $e);
+            Log::error('購入処理中のエラー' . $ex->getMessage());
             return redirect()->route('errors.error');
             //エラーが発生した場合はログにエラー内容を記録し、エラー表示画面へリダイレクト
         }
