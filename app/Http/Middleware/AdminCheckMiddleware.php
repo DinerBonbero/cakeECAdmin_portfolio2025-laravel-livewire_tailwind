@@ -24,9 +24,13 @@ class AdminCheckMiddleware
 
             $userInfo = UserInfo::where('user_id', Auth::id())->first();
 
-            Log::error('管理者権限のないユーザーによる管理者ページへのアクセス', ['ユーザーID' => Auth::id(), 'アクセスURL' => $request->fullUrl(), 'IPアドレス' => $request->ip(), '姓(nullのとき未登録)' => $userInfo->last_name, '名(nullのとき未登録)' => $userInfo->first_name]);
+            Log::channel('syslog')->error('管理者権限のないユーザーによる管理者ページへのアクセス', ['ユーザーID' => Auth::id(), 'アクセスURL' => $request->fullUrl(), 'IPアドレス' => $request->ip(), '姓(nullのとき未登録)' => $userInfo->last_name, '名(nullのとき未登録)' => $userInfo->first_name]);
+            //エラーログをサーバーに記録する！
+            //必ず機密情報はログファイルではなくサーバー側に記録する！
+            //ログファイルでは情報漏洩やgitignoreの設定が誤っていた時リモートに上げてしまう可能性がある
+
             return redirect()->route('errors.error');
-            //エラーログを記録し、エラーページへリダイレクト
+            //エラーページへリダイレクト
         } else {
             //未ログインユーザーの場合
             //まずこの状況は通常ありえないが、念のため対応
