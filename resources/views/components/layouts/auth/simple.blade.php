@@ -11,7 +11,7 @@
             <img class="w-4/9 py-2 inline" src="{{ asset('storage/images/logo.png') }}" />
         </div>
         <div>
-            <span class="serif">patisserie ポートフォリオ</span>
+            <span class="serif">patisserie Notてんぐ!</span>
             <img class="size-20 py-2 inline" src="{{ asset('storage/images/purin.png') }}" />
         </div>
     </div>
