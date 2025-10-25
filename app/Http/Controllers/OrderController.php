@@ -10,7 +10,7 @@ use App\Models\UserInfo;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use Throwable;
+use Exception;
 
 class OrderController extends Controller
 {
@@ -40,6 +40,9 @@ class OrderController extends Controller
 
             DB::transaction(function () {
 
+                // throw new Exception;
+                //例外を拾うかテスト用
+
                 $cartItems = Cart::with('item')->where('user_id', Auth::id())->get();
                 //ログインユーザーのカート情報を取得
 
@@ -65,9 +68,9 @@ class OrderController extends Controller
                 Cart::where('user_id', Auth::id())->delete();
                 //注文情報登録後、カート情報を削除
             }, 5);
-        } catch (Throwable $ex) {
+        } catch (\Exception $e) {
 
-            Log::error('購入処理中のエラー' . $ex->getMessage());
+            Log::error('購入処理中に例外発生' . $e->getMessage());
             return redirect()->route('errors.error');
             //エラーが発生した場合はログにエラー内容を記録し、エラー表示画面へリダイレクト
         }

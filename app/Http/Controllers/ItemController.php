@@ -7,6 +7,7 @@ use App\Models\Item;
 use App\Models\Cart;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Exception;
 
 class ItemController extends Controller
 {
@@ -90,6 +91,8 @@ class ItemController extends Controller
     {
 
         try {
+            // throw new Exception;
+            //例外を拾うかテスト用
 
             DB::transaction(function () use ($item) {
 
@@ -99,7 +102,7 @@ class ItemController extends Controller
             }, 5);
         } catch (\Exception $e) {
 
-            Log::error('商品掲載停止処理中のエラー' . $e);
+            Log::error('商品掲載停止処理中に例外発生' . $e);
             return redirect()->route('errors.error');
         }
 
