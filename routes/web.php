@@ -68,4 +68,6 @@ Route::patch('/user_password', [AccountPasswordController::class, 'update'])->mi
 
 Route::get('/user_password/done', [AccountPasswordController::class, 'done'])->middleware('auth')->name('user_password.done');
 
+//↓エラー遷移用ルート
+
 Route::get('/error', [ErrorController::class, 'error'])->name('errors.error');
