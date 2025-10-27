@@ -38,7 +38,7 @@ class SalesController extends Controller
                 //※チェックボックスはチェックがなければname自体が送信されないため、issetで判定
 
                 $query->where(function ($query) use ($validatedSearchInputs) {
-                    //NOT,AND,ORの組み合わせで条件をつける場合、whereのクロージャーを使用してグループ化する
+                    //NOT,AND,ORの組み合わせで条件をつける場合、whereのクロージャーを使用してグループ化する※()の役割
                     //where(function () {})を使用することでsqlの()の意味を持ち()を優先する
 
                     $query->where('is_shipped', $validatedSearchInputs['un_shipped'])->orWhere('is_shipped', $validatedSearchInputs['shipped']);
@@ -84,8 +84,7 @@ class SalesController extends Controller
                     //joinはクロージャのに含めない！(ジョイン句、and,or)はあり得ない構造。クロージャに入れてしまうことでjoinが無効化してしまう
 
                 $query->where(function ($query) use ($purchaserName) {
-                    //NOT,AND,ORの組み合わせで条件をつける場合、whereのクロージャーを使用してグループ化する
-
+                    //NOT,AND,ORの組み合わせで条件をつける場合、whereのクロージャーを使用してグループ化する※()の役割
 
                     $query->where('user_infos.last_name', 'like', "%{$purchaserName}%")
                         ->orWhere('user_infos.first_name', 'like', "%{$purchaserName}%")
@@ -102,6 +101,7 @@ class SalesController extends Controller
             }
 
             $saleHistories = $query->with('order_details.item')->with(['user' => function ($query) {
+
                 $query->select('id');
             }, 'user.user_info'])->latest('date')->paginate(3);
             //条件で絞った注文情報とリレーション先のレコードを取得、userテーブルはパスワードなどは取得せずidのみ取得
@@ -116,6 +116,7 @@ class SalesController extends Controller
             //入力値が一つもない場合、通常の販売履歴表示
 
             $saleHistories = Order::with('order_details.item')->with(['user' => function ($query) {
+                
                 $query->select('id');
             }, 'user.user_info'])->latest('date')->paginate(3);
             //注文情報とリレーション先のレコードを取得、userテーブルはパスワードなどは取得せずidのみ取得
