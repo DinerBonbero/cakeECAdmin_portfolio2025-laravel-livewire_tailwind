@@ -78,14 +78,16 @@ class SalesController extends Controller
 
             if (isset($purchaserName)) {
                 //購入者名の入力値がある場合
-                
+
+                $query->join('users', 'orders.user_id', '=', 'users.id')
+                    ->join('user_infos', 'users.id', '=', 'user_infos.user_id');
+                    //joinはクロージャのに含めない！(ジョイン句、and,or)はあり得ない構造。クロージャに入れてしまうことでjoinが無効化してしまう
+
                 $query->where(function ($query) use ($purchaserName) {
                     //NOT,AND,ORの組み合わせで条件をつける場合、whereのクロージャーを使用してグループ化する
-                    //クロージャは()の役割
-                    
-                    $query->join('users', 'orders.user_id', '=', 'users.id')
-                        ->join('user_infos', 'users.id', '=', 'user_infos.user_id')
-                        ->where('user_infos.last_name', 'like', "%{$purchaserName}%")
+
+
+                    $query->where('user_infos.last_name', 'like', "%{$purchaserName}%")
                         ->orWhere('user_infos.first_name', 'like', "%{$purchaserName}%")
                         ->orwhere(DB::raw("CONCAT(user_infos.last_name, user_infos.first_name)"), 'like', '%' . $purchaserName . '%')
                         ->orwhere(DB::raw("CONCAT(user_infos.last_name, '　', user_infos.first_name)"), 'like', '%' . $purchaserName . '%')
@@ -97,8 +99,6 @@ class SalesController extends Controller
                     //※このときwhereの引数に記載するリレーション先の結合したカラムの取得の仕方がwithと変わるのでよく意味を考えて記述する
                     //例：テーブルのカラム(user_infos.last_name)などの構造やテーブル名、カラム名
                 });
-
-
             }
 
             $saleHistories = $query->with('order_details.item')->with(['user' => function ($query) {
