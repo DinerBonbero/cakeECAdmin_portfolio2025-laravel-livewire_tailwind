@@ -15,7 +15,6 @@
     </div>
 
     <flux:header container class="border-b border-zinc-200">
-        <flux:sidebar.toggle class="lg:hidden" icon="bars-2" inset="left" />
 
         <a href="{{ route('items.index') }}" class="inline-block ps-2 pe-5 lg:ms-0" wire:navigate>
             HOME
