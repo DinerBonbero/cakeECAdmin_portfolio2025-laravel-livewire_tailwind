@@ -4,7 +4,7 @@
             <span class="text-emerald-500 text-2xl">管理者</span>
         @endcan
     </div>
-    <div class="grid grid-cols-3 gap-10">
+    <div class="grid grid-cols-1 min-[530px]:grid-cols-2 min-[850px]:grid-cols-3 gap-10 mx-7 text-sm min-[530px]:text-base">
         @foreach ($items as $item)
             <a href="{{ route('items.show', $item) }}">
                 <div class="bg-white p-1">
