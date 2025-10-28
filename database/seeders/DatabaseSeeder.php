@@ -20,7 +20,6 @@ class DatabaseSeeder extends Seeder
             UserInfoSeeder::class//ユーザー情報のマスタシーダ
         ]);
 
-
         // \App\Models\User::truncate(); //レコード削除用
         // \App\Models\Order::truncate(); //レコード削除用
         // \App\Models\OrderDetail::truncate(); //レコード削除用
