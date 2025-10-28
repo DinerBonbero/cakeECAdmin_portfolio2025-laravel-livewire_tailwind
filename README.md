@@ -42,7 +42,7 @@ ibisPaintX(イラストアプリ)<br>
 
 ### 自作パスワード変更フロー<br>
 
-<img width="500" height="360" alt="パスワード変更フロー" src="https://github.com/user-attachments/assets/83186536-0016-4b50-a7a5-2f6173ba18f9" />
+<img width="300" height="216" alt="パスワード変更フロー" src="https://github.com/user-attachments/assets/8c97a39d-f86f-4589-b082-f679e522a9d9" />
 
 ・デフォルト認証画面のバリデーションに合わせて作成する時、Rules\Password::defaults()の引数がないときどのルールが適用されるか試行錯誤しました。<br><br>
 
@@ -75,6 +75,7 @@ ibisPaintX(イラストアプリ)<br>
 ## 気を付けた点、意識した点<br>
 ・PRGパターンの意識　・N+1問題(Nが邪魔)の認識　・欠けてはならない一連の処理にトランザクションを適用<br>
 ・コードの一貫性と綺麗さ(現時点では未熟ですが心がけました。)
+
 
 
 
