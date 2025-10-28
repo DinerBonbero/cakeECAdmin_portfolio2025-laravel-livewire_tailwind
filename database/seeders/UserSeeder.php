@@ -14,8 +14,8 @@ class UserSeeder extends Seeder
 
         $users = [
             ['name' => '管理者マスタ', 'email' => 'admin@example.com', 'password' => Hash::make('cakeAdmin'), 'is_admin' => 1], //管理者のマスタデータ
-            ['name' => 'Aさん', 'email' => 'customera@example.com', 'password' => Hash::make('customera')], //以下2名　お客様のマスタデータ
-            ['name' => 'Bさん', 'email' => 'customerb@example.com', 'password' => Hash::make('customerb')]
+            ['name' => 'Aさん', 'email' => 'customer1@example.com', 'password' => Hash::make('customer1')], //以下2名　お客様のマスタデータ
+            ['name' => 'Bさん', 'email' => 'customer2@example.com', 'password' => Hash::make('customer2')]
         ];
 
         foreach ($users as $user) {
