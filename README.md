@@ -1,4 +1,7 @@
 # 簡易管理者機能付きECサイト<br>
+
+<img width="100%" height="1079" alt="全画面" src="https://github.com/user-attachments/assets/98b9c4eb-bcaa-4ae5-a903-22dc28b8f71c" />
+
 ## 使用した言語やツール<br>
 ### バックエンド<br>
 PHP(Laravel/volt)<br>スターターキット Livewire
@@ -75,6 +78,7 @@ ibisPaintX(イラストアプリ)<br>
 ## 気を付けた点、意識した点<br>
 ・PRGパターンの意識　・N+1問題(Nが邪魔)の認識　・欠けてはならない一連の処理にトランザクションを適用<br>
 ・コードの一貫性と綺麗さ(現時点では未熟ですが心がけました。)
+
 
 
 
