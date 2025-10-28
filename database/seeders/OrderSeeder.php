@@ -15,8 +15,8 @@ class OrderSeeder extends Seeder
         $orderIds = [];
 
         $emails = [
-            'customerA@example.com',
-            'customerB@example.com'
+            'customer1@example.com',
+            'customer2@example.com'
         ];
 
         foreach ($emails as $email) {
