@@ -1,4 +1,4 @@
-<div style="text-align: center;">
+<div class="readme-position">
 
 # 簡易管理者機能付きECサイト<br>
 
