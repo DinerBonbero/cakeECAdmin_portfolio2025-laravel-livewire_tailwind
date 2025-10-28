@@ -5,12 +5,12 @@
     @include('partials.head')
 </head>
 
-<body class="min-h-screen bg-amber-50 dark:bg-zinc-800 relative">
+<body class="min-h-screen bg-amber-50">
     <div class="w-auto text-center">
         <img class="w-4/9 py-2 inline" src="{{ asset('storage/images/logo.png') }}" />
     </div>
     <div class="mx-auto max-w-7xl text-center">
-        <div class="p-10 my-10 bg-white text-2xl font-serif text-gray-800">
+        <div class="p-10 my-10 bg-white text-base sm:text-2xl font-serif text-gray-800">
             <p class="mb-3">予期しないエラーです。</p>
             <p>現在、問題が発生しています。</p>
             <p class="mb-3">しばらくしてから再度アクセスしてください</p>
