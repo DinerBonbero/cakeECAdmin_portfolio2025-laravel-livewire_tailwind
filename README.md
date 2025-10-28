@@ -55,7 +55,7 @@ ibisPaintX(イラストアプリ)<br>
 
 ###　コンポーネント<br>
 
-<img width="164" height="56" alt="ボタンコンポーネント" src="https://github.com/user-attachments/assets/254ea751-39e5-436a-97a7-f96f17809163" />
+<img width="164" height="56" alt="ボタンコンポーネント" src="https://github.com/user-attachments/assets/254ea751-39e5-436a-97a7-f96f17809163" /><br>
 ※写真以外に様々なコンポーネントを作成しました
 
 ・コンポーネントの理解<br>
@@ -70,6 +70,7 @@ ibisPaintX(イラストアプリ)<br>
 ## 気を付けた点、意識した点<br>
 ・PRGパターンの意識　・N+1問題(Nが邪魔)の認識　・欠けてはならない一連の処理にトランザクションを適用<br>
 ・コードの一貫性と綺麗さ(現時点では未熟ですが心がけました。)
+
 
 
 
