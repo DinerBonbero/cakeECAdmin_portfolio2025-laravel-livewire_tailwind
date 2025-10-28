@@ -27,7 +27,7 @@ ibisPaintX(イラストアプリ)<br>
 
 ### 販売履歴検索画面<br>
 
-<img width="500" height="302" alt="検索画面" src="https://github.com/user-attachments/assets/199ea9eb-831d-4a4c-80be-6004fdbd688d" />
+<img width="600" height="390" alt="検索画面" src="https://github.com/user-attachments/assets/2350a144-e94f-4840-84a9-4d6c0baf0903" />
 
 #### 検索機能をもつペジネーション<br>
 ・検索後に入力欄にクエリを保持する処理<br>
@@ -75,6 +75,7 @@ ibisPaintX(イラストアプリ)<br>
 ## 気を付けた点、意識した点<br>
 ・PRGパターンの意識　・N+1問題(Nが邪魔)の認識　・欠けてはならない一連の処理にトランザクションを適用<br>
 ・コードの一貫性と綺麗さ(現時点では未熟ですが心がけました。)
+
 
 
 
