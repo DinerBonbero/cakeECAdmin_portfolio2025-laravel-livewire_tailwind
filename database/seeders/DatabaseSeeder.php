@@ -13,9 +13,9 @@ class DatabaseSeeder extends Seeder
         $this->call([
 
             UserSeeder::class, //ユーザのマスタシーダ
-            OrderSeeder::class, //注文と注文詳細のマスタシーダ、注文詳細シーダで分けて連動した処理での作成は不可のため一緒に作成
+            UserInfoSeeder::class,//ユーザー情報のマスタシーダ
             ItemSeeder::class, //商品のマスタシーダ
-            UserInfoSeeder::class//ユーザー情報のマスタシーダ
+            OrderSeeder::class, //注文と注文詳細のマスタシーダ、注文詳細シーダで分けて連動した処理での作成は不可のため一緒に作成
         ]);
 
         // \App\Models\User::truncate(); //レコード削除用
