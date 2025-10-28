@@ -11,8 +11,7 @@ CSS(teilwind)<br>
 ### イラスト<br>
 ibisPaintX(イラストアプリ)<br>
 ・イラストアプリを使ってプリンのイラストを作成しました。<br>
-<img width="300" height="300" alt="purin" src="https://github.com/user-attachments/assets/a7fbc9f5-ac72-4497-a181-e731147dc695" />
-<br><br>
+<img width="300" height="300" alt="purin" src="https://github.com/user-attachments/assets/116bcee8-4e50-4258-9167-1c650c923bf1" /><br><br>
 
 ## サイトの構成<br>
 未ログインユーザー・一般ユーザー・管理者ユーザーの三つに分けて作成しました。<br>
@@ -76,6 +75,7 @@ ibisPaintX(イラストアプリ)<br>
 ## 気を付けた点、意識した点<br>
 ・PRGパターンの意識　・N+1問題(Nが邪魔)の認識　・欠けてはならない一連の処理にトランザクションを適用<br>
 ・コードの一貫性と綺麗さ(現時点では未熟ですが心がけました。)
+
 
 
 
