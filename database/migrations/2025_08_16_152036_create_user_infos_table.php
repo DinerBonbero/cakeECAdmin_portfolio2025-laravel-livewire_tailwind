@@ -13,7 +13,7 @@ return new class extends Migration
         Schema::create('user_infos', function (Blueprint $table) {
 
             $table->id();
-            $table->bigInteger('user_id');
+            $table->bigInteger('user_id')->unique();
             $table->string('last_name', length: 30);
             $table->string('first_name', length: 30);
             $table->string('phone_number', length: 14);

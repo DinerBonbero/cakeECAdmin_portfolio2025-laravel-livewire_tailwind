@@ -13,8 +13,8 @@ return new class extends Migration
         Schema::create('carts', function (Blueprint $table) {
 
             $table->id();
-            $table->bigInteger('user_id');
-            $table->bigInteger('item_id');
+            $table->bigInteger('user_id')->index();
+            $table->bigInteger('item_id')->index();
             $table->tinyInteger('item_num')->default(1);//商品の数量　デフォルトは1
         });
     }

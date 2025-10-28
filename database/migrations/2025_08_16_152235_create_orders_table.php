@@ -13,9 +13,9 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             
             $table->id();
-            $table->bigInteger('user_id');
-            $table->timestamp('date')->useCurrent();//注文日時
-            $table->tinyInteger('is_shipped')->default(0);//発送フラグ　:0のとき未発送　:1のとき発送済み
+            $table->bigInteger('user_id')->index();
+            $table->timestamp('date')->useCurrent()->index();//注文日時
+            $table->tinyInteger('is_shipped')->default(0)->index();//発送フラグ　:0のとき未発送　:1のとき発送済み
         });
     }
 

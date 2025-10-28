@@ -13,8 +13,8 @@ return new class extends Migration
         Schema::create('order_details', function (Blueprint $table) {
 
             $table->id();
-            $table->bigInteger('order_id');
-            $table->bigInteger('item_id');
+            $table->bigInteger('order_id')->index();
+            $table->bigInteger('item_id')->index();
             $table->tinyInteger('item_num');
         });
     }
