@@ -21,13 +21,9 @@ class AdminCheckMiddleware
             //次に進める
         } elseif (Auth::check() && Auth::user()->is_admin === 0) {
             //ログインユーザーのis_adminカラムが0、つまり一般ユーザーの場合
-
-            $userInfo = UserInfo::where('user_id', Auth::id())->first();
-
-            Log::channel('syslog')->error('管理者権限のないユーザーによる管理者ページへのアクセス', ['ユーザーID' => Auth::id(), 'アクセスURL' => $request->fullUrl(), 'IPアドレス' => $request->ip(), '姓(nullのとき未登録)' => $userInfo->last_name, '名(nullのとき未登録)' => $userInfo->first_name]);
-            //エラーログをサーバーに記録する！
-            //必ず機密情報はログファイルではなくサーバー側に記録する！
-            //ログファイルでは情報漏洩やgitignoreの設定が誤っていた時リモートに上げてしまう可能性がある
+            //もし不正アクセスユーザーの機密情報をログに出力する際は書き手側：サーバーアプリケーション(Apache)でノート側のシスログなどに出力する。
+            //必ず機密情報はLaravel側ではなくサーバー側で記録する！
+            //Laravel側では情報漏洩やgitignoreの設定が誤っていた時リモートに上げてしまう可能性がある
 
             return redirect()->route('errors.error');
             //エラーページへリダイレクト
