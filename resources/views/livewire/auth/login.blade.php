@@ -28,6 +28,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
         $this->ensureIsNotRateLimited();
 
         if (!Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
+
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
@@ -47,6 +48,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
     {
 
         if (!RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
+            
             return;
         }
 
