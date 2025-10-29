@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Livewire\Volt\Component;
 
 new class extends Component {
+    
     public string $password = '';
 
     /**
