@@ -16,7 +16,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
 
         Password::sendResetLink($this->only('email'));
 
-        session()->flash('status', __('A reset link will be sent if the account exists.'));
+        session()->flash('status', __('アカウントが存在する場合はリセット リンクが送信されます。'));
     }
 }; ?>
 

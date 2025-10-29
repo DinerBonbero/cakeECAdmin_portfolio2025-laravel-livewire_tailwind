@@ -62,7 +62,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
 }; ?>
 
 <div class="flex flex-col gap-6">
-    <x-auth-header :title="__('Reset password')" :description="__('Please enter your new password below')" />
+    <x-auth-header :title="__('パスワードのリセット')" :description="__('Please enter your new password below')" />
 
     <x-auth-session-status class="text-center" :status="session('status')" />
 
@@ -70,7 +70,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
 
         <flux:input
             wire:model="email"
-            :label="__('Email')"
+            :label="__('メールアドレス')"
             type="email"
             required
             autocomplete="email"
@@ -78,27 +78,27 @@ new #[Layout('components.layouts.auth')] class extends Component {
 
         <flux:input
             wire:model="password"
-            :label="__('Password')"
+            :label="__('パスワード')"
             type="password"
             required
             autocomplete="new-password"
-            :placeholder="__('Password')"
+            :placeholder="__('パスワード')"
             viewable
         />
 
         <flux:input
             wire:model="password_confirmation"
-            :label="__('Confirm password')"
+            :label="__('パスワード再入力')"
             type="password"
             required
             autocomplete="new-password"
-            :placeholder="__('Confirm password')"
+            :placeholder="__('パスワード再入力')"
             viewable
         />
 
         <div class="flex items-center justify-end">
             <flux:button type="submit" variant="primary" class="w-full auth-btn-color">
-                {{ __('Reset password') }}
+                {{ __('パスワードリセット') }}
             </flux:button>
         </div>
     </form>

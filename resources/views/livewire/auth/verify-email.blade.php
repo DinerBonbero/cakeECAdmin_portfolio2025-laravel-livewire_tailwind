@@ -34,22 +34,22 @@ new #[Layout('components.layouts.auth')] class extends Component {
 
 <div class="mt-4 flex flex-col gap-6">
     <flux:text class="text-center">
-        {{ __('Please verify your email address by clicking on the link we just emailed to you.') }}
+        {{ __('メールで送信したリンクをクリックして、メールアドレスを確認してください。') }}
     </flux:text>
 
     @if (session('status') == 'verification-link-sent')
         <flux:text class="text-center font-medium !dark:text-green-400 !text-green-600">
-            {{ __('A new verification link has been sent to the email address you provided during registration.') }}
+            {{ __('登録時に入力したメールアドレスに新しい確認リンクが送信されました。') }}
         </flux:text>
     @endif
 
     <div class="flex flex-col items-center justify-between space-y-3">
         <flux:button wire:click="sendVerification" variant="primary" class="w-full auth-btn-color">
-            {{ __('Resend verification email') }}
+            {{ __('確認メールを再送信する') }}
         </flux:button>
 
         <flux:link class="text-sm cursor-pointer" wire:click="logout">
-            {{ __('Log out') }}
+            {{ __('ログアウト') }}
         </flux:link>
     </div>
 </div>
