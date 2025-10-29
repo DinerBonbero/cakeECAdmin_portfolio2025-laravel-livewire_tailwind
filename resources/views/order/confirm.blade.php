@@ -3,11 +3,11 @@
 @endphp
 <x-layouts.app.header>
     <div class="py-3">
-        <span class="text-2xl">カート内の商品</span>
+        <span class="text-base md:text-2xl">カート内の商品</span>
     </div>
-    <div class="w-5/8 mx-auto">
+    <div class="w-7/8 md:w-5/8 mx-auto text-xs md:text-base">
         @if ($cartItems->isEmpty())
-            <p class="text-center mt-10 p-5 bg-lime-100">カートに商品が入っていません。</p>
+            <p class="text-center mt-10 p-5 bg-lime-100 text-base md:text-lg">カートに商品が入っていません。</p>
         @else
             @foreach ($cartItems as $cartItem)
                 @php
@@ -30,14 +30,14 @@
                     <span class="mr-3">小計(税込み)</span><span>{{ number_format($subtotal) }}</span><span>円</span>
                 </div>
             @endforeach
-            <div class="border-b-3 border-solid border-gray-200 text-right text-lg">
+            <div class="border-b-3 border-solid border-gray-200 text-right text-sm md:text-lg">
                 <span class="mr-4">合計(税込み)</span><span>{{ number_format($total) }}</span><span>円</span>
             </div>
             <div class="text-right mt-2">
                 <x-button.brown-link message="カートの修正" href="{{ route('mycart_item.index') }}" />
             </div>
             <div class="py-1">
-                <span class="text-2xl">送り先</span>
+                <span class="text-base md:text-2xl">送り先</span>
             </div>
             <div class="w-full">
                 <div class="flex justify-between w-full border-b-3 border-solid border-gray-200">
@@ -97,7 +97,7 @@
                 </div>
             @else
             {{-- ユーザー情報が未登録の場合、注文確定ボタンを無効化してユーザー情報登録を促すメッセージを表示 --}}
-                <div class="w-1/5 mx-auto mt-10">
+                <div class="w-3/5 min-[470px]:w-1/5 mx-auto mt-10">
                     <form action="{{ route('order.store') }}" method="POST">
                         @csrf
                         <button class="bg-gray-300 py-1 w-full text-white rounded-xl border-3 border-solid border-gray-200" disabled>

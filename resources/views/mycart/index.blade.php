@@ -11,7 +11,7 @@
     <div class="py-5">
         <span class="text-2xl">カート内の商品</span>
     </div>
-    <div class="w-3/5 mx-auto">
+    <div class="w-15/16 min-[420px]:w-7/9 md:w-3/5 mx-auto text-xs sm:text-base">
         @if ($cartItems->isEmpty())
             <p class="text-center mt-10 p-5 bg-lime-100">カートに商品が入っていません。</p>
         @else
@@ -21,8 +21,8 @@
                     $total += $subtotal;
                 @endphp
                 <div class="flex mt-3">
-                    <img class="w-1/4" src="{{ asset('storage/images/' . $cartItem->item->image) }}">
-                    <div class="flex flex-col ml-20 w-full text-left">
+                    <img class="w-3/13 md:w-3/9" src="{{ asset('storage/images/' . $cartItem->item->image) }}">
+                    <div class="w-5/13 md:w-4/9 flex flex-col ml-2 min-[420px]:ml-5 min-[1160px]:ml-20 w-full text-left">
                         <span class="mt-2">{{ $cartItem->item->name }}</span>
                         <div class="w-full">
                             <div class="mt-5 w-full">
@@ -42,7 +42,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="flex flex-col w-full">
+                    <div class="w-5/13 md:w-2/9 flex flex-col">
                         <form action="{{ route('mycart_item.destroy', $cartItem) }}" method="POST">
                             @method('DELETE')
                             @csrf
@@ -52,21 +52,21 @@
                         </form>
                     </div>
                 </div>
-                <div class="border-b-3 border-solid border-gray-200 grid grid-cols-4">
+                <div class="border-b-3 border-solid border-gray-200 grid grid-cols-6">
                     {{-- エラーメッセージの表示 --}}
                     {{-- 配列に変更したため、エラーメッセージの表示も変更 @error('item_num.' . $cartItem->id)ドットを付けてitem_num[{{ $cartItem->id }}]のエラー呼び出し --}}
                     @error('item_num.' . $cartItem->id)
-                        <div class="col-span-2 col-start-2 col-end-4">
+                        <div class="col-span-4 col-start-2">
                             <span class="text-rose-500">{{ $message }}</span>
                         </div>
                     @enderror
-                    <div class="text-right col-span-1 col-end-5">
+                    <div class="text-right col-span-3 col-end-7">
                         {{-- cols-4の最後の列に配置したいときはcol-end-4ではなくcol-end-5と指定 --}}
                         <span class="mr-3">小計(税込み)</span><span>{{ number_format($subtotal) }}</span><span>円</span>
                     </div>
                 </div>
             @endforeach
-            <div class="mb-7 border-b-3 border-solid border-gray-200 text-right text-xl">
+            <div class="mb-7 border-b-3 border-solid border-gray-200 text-right mx-auto text-sm sm:text-base md:text-xl">
                 <span class="mr-4">合計(税込み)</span><span>{{ number_format($total) }}</span><span>円</span>
             </div>
             <div class="text-center pb-10 w-full">
