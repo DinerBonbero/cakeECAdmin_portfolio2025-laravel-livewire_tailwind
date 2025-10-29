@@ -1,10 +1,10 @@
 <x-layouts.app.header>
     <div class="py-3">
-        <span class="text-2xl">購入履歴</span>
+        <span class="text- md:text-2xl">購入履歴</span>
     </div>
-    <div class="w-5/8 mx-auto">
+    <div class="w-7/8 md:w-5/8 mx-auto text-xs md:text-base">
         @if ($orderHistories->isEmpty())
-            <p class="text-center mt-10 p-5 bg-lime-100">注文履歴がありません</p>
+            <p class="text-center mt-10 p-5 text:lg bg-lime-100">注文履歴がありません</p>
         @else
             @foreach ($orderHistories as $orderHistory)
                 {{-- 注文レコード分ループ --}}
@@ -24,8 +24,8 @@
                         $total += $subtotal;
                     @endphp
                     <div class="flex mt-2">
-                        <img class="w-1/5" src="{{ asset('storage/images/' . $order_detail->item->image) }}">
-                        <div class="flex flex-col w-full mr-35">
+                        <img class="w-2/6 min-[650px]:w-1/5" src="{{ asset('storage/images/' . $order_detail->item->image) }}">
+                        <div class="w-4/6 min-[650px]:w-4/5 flex flex-col w-full mr-10 min-[650px]:mr-35">
                             <span class="mt-2">{{ $order_detail->item->name }}</span>
                             <div class="w-full">
                                 <div class="mt-5 w-full text-center">
@@ -39,7 +39,7 @@
                         <span class="mr-3">小計(税込み)</span><span>{{ number_format($subtotal) }}</span><span>円</span>
                     </div>
                 @endforeach
-                <div class="border-b-3 border-solid border-[#e2bc96] text-right text-lg">
+                <div class="border-b-3 border-solid border-[#e2bc96] text-right text-lg md:text-lg">
                     <span class="mr-3">合計(税込み)</span><span>{{ number_format($total) }}</span><span>円</span>
                 </div>
             @endforeach

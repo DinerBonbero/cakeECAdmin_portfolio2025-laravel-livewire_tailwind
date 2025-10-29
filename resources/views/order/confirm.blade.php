@@ -87,20 +87,20 @@
             </div>
 
             @if ($userInfo !== null)
-                <div class="w-1/5 mx-auto mt-10 mb-5">
+                <div class="w-2/6 rounded-md min-[470px]:w-1/5 mx-auto mt-10 mb-5">
                     <form action="{{ route('order.store') }}" method="POST">
                         @csrf
-                        <button class="bg-[#7cc7f4] py-1 w-full text-white rounded-xl border-3 border-solid border-gray-200">
+                        <button class="bg-[#7cc7f4] py-1 w-full text-white rounded-lg border-3 border-solid border-gray-200">
                             注文確定
                         </button>
                     </form>
                 </div>
             @else
-            {{-- ユーザー情報が未登録の場合、注文確定ボタンを無効化してユーザー情報登録を促すメッセージを表示 --}}
-                <div class="w-3/5 min-[470px]:w-1/5 mx-auto mt-10">
+                {{-- ユーザー情報が未登録の場合、注文確定ボタンを無効化してユーザー情報登録を促すメッセージを表示 --}}
+                <div class="w-2/6 min-[470px]:w-1/5 mx-auto mt-10">
                     <form action="{{ route('order.store') }}" method="POST">
                         @csrf
-                        <button class="bg-gray-300 py-1 w-full text-white rounded-xl border-3 border-solid border-gray-200" disabled>
+                        <button class="bg-gray-300 py-1 w-full text-white rounded-lg border-3 border-solid border-gray-200" disabled>
                             注文確定
                         </button>
                     </form>
