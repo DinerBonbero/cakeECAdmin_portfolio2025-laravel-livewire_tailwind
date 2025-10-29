@@ -11,7 +11,6 @@ new #[Layout('components.layouts.auth')] class extends Component {
     public function confirmPassword(): void
     {
         $this->validate([
-
             'password' => ['required', 'string'],
         ]);
 
@@ -30,18 +29,18 @@ new #[Layout('components.layouts.auth')] class extends Component {
 
         session(['auth.password_confirmed_at' => time()]);
 
-        $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
+        $this->redirectIntended(default: route('items.index', absolute: false), navigate: true);
     }
 }; ?>
 
 <div class="flex flex-col gap-6">
-    <x-auth-header :title="__('Confirm password')" :description="__('This is a secure area of the application. Please confirm your password before continuing.')" />
+    <x-auth-header :title="__('パスワードの再入力')" :description="__('認証が必要なページです。パスワードを入力して確認ボタンをクリックしてください')" />
     <x-auth-session-status class="text-center" :status="session('status')" />
 
     <form wire:submit="confirmPassword" class="flex flex-col gap-6">
-        <flux:input wire:model="password" :label="__('Password')" type="password" required autocomplete="new-password"
-            :placeholder="__('Password')" viewable />
+        <flux:input wire:model="password" :label="__('パスワード')" type="password" required autocomplete="new-password"
+            :placeholder="__('パスワード')" viewable />
             
-        <flux:button variant="primary" type="submit" class="w-full auth-btn-color">{{ __('Confirm') }}</flux:button>
+        <flux:button variant="primary" type="submit" class="w-full auth-btn-color">{{ __('確認') }}</flux:button>
     </form>
 </div>
