@@ -1,11 +1,11 @@
 <x-layouts.app.header>
-    <div class="w-4/11 mx-auto">
+    <div class="w-10/11 min-[500px]:w-8/11 md:w-5/11 xl:w-4/11 mx-auto text-sm md:text-base">
         <div class="flex mb-7">
             <div class="ml-5 w-full">
-                <p class="my-5 text-lg">お客様の会員情報(送り先情報など)を登録してください</p>
+                <p class="my-5 text-base md:text-lg">お客様の会員情報(送り先情報など)を登録してください</p>
                 <form action="{{ route('user_info.store') }}" method="POST">
                     @csrf
-                    <div class="flex grid-cols-2 justify-between text-left mb-5 text-base">
+                    <div class="flex grid-cols-2 justify-between text-left mb-5">
                         <div>
                             <label for="last_name" class="block">
                                 姓
