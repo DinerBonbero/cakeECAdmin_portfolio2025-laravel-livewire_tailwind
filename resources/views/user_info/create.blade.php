@@ -1,17 +1,17 @@
 <x-layouts.app.header>
-    <div class="w-10/11 min-[500px]:w-8/11 md:w-5/11 xl:w-4/11 mx-auto text-sm md:text-base">
+    <div class="w-10/11 min-[500px]:w-8/11 md:w-5/11 xl:w-4/11 mx-auto text-[10px] min-[360px]:text-xs min-[690px]:text-sm md:text-base">
         <div class="flex mb-7">
             <div class="ml-5 w-full">
-                <p class="my-5 text-base md:text-lg">お客様の会員情報(送り先情報など)を登録してください</p>
+                <p class="my-5 text-[13px] min-[360px]:text-base md:text-lg">お客様の会員情報(送り先情報など)を登録してください</p>
                 <form action="{{ route('user_info.store') }}" method="POST">
                     @csrf
-                    <div class="flex grid-cols-2 justify-between text-left mb-5">
+                    <div class="grid grid-cols-2 gap-4 text-left mb-5">
                         <div>
                             <label for="last_name" class="block">
                                 姓
                             </label>
                             <input type="text" id="last_name" name="last_name" value="{{ old('last_name') }}"
-                                class="bg-white border-1 border-solid border-gray-200 rounded-sm" placeholder="苺野">
+                                class="w-full bg-white border-1 border-solid border-gray-200 rounded-sm" placeholder="苺野">
                             @error('last_name')
                                 <span class="block text-rose-500">
                                     {{ $message }}
@@ -23,7 +23,7 @@
                                 名
                             </label>
                             <input type="text" id="first_name" name="first_name" value="{{ old('first_name') }}"
-                                class="bg-white border-1 border-solid border-gray-200 rounded-sm" placeholder="慶喜">
+                                class="w-full bg-white border-1 border-solid border-gray-200 rounded-sm" placeholder="慶喜">
                             @error('first_name')
                                 <span class="block text-rose-500">
                                     {{ $message }}
@@ -31,7 +31,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="text-left text-base">
+                    <div class="text-left">
                         <div class="mb-5">
                             <label for="phone_number" class="block">電話番号</label>
                             <input type="tel" id="phone_number" name="phone_number"
