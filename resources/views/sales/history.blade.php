@@ -3,23 +3,23 @@
         <span class="text-emerald-500 text-2xl">管理者</span>
     </div>
     <div class="pb-5">
-        <span class="text-xl">販売履歴一覧</span>
+        <span class="text-[14px] min-[360px]:text-base md:text-xl lg:text-2xl">販売履歴一覧</span>
     </div>
-    <div class="w-7/9 bg-green-100 border-2 border-solid border-cyan-800 mx-auto p-2 mb-2">
+    <div class="w-13/14 lg:w-9/11 text-[10px] min-[360px]:text-xs md:text-base bg-green-100 border-2 border-solid border-cyan-800 mx-auto p-2 mb-2">
         {{-- 検索フォームのレイアウト、発送状況のチェックボックス、表示する期間の入力欄、購入者名の入力欄 --}}
         <form action="{{ route('sales.history') }}" method="GET">
-            <div class="flex justify-between">
-                <div class="flex flex-col">
+            <div class="grid grid-cols-3 grid-rows-1 gap-1">
+                <div class="">
                     <span>発送状況</span>
-                    <div class="flex justify-between">
-                        <div>
+                    <div class="grid grid-cols-1 grid-rows-2 min-[680px]:grid-cols-2 min-[680px]:grid-rows-1 gap-2">
+                        <div class="text-left min-[680px]:text-center ml-4 min-[680px]:ml-0">
                             <input type="checkbox" name="un_shipped" value="0"
                                 class="bg-white border-1 border-solid border-gray-300 rounded-sm"
                                 {{ old('un_shipped') === '0' ? 'checked' : '' }}
                                 {{ isset($validatedSearchInputs['un_shipped']) ? 'checked' : '' }}>
                             未発送
                         </div>
-                        <div class="pl-5">
+                        <div class="text-left min-[680px]:pl-5 min-[680px]:text-center ml-4 min-[680px]:ml-0">
                             <input type="checkbox" name="shipped" value="1"
                                 class="bg-white border-1 border-solid border-gray-300 rounded-sm"
                                 {{ old('shipped') === '1' ? 'checked' : '' }}
@@ -38,9 +38,9 @@
                         </div>
                     @enderror
                 </div>
-                <div class="flex flex-col">
+                <div>
                     <span>表示する期間</span>
-                    <div>
+                    <div class="grid grid-cols-1 min-[1360px]:grid-cols-3">
                         <input type="date" name="start_date"
                             class="bg-white border-1 border-solid border-gray-300 rounded-sm"
                             value="{{ old('start_date') }}{{ $validatedSearchInputs['start_date'] ?? '' }}">
@@ -64,26 +64,30 @@
                         </div>
                     @enderror
                 </div>
-                <div class="flex flex-col">
-                    <span>購入者名</span>
-                    <input type="text" name="purchaser_name" class="bg-white border-1 border-solid border-gray-300 rounded-sm"
-                        value="{{ $purchaserName ?? '' }}">
-                    {{-- $purchaserNameが存在する場合はその値(ユーザーが以前入力した値)を表示し、存在しない場合は空文字を表示 --}}
-                </div>
                 <div>
-                    <button class="bg-[#7cc7f4] p-1 px-2 text-white rounded-md border-3 border-solid border-gray-200">
-                        この条件で検索する
-                    </button>
+                    <span>購入者名</span>
+                    <div class="grid grid-cols-1 min-[1360px]:grid-cols-2">
+                        <div>
+                            <input type="text" name="purchaser_name" class="w-full bg-white border-1 border-solid border-gray-300 rounded-sm"
+                                value="{{ $purchaserName ?? '' }}">
+                            {{-- $purchaserNameが存在する場合はその値(ユーザーが以前入力した値)を表示し、存在しない場合は空文字を表示 --}}
+                        </div>
+                        <div class="text-[8px] text-center mt-1 min-[1360px]:mt-0 min-[1360px]:text-xs min-[1360px]:text-left">
+                            <button class="bg-[#7cc7f4] p-1 px-2 text-white rounded-md border-3 border-solid border-gray-200">
+                                この条件で検索する
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </form>
     </div>
-    <div class="w-5/8 mx-auto">
+    <div class="w-13/14 sm:w-6/8 lg:w-5/8 mx-auto text-[12px] min-[360px]:text-base md:text-xl">
         {{-- 販売履歴一覧 --}}
         @if ($saleHistories->isEmpty())
             <p class="text-center mt-10 p-5 bg-lime-100">販売履歴がありません</p>
         @else
-            <div class="text-center w-1/4 text-xl">
+            <div class="text-center w-1/4">
                 <span>発送済み</span>
             </div>
             @foreach ($saleHistories as $saleHistory)
