@@ -13,7 +13,7 @@
                             <input type="text" id="last_name" name="last_name" value="{{ old('last_name') }}"
                                 class="w-full bg-white border-1 border-solid border-gray-200 rounded-sm" placeholder="苺野">
                             @error('last_name')
-                                <span class="block text-rose-500">
+                                <span class="block text-rose-500 text-[10px] min-[360px]:text-xs min-[690px]:text-sm">
                                     {{ $message }}
                                 </span>
                             @enderror
@@ -25,7 +25,7 @@
                             <input type="text" id="first_name" name="first_name" value="{{ old('first_name') }}"
                                 class="w-full bg-white border-1 border-solid border-gray-200 rounded-sm" placeholder="慶喜">
                             @error('first_name')
-                                <span class="block text-rose-500">
+                                <span class="block text-rose-500 text-[10px] min-[360px]:text-xs min-[690px]:text-sm">
                                     {{ $message }}
                                 </span>
                             @enderror
@@ -39,7 +39,7 @@
                                 class="bg-white border-1 border-solid border-gray-200 rounded-sm w-full"
                                 placeholder="090-1234-5678">
                             @error('phone_number')
-                                <span class="block text-rose-500">
+                                <span class="block text-rose-500 text-[10px] min-[360px]:text-xs min-[690px]:text-sm">
                                     {{ $message }}
                                 </span>
                             @enderror
@@ -50,7 +50,7 @@
                                 class="bg-white border-1 border-solid border-gray-200 rounded-sm w-full"
                                 placeholder="012-3456">
                             @error('postal_code')
-                                <span class="block text-rose-500">
+                                <span class="block text-rose-500 text-[10px] min-[360px]:text-xs min-[690px]:text-sm">
                                     {{ $message }}
                                 </span>
                             @enderror
@@ -68,7 +68,7 @@
                                 @endforeach
                             </select>
                             @error('prefecture')
-                                <span class="block text-rose-500">
+                                <span class="block text-rose-500 text-[10px] min-[360px]:text-xs min-[690px]:text-sm">
                                     {{ $message }}
                                 </span>
                             @enderror
@@ -80,7 +80,7 @@
                                 class="bg-white border-1 border-solid border-gray-200 rounded-sm w-full"
                                 placeholder="大阪市阿倍野区おかし村1-2-2">
                             @error('street_address')
-                                <span class="block text-rose-500">
+                                <span class="block text-rose-500 text-[10px] min-[360px]:text-xs min-[690px]:text-sm">
                                     {{ $message }}
                                 </span>
                             @enderror
@@ -92,7 +92,7 @@
                                 class="bg-white border-1 border-solid border-gray-200 rounded-sm w-full"
                                 placeholder="あまあまハイツ 175号室">
                             @error('address_detail')
-                                <span class="block text-rose-500">
+                                <span class="block text-rose-500 text-[10px] min-[360px]:text-xs min-[690px]:text-sm">
                                     {{ $message }}
                                 </span>
                             @enderror
