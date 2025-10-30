@@ -10,7 +10,7 @@
         <img class="w-4/9 py-2 inline" src="{{ asset('storage/images/logo.png') }}" />
         @can('user')
             <a href="{{ route('mycart_item.index') }}">
-                <img class="size-20 inline absolute right-0 top-0"src="{{ asset('storage/images/icon_cart.png') }}" /></a>
+                <img class="size-10 min-[350px]:size-15 md:size-20 inline absolute right-0 top-0"src="{{ asset('storage/images/icon_cart.png') }}" /></a>
         @endcan
     </div>
 
