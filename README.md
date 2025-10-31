@@ -35,26 +35,27 @@ ibisPaintX(イラストアプリ)<br>
 
 -----------------------------------------------------------<br><br>
 
-## 動かされる採用ご担当者様は下記の説明をご覧ください<br>
+## ご担当者様：動作手順は下記をご覧ください<br>
 
 ### 前提条件<br>
 ・composer ・bun　・MySQL<br>
 
 ### 稼働方法<br>
+ターミナルまたはコマンドで以下を実行してください<br>
 
-1．任意のフォルダーにクローン
+1．任意のフォルダーにクローンしてください
 ```
 git clone https://github.com/DinerBonbero/cakeECAdmin_portfolio2025-laravel-livewire_tailwind.git
 ```
 
-2.composerとbunをインストールします。<br>
+2.composerとbunをインストールしてください<br>
 
-コンポーザ
+コンポーザをインストール
 ```
 composer install
 ```
 
-bun
+bunをインストール
 windowsの方
 ```
 powershell -c "irm bun.sh/install.ps1 | iex"
@@ -65,14 +66,13 @@ curl -fsSL https://bun.sh/install | bash
 ```
 <br>
 
-プロジェクトにインストール
+プロジェクトにインストールしてください
 ```
 bun install
 ```
 <br>
 
 3.DBの作成<br>
-ターミナルまたはコマンドで以下を実行してください<br>
 
 MySQLにログイン
 ```
@@ -89,7 +89,7 @@ CREATE DATABASE cakeECAdmin CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 php artisan migrate --seed
 ```
 
-以降は下記でサイトの操作が可能になります。
+5.開発サーバー起動
 ```
 php artisan serve
 ```
@@ -153,6 +153,7 @@ bun run dev
 ## 気を付けた点、意識した点<br>
 ・PRGパターンの意識　・N+1問題(Nが邪魔)の認識　・欠けてはならない一連の処理にトランザクションを適用<br>
 ・コードの一貫性と綺麗さ(現時点では未熟ですが心がけました。)
+
 
 
 
