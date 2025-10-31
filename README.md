@@ -8,13 +8,17 @@ PHP(Laravel/volt)<br>スターターキット Livewire
 ### フロントエンド<br>
 HTML<br>
 CSS(teilwind)<br>
-### 画像加工<br>
-フォトスケープx(画像加工アプリ)<br>
-・切り取り、文字入れ、明るさ・サイズ調整などの簡単な操作をしました。<br>
-### イラスト<br>
+
+### その他
+
+#### イラスト<br>
 ibisPaintX(イラストアプリ)<br>
 ・イラストアプリを使ってプリンのイラストを作成しました。<br>
-<img width="300" height="300" alt="purin" src="https://github.com/user-attachments/assets/116bcee8-4e50-4258-9167-1c650c923bf1" /><br><br>
+<img width="300" height="300" alt="purin" src="https://github.com/user-attachments/assets/116bcee8-4e50-4258-9167-1c650c923bf1" /><br>
+
+#### 画像加工<br>
+フォトスケープx(画像加工アプリ)<br>
+・お店のロゴ画像の切り取り、文字入れ、明るさ・サイズ調整などの簡単な操作をしました。<br><br>
 
 ## サイトの構成<br>
 未ログインユーザー・一般ユーザー・管理者ユーザーの三つに分けて作成しました。<br>
@@ -79,3 +83,4 @@ ibisPaintX(イラストアプリ)<br>
 ## 気を付けた点、意識した点<br>
 ・PRGパターンの意識　・N+1問題(Nが邪魔)の認識　・欠けてはならない一連の処理にトランザクションを適用<br>
 ・コードの一貫性と綺麗さ(現時点では未熟ですが心がけました。)
+
