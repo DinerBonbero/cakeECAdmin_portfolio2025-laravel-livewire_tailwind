@@ -55,7 +55,7 @@ git clone https://github.com/DinerBonbero/cakeECAdmin_portfolio2025-laravel-live
 composer install
 ```
 
-bunをインストール
+bunをOSにインストール
 windowsの方
 ```
 powershell -c "irm bun.sh/install.ps1 | iex"
@@ -153,6 +153,7 @@ bun run dev
 ## 気を付けた点、意識した点<br>
 ・PRGパターンの意識　・N+1問題(Nが邪魔)の認識　・欠けてはならない一連の処理にトランザクションを適用<br>
 ・コードの一貫性と綺麗さ(現時点では未熟ですが心がけました。)
+
 
 
 
