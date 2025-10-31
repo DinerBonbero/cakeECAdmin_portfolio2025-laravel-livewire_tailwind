@@ -4,10 +4,11 @@
 
 ## 使用した言語やツール<br>
 ### バックエンド<br>
-PHP(Laravel/volt)<br>スターターキット Livewire
+PHP　8.2(Laravel 12.0)<br>
+スターターキット Livewire<br>
 ### フロントエンド<br>
 HTML<br>
-CSS(teilwind)<br>
+CSS(teilwind ^4.0.7)<br>
 
 ### その他
 
@@ -162,6 +163,7 @@ bun run dev
 ## 気を付けた点、意識した点<br>
 ・PRGパターンの意識　・N+1問題(Nが邪魔)の認識　・欠けてはならない一連の処理にトランザクションを適用<br>
 ・コードの一貫性と綺麗さ(現時点では未熟ですが心がけました。)
+
 
 
 
