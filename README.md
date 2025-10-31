@@ -35,6 +35,72 @@ ibisPaintX(イラストアプリ)<br>
 
 -----------------------------------------------------------<br><br>
 
+## 動かされる採用ご担当者様は下記の説明をご覧ください<br>
+
+### 前提条件<br>
+・composer ・bun　・MySQL<br>
+
+### 稼働方法<br>
+
+1．任意のフォルダーにクローン
+```
+git clone https://github.com/DinerBonbero/cakeECAdmin_portfolio2025-laravel-livewire_tailwind.git
+```
+
+2.composerとbunをインストールします。<br>
+
+コンポーザ
+```
+composer install
+```
+
+bun
+windowsの方
+```
+powershell -c "irm bun.sh/install.ps1 | iex"
+```
+mac,Linuxの方
+```
+curl -fsSL https://bun.sh/install | bash
+```
+<br>
+
+プロジェクトにインストール
+```
+bun install
+```
+<br>
+
+3.DBの作成<br>
+ターミナルまたはコマンドで以下を実行してください<br>
+
+MySQLにログイン
+```
+mysql -u root -p
+```
+
+データベース作成
+```
+CREATE DATABASE cakeECAdmin CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+```
+
+4.マイグレートとシーダの実行
+```
+php artisan migrate --seed
+```
+
+以降は下記でサイトの操作が可能になります。
+```
+php artisan serve
+```
+
+```
+bun run dev
+```
+-----------------------------------------------------------<br><br>
+
+## 試行錯誤した点<br>
+
 ### 販売履歴検索画面<br>
 
 <img width="300" height="390" alt="検索画面" src="https://github.com/user-attachments/assets/2350a144-e94f-4840-84a9-4d6c0baf0903" />
@@ -42,21 +108,6 @@ ibisPaintX(イラストアプリ)<br>
 #### 検索機能をもつペジネーション<br>
 ・検索後に入力欄にクエリを保持する処理<br>
 ・検索後に検索条件を保持し続けたままページリンク先に遷移できるようにする処理<br><br>
-
-##動かされる採用ご担当者様は下記の説明をご覧ください<br>
-
-### 前提条件<br>
-・composer ・bun<br>
-
-### 稼働方法<br>
-
-```ruby:qiita.rb
-puts 'The best way to log and share programmers knowledge.'
-```
-
------------------------------------------------------------<br><br>
-
-## 試行錯誤した点<br>
 
 ### Livewireの使い方<br>
 
@@ -102,6 +153,7 @@ puts 'The best way to log and share programmers knowledge.'
 ## 気を付けた点、意識した点<br>
 ・PRGパターンの意識　・N+1問題(Nが邪魔)の認識　・欠けてはならない一連の処理にトランザクションを適用<br>
 ・コードの一貫性と綺麗さ(現時点では未熟ですが心がけました。)
+
 
 
 
