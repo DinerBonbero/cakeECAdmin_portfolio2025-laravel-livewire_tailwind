@@ -73,7 +73,7 @@ bun install
 ```
 <br>
 
-3.DBの作成<br>
+3.DBの作成してください<br>
 
 MySQLにログイン
 ```
@@ -85,12 +85,12 @@ mysql -u root -p
 CREATE DATABASE cakeECAdmin CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ```
 
-4.マイグレートとシーダの実行
+4.マイグレートとシーダの実行してください
 ```
 php artisan migrate --seed
 ```
 
-5.開発サーバー起動
+5.開発サーバー起動してください
 ```
 php artisan serve
 ```
@@ -163,6 +163,7 @@ https://github.com/user-attachments/assets/cd8d754d-9191-4e2e-a935-31935fad3d1d
 ## 気を付けた点、意識した点<br>
 ・PRGパターンの意識　・N+1問題(Nが邪魔)の認識　・欠けてはならない一連の処理にトランザクションを適用<br>
 ・コードの一貫性と綺麗さ(現時点では未熟ですが心がけました。)
+
 
 
 
