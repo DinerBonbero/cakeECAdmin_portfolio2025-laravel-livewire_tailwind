@@ -114,6 +114,7 @@ admin@example.com
 ```
 cakeAdmin
 ```
+-------<br>
 お客様A<br>
 メール
 ```
@@ -123,6 +124,7 @@ customer1@example.com
 ```
 customer1
 ```
+-------<br>
 お客様B<br>
 メール
 ```
@@ -198,6 +200,7 @@ https://github.com/user-attachments/assets/cd8d754d-9191-4e2e-a935-31935fad3d1d
 ## 気を付けた点、意識した点<br>
 ・PRGパターンの意識　・N+1問題(Nが邪魔)の認識　・欠けてはならない一連の処理にトランザクションを適用<br>
 ・コードの一貫性と綺麗さ(現時点では未熟ですが心がけました。)
+
 
 
 
