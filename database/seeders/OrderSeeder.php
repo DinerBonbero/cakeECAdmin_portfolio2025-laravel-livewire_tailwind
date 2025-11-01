@@ -28,8 +28,8 @@ class OrderSeeder extends Seeder
             $userIds[] = $id; //コレーションだとエラーになる　※コレーションを入れると配列ではないためエラーなのでvalueで単一の値取得
         }
 
-        $orders = [
-            ['user_id' => $userIds[0], 'date' => '2025-06-17', 'is_shipped' => 0], //以下2名　お客様A,Bの注文マスタデータ
+        $orders = [ //以下2名　お客様A,Bの注文マスタデータ
+            ['user_id' => $userIds[0], 'date' => '2025-06-17', 'is_shipped' => 0],//'user_id'に$userIdsの0番目の値を格納
             ['user_id' => $userIds[1], 'date' => '2025-08-21', 'is_shipped' => 1]
         ];
 
