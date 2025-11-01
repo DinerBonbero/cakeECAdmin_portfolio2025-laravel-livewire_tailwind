@@ -99,6 +99,12 @@ CREATE DATABASE cakeECAdmin CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ```
 php artisan migrate --seed
 ```
+※下記のレコードをインサートします。
+usersテーブルは管理者1名とお客様2名のレコード<br>
+user_infoテーブルはお客様2名のレコード<br>
+itemsテーブルは各商品のレコード<br>
+ordersテーブルにお客様の注文レコード<br>
+order_detailsテーブルに注文レコードに対応した注文詳細のレコード<br>
 
 5.doc/商品画像の中にある全ファイルをstorage/app/public/imagesのフォルダ内に貼り付けた後、シンボリックリンクを設定してください
 ```
@@ -151,6 +157,7 @@ customer2
 ・N+1問題(Nが邪魔)の認識<br>
 ・欠けてはならない一連の処理にトランザクションを適用<br>
 ・コードの一貫性と綺麗さ(現時点では未熟ですが心がけました。)
+
 
 
 
