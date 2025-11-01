@@ -4,20 +4,27 @@
 
 ## 使用した言語やツール<br>
 ### バックエンド<br>
-PHP(Laravel/volt)<br>スターターキット Livewire
+PHP　8.2(Laravel 12.0)<br>
+スターターキット Livewire<br>
 ### フロントエンド<br>
 HTML<br>
-CSS(teilwind)<br>
-### 画像加工<br>
-フォトスケープx(画像加工アプリ)<br>
-・切り取り、文字入れ、明るさ・サイズ調整などの簡単な操作をしました。<br>
-### イラスト<br>
+CSS(teilwind ^4.0.7)<br>
+
+### その他
+
+#### イラスト<br>
 ibisPaintX(イラストアプリ)<br>
 ・イラストアプリを使ってプリンのイラストを作成しました。<br>
-<img width="300" height="300" alt="purin" src="https://github.com/user-attachments/assets/116bcee8-4e50-4258-9167-1c650c923bf1" /><br><br>
+<img width="300" height="300" alt="purin" src="https://github.com/user-attachments/assets/116bcee8-4e50-4258-9167-1c650c923bf1" /><br>
+
+#### 画像加工<br>
+フォトスケープx(画像加工アプリ)<br>
+・お店のロゴ画像の切り取り、文字入れ、明るさ・サイズ調整などの簡単な操作をしました。<br>
+
+-----------------------------------------------------------<br><br>
 
 ## サイトの構成<br>
-未ログインユーザー・一般ユーザー・管理者ユーザーの三つに分けて作成しました。<br>
+未ログインユーザー・一般ユーザー・管理者ユーザー(マスタシーダでログイン)の3つの構成です、レスポンシブデザインにも対応しています。<br>
 
 ### 未ログインユーザー<br>
 商品一覧、商品詳細、ユーザー情報の登録ページのみ権限を持ちます。<br>
@@ -25,19 +32,94 @@ ibisPaintX(イラストアプリ)<br>
 未ログインユーザーのページ含めパスワード変更、個人情報、カート、商品の購入、購入履歴の確認・操作が可能になります。<br>
 ### 管理者ユーザー<br>
 未ログインユーザーのページ含めパスワード変更、商品の登録と論理削除、<br>販売履歴の確認・操作が可能になります。<br>
-販売履歴には複数条件検索とlivewireを用いて発送状況を動的に切り替えができるように実装しました。<br><br>
+販売履歴には複数条件検索とlivewireを用いて発送状況を動的に切り替えができるように実装しました。<br>
+
+-----------------------------------------------------------<br><br>
+
+## ご担当者様：動作手順は下記をご覧ください<br>
+
+### 前提条件<br>
+・composer　・bun　・MySQL<br>
+
+### 稼働方法<br>
+ターミナルまたはコマンドで以下を実行してください<br>
+
+1．任意のフォルダーにクローンしてください
+```
+git clone https://github.com/DinerBonbero/cakeECAdmin_portfolio2025-laravel-livewire_tailwind.git
+```
+
+2.composerとbunをインストールしてください<br>
+
+コンポーザをインストール
+```
+composer install
+```
+
+bunをOSにインストール
+windowsの方
+```
+powershell -c "irm bun.sh/install.ps1 | iex"
+```
+mac,Linuxの方
+```
+curl -fsSL https://bun.sh/install | bash
+```
+<br>
+
+プロジェクトにインストールしてください
+```
+bun install
+```
+<br>
+
+3.DBの作成してください<br>
+
+MySQLにログイン
+```
+mysql -u root -p
+```
+
+データベース作成
+```
+CREATE DATABASE cakeECAdmin CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+```
+
+4.マイグレートとシーダの実行してください
+```
+php artisan migrate --seed
+```
+
+5.開発サーバー起動してください
+```
+php artisan serve
+```
+
+```
+bun run dev
+```
+-----------------------------------------------------------<br><br>
 
 ## 試行錯誤した点<br>
 
 ### 販売履歴検索画面<br>
 
-<img width="600" height="390" alt="検索画面" src="https://github.com/user-attachments/assets/2350a144-e94f-4840-84a9-4d6c0baf0903" />
+https://github.com/user-attachments/assets/cd8d754d-9191-4e2e-a935-31935fad3d1d
+
+#### レスポンシブデザイン<br>
+・販売履歴検索画面がgridとflexを併用していたためかなり難しかったです。
+
+#### 複数検索<br>
+・複数検索時にandとorの優先順位についての知識不足で意図しない検索結果が表示されましたが、Laravelのクロージャが()の役割を果たすとわかり解決しました。
+・名前の部分一致、フルネーム(スペースの有無可)の検索処理にDB::raw()を使用して一部SQLのCONCATを記述する処理に試行錯誤しました。<br>
+  その際の書き方や参照のwith(IN句)ではjoinのテーブルの結合とは異なる為CONCATがうまく作動しないことがわかりました。<br>
+  【学び】：SQLの知識を深めていくこと、LaravelのDB操作する関数の背後にどのようなSQLが動いているのか？を考えながらコーディングする必要があると学びました。
 
 #### 検索機能をもつペジネーション<br>
 ・検索後に入力欄にクエリを保持する処理<br>
 ・検索後に検索条件を保持し続けたままページリンク先に遷移できるようにする処理<br><br>
 
-#### Livewireの使い方<br>
+### Livewireの使い方<br>
 
 <img width="600" height="328" alt="発送状況" src="https://github.com/user-attachments/assets/7765f03c-5d66-47dc-a295-ee467b98b909" />
 
@@ -48,7 +130,7 @@ ibisPaintX(イラストアプリ)<br>
 
 <img width="300" height="216" alt="パスワード変更フロー" src="https://github.com/user-attachments/assets/8c97a39d-f86f-4589-b082-f679e522a9d9" />
 
-・デフォルト認証画面のバリデーションに合わせて作成する時、Rules\Password::defaults()の引数がないときどのルールが適用されるか試行錯誤しました。<br><br>
+・デフォルト認証画面のバリデーションに合わせて作成する時、Rules\Password::defaults()の引数がないときどのルールが適用されるかの解読に試行錯誤しました。<br><br>
 
 ### 画像登録画面の画像登録機能<br>
 
@@ -74,8 +156,24 @@ ibisPaintX(イラストアプリ)<br>
 <img width="778" height="200" alt="composer" src="https://github.com/user-attachments/assets/f184f2a0-b2d0-4a14-965c-ab1052c1e0d4" />
 
 ・viewコンポーザの理解が曖昧で答えの情報を得るまでに少し時間を要しました、ヘッダーコンポーネントの「ユーザー情報の設定」リンクをviewコンポーザを使用してユーザー情報の有無で遷移先を条件分岐する処理に難航しました<br>
-・まだまだ未熟ですが、検索に難航したことにより「技術名」「目的」「処理内容」などで検索すると求めている情報を得やすいことがわかりました。<br><br>
+・まだまだ未熟ですが、検索に難航したことにより「技術名」「目的」「処理内容」などで検索すると求めている情報を得やすいことがわかりました。<br>
+
+-----------------------------------------------------------<br><br>
 
 ## 気を付けた点、意識した点<br>
 ・PRGパターンの意識　・N+1問題(Nが邪魔)の認識　・欠けてはならない一連の処理にトランザクションを適用<br>
 ・コードの一貫性と綺麗さ(現時点では未熟ですが心がけました。)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
