@@ -9,7 +9,7 @@
         {{-- 検索フォームのレイアウト、発送状況のチェックボックス、表示する期間の入力欄、購入者名の入力欄 --}}
         <form action="{{ route('sales.history') }}" method="GET">
             <div class="grid grid-cols-3 grid-rows-1 gap-1">
-                <div class="">
+                <div>
                     <span>発送状況</span>
                     <div class="grid grid-cols-1 grid-rows-2 min-[680px]:grid-cols-2 min-[680px]:grid-rows-1 gap-2">
                         <div class="text-left min-[680px]:text-center ml-4 min-[680px]:ml-0">
