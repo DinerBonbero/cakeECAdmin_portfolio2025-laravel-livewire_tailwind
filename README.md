@@ -90,7 +90,12 @@ CREATE DATABASE cakeECAdmin CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 php artisan migrate --seed
 ```
 
-5.開発サーバー起動してください
+5.doc/商品画像の中にある全ファイルをstorage/app/public/imagesのフォルダ内に貼り付けた後、シンボリックリンクを設定してください
+```
+php artisan storage:link
+```
+
+6.開発サーバー起動してください
 ```
 php artisan serve
 ```
@@ -98,6 +103,29 @@ php artisan serve
 ```
 bun run dev
 ```
+※マスタシーダでログインされる際はこちらのメールとパスポートでログインできます<br>
+管理者　メール：admin@example.com　パスワード：cakeAdmin
+```
+admin@example.com
+```
+```
+cakeAdmin
+```
+お客様A　メール：customer1@example.com　パスワード：customer1
+```
+customer1@example.com
+```
+```
+customer1
+```
+お客様B　メール：customer2@example.com　パスワード：customer2
+```
+customer2@example.com
+```
+```
+customer2
+```
+
 -----------------------------------------------------------<br><br>
 
 ## 試行錯誤した点<br>
@@ -163,6 +191,7 @@ https://github.com/user-attachments/assets/cd8d754d-9191-4e2e-a935-31935fad3d1d
 ## 気を付けた点、意識した点<br>
 ・PRGパターンの意識　・N+1問題(Nが邪魔)の認識　・欠けてはならない一連の処理にトランザクションを適用<br>
 ・コードの一貫性と綺麗さ(現時点では未熟ですが心がけました。)
+
 
 
 
