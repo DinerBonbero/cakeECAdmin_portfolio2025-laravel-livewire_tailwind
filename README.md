@@ -99,7 +99,7 @@ CREATE DATABASE cakeECAdmin CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ```
 php artisan migrate --seed
 ```
-※下記のレコードをインサートします。
+※下記のレコードをインサートします。<br>
 usersテーブルは管理者1名とお客様2名のレコード<br>
 user_infoテーブルはお客様2名のレコード<br>
 itemsテーブルは各商品のレコード<br>
@@ -157,6 +157,7 @@ customer2
 ・N+1問題(Nが邪魔)の認識<br>
 ・欠けてはならない一連の処理にトランザクションを適用<br>
 ・コードの一貫性と綺麗さ(現時点では未熟ですが心がけました。)
+
 
 
 
