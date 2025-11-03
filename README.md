@@ -61,7 +61,7 @@ ibisPaintX(イラストアプリ)<br>
 git clone https://github.com/DinerBonbero/cakeECAdmin_portfolio2025-laravel-livewire_tailwind.git
 ```
 
-2.クローンした「cakeECAdmin_portfolio2025-laravel-livewire_tailwind.git」にカレントディレクトリを合わせてください<br>
+2.test/cakeECAdmin_portfolio2025-laravel-livewire_tailwind.git」にカレントディレクトリを合わせ下記のコマンドを実行してください。<br>
 
 プロジェクトにPHPの依存関係をインストールしてください
 ```
@@ -74,18 +74,10 @@ npm install
 ```
 <br>
 
-3.cakeECAdminという名前のDBを作成してください<br>
-
-MySQLにログイン
+3.「.env.example」を複製して「.env」を作成してください
 ```
-mysql -u root -p
+cp .env.example .env
 ```
-
-データベース作成
-```
-CREATE DATABASE cakeECAdmin CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-```
-
 4.マイグレーションとシーダの実行をしてください
 ```
 php artisan migrate --seed
@@ -103,7 +95,13 @@ php artisan storage:link
 ```
 設定後はstorage/app/public/にimagesフォルダを作成した後、doc/商品画像の中にある全ファイルをstorage/app/public/imagesのフォルダ内に貼り付けてください<br>
 
-6.開発サーバーを起動してください
+6.暗号化キーを設定してください
+
+```
+php artisan key:generate
+```
+
+7.開発サーバーを起動してください
 ```
 php artisan serve
 ```
@@ -126,6 +124,7 @@ npm run dev
 ・N+1問題(Nが邪魔)の認識<br>
 ・欠けてはならない一連の処理にトランザクションを適用<br>
 ・コードの一貫性と綺麗さ(現時点では未熟ですが心がけました。)
+
 
 
 
