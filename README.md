@@ -56,36 +56,21 @@ ibisPaintX(イラストアプリ)<br>
 ### 稼働方法<br>
 ターミナルまたはコマンドプロンプトで以下を実行してください<br>
 
-1．プロジェクトを任意のフォルダーにクローンしてください
+1．プロジェクトをフォルダー「test」にクローンしてください
 ```
 git clone https://github.com/DinerBonbero/cakeECAdmin_portfolio2025-laravel-livewire_tailwind.git
 ```
 
-cloneしたポートフォリオにカレントディレクトリを合わせる
-/Desktop/cake test/cakeECAdmin_portfolio2025-laravel-livewire_tailwind
+2.クローンした「cakeECAdmin_portfolio2025-laravel-livewire_tailwind.git」にカレントディレクトリを合わせてください<br>
 
-2.composerとnpmインストールしてください<br>
-
-コンポーザをインストール
+プロジェクトにPHPの依存関係をインストールしてください
 ```
 composer install
 ```
 
-bunをOSにインストール<br>
-
-windowsの方
+プロジェクトにJavaScriptパッケージをインストールしてください
 ```
-powershell -c "irm bun.sh/install.ps1 | iex"
-```
-mac,Linuxの方
-```
-curl -fsSL https://bun.sh/install | bash
-```
-<br>
-
-プロジェクトにパッケージをインストールしてください
-```
-bun install
+npm install
 ```
 <br>
 
@@ -112,10 +97,11 @@ itemsテーブルは各商品のレコード<br>
 ordersテーブルにお客様の注文レコード<br>
 order_detailsテーブルに注文レコードに対応した注文詳細のレコード<br>
 
-5.doc/商品画像の中にある全ファイルをstorage/app/public/imagesのフォルダ内に貼り付けた後、シンボリックリンクを設定してください
+5.シンボリックリンクを設定してください
 ```
 php artisan storage:link
 ```
+設定後はdoc/商品画像の中にある全ファイルをstorage/app/public/imagesのフォルダ内に貼り付けてください<br>
 
 6.開発サーバーを起動してください
 ```
@@ -140,6 +126,7 @@ bun run dev
 ・N+1問題(Nが邪魔)の認識<br>
 ・欠けてはならない一連の処理にトランザクションを適用<br>
 ・コードの一貫性と綺麗さ(現時点では未熟ですが心がけました。)
+
 
 
 
