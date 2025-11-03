@@ -33,9 +33,8 @@ Apach 2.4.58<br>
 
 ### パッケージマネージャー<br>
 bun 1.2.15<br>
-※npmの代替にあたるBun [Bun](https://bun.sh/) を使用しています。<br>
-Node.jsでは複数のツールを組み合わせる必要がありますが、<br>
-BunはJavaScriptランタイム／ビルダー／テストランナー/パッケージマネージャーが一つにまとめられている為、<br>
+※npmの代替にあたる[Bun](https://bun.sh/) を使用しています。<br>
+Node.jsでは複数のツールを組み合わせる必要がありますが、BunはJavaScriptランタイム／ビルダー／テストランナー/パッケージマネージャーが一つにまとめられている為、<br>
 npmやyarnと比べインストールや起動,実行などの動作速度が高速です。<br>
 
 ### イラスト<br>
@@ -52,6 +51,7 @@ ibisPaintX(イラストアプリ)<br>
 
 ## 動作手順は下記をご覧ください<br>
 本プロジェクトでは、わたくし自身はbunとXAMPPのMariaDBを使用して開発しましたが、こちらでは手軽なnpmとSQLiteでの動作を前提とした手順を記載させていただきます。<br>
+なおNode.jsはインストールしているものとします。
 
 ### 稼働方法<br>
 ターミナルまたはコマンドプロンプトで以下を実行してください<br>
@@ -61,7 +61,10 @@ ibisPaintX(イラストアプリ)<br>
 git clone https://github.com/DinerBonbero/cakeECAdmin_portfolio2025-laravel-livewire_tailwind.git
 ```
 
-2.composerとbunをインストールしてください<br>
+cloneしたポートフォリオにカレントディレクトリを合わせる
+/Desktop/cake test/cakeECAdmin_portfolio2025-laravel-livewire_tailwind
+
+2.composerとnpmインストールしてください<br>
 
 コンポーザをインストール
 ```
@@ -80,7 +83,7 @@ curl -fsSL https://bun.sh/install | bash
 ```
 <br>
 
-プロジェクトにインストールしてください
+プロジェクトにパッケージをインストールしてください
 ```
 bun install
 ```
@@ -123,35 +126,12 @@ php artisan serve
 bun run dev
 ```
 ※マスタシーダでログインされる際はこちらのメールとパスポートでログインできます<br>
-管理者<br>
-メール
-```
-admin@example.com
-```
-パスワード
-```
-cakeAdmin
-```
--------<br>
-お客様A<br>
-メール
-```
-customer1@example.com
-```
-パスワード
-```
-customer1
-```
--------<br>
-お客様B<br>
-メール
-```
-customer2@example.com
-```
-パスワード
-```
-customer2
-```
+
+| ユーザー      | メール                       | パスワード      | 
+|--------------|------------------------------|----------------|
+| 管理者        | admin@example.com           | cakeAdmin       |
+| お客様A       | customer1@example.com       | customer1       |
+| お客様B       | customer2@example.com       | customer2       |
 
 -----------------------------------------------------------<br><br>
 
@@ -160,6 +140,7 @@ customer2
 ・N+1問題(Nが邪魔)の認識<br>
 ・欠けてはならない一連の処理にトランザクションを適用<br>
 ・コードの一貫性と綺麗さ(現時点では未熟ですが心がけました。)
+
 
 
 
