@@ -10,3 +10,11 @@
 .serif {
     font-family:serif;
 }
+
+button:hover {
+  cursor: pointer;
+}
+
+select:hover {
+  cursor: pointer;
+}
