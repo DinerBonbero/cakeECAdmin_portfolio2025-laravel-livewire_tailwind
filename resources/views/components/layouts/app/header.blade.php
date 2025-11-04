@@ -10,7 +10,8 @@
         <img class="w-4/9 py-2 inline" src="{{ asset('storage/images/logo.png') }}" />
         @can('user')
             <a href="{{ route('mycart_item.index') }}">
-                <img class="size-10 min-[350px]:size-15 md:size-20 inline absolute right-0 top-0"src="{{ asset('storage/images/icon_cart.png') }}" /></a>
+                <img class="size-10 min-[350px]:size-15 md:size-20 inline absolute right-0 top-0" src="{{ asset('storage/images/icon_cart.png') }}" />
+            </a>
         @endcan
     </div>
 
@@ -24,7 +25,7 @@
 
         @auth
             <details>
-                <summary class="px-7 text-center lg:ms-0 text-lg list-none"><span>{{ Auth::user()->name }}</span></summary>
+                <summary class="px-7 text-center lg:ms-0 text-lg list-none cursor-pointer"><span>{{ Auth::user()->name }}</span></summary>
                 <span class="list-none text-left">
                     @can('user')
                         <li class="py-1">

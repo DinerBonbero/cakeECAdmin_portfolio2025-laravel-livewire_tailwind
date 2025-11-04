@@ -16,7 +16,7 @@
                 <div class="w-3/5 text-xs sm:text-sm flex flex-col">
                     <span class="text-left text-xs sm:text-base">添付画像</span>
                     <input type="file" name="image" accept="image/png, image/jpeg, image/jpg"
-                        class="mt-13 w-full file:py-2 sm:file:py-5 file:px-1 sm:file:px-5 file:mr-2 sm:file:mr-5 file:bg-white file:border-1 file:border-solid file:border-gray-200 file:rounded-md sm:file:rounded-xl hover:file:bg-gray-100">
+                        class="mt-13 w-full file:cursor-pointer file:py-2 sm:file:py-5 file:px-1 sm:file:px-5 file:mr-2 sm:file:mr-5 file:bg-white file:border-1 file:border-solid file:border-gray-200 file:rounded-md sm:file:rounded-xl hover:file:bg-gray-100">
                     {{-- enctype="multipart/form-data"を記述することでold()が作動しなくなるため、リクエストをvalueに記述 --}}
                     @error('image')
                         <div class="text-left pl-2">
