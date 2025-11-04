@@ -16,7 +16,7 @@
 | 一般ユーザー     | ✅       | ✅       | ✅       | ❌       | ❌       | ❌       | ❌              | ❌              |
 | 管理者           | ✅       | ❌       | ❌       | ✅       | ✅       | ✅       | ✅              | ✅              |
 
-https://github.com/user-attachments/assets/55f21e48-49ce-471a-abfb-9b98b403f9d1
+https://github.com/user-attachments/assets/27e8ceb5-2186-407b-8bfb-86f51a7e4b1d
 
 <br>
 
@@ -124,6 +124,7 @@ npm run dev
 ・N+1問題(Nが邪魔)の認識<br>
 ・欠けてはならない一連の処理にトランザクションを適用<br>
 ・コードの一貫性と綺麗さ(現時点では未熟ですが心がけました。)
+
 
 
 
