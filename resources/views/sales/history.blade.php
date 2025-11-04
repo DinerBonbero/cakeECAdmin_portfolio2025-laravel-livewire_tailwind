@@ -40,15 +40,15 @@
                 </div>
                 <div>
                     <span>表示する期間</span>
-                    <div class="grid grid-cols-1 min-[1360px]:grid-cols-3">
+                    <div class="grid grid-cols-1 min-[1360px]:grid-cols-5">
                         <input type="date" name="start_date"
-                            class="bg-white border-1 border-solid border-gray-300 rounded-sm cursor-pointer"
+                            class="col-span-1 min-[1360px]:col-span-2 bg-white border-1 border-solid border-gray-300 rounded-sm cursor-pointer"
                             value="{{ old('start_date') }}{{ $validatedSearchInputs['start_date'] ?? '' }}">
                             {{-- $validatedSearchInputs['start_date']が存在する場合はその値(ユーザーが以前入力した値)を表示し、存在しない場合は空文字を表示 --}}
                             {{-- 属性内に@を空白や改行が入りinput type="date"の型(HTMLのYYYY-MM-DD形式,phpではformat('Y-m-d'))が崩れてしまうため、value内ではnull合体演算子を使用する --}}
-                        <span>～</span>
+                        <span class="col-span-1 min-[1360px]:col-span-1">～</span>
                         <input type="date" name="end_date"
-                            class="bg-white border-1 border-solid border-gray-300 rounded-sm cursor-pointer"
+                            class="col-span-1 min-[1360px]:col-span-2 bg-white border-1 border-solid border-gray-300 rounded-sm cursor-pointer"
                             value="{{ old('end_date') }}{{ $validatedSearchInputs['end_date'] ?? '' }}">
                             {{-- $validatedSearchInputs['end_date']が存在する場合はその値(ユーザーが以前入力した値)を表示し、存在しない場合は空文字を表示 --}}
                             {{-- 属性内に@を空白や改行が入りinput type="date"の型(HTMLのYYYY-MM-DD形式,phpではformat('Y-m-d'))が崩れてしまうため、value内ではnull合体演算子を使用する --}}
