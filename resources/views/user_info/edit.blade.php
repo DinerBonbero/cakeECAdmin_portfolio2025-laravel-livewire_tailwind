@@ -2,7 +2,7 @@
     <div class="w-10/11 min-[500px]:w-8/11 md:w-5/11 xl:w-4/11 mx-auto text-[10px] min-[360px]:text-xs min-[690px]:text-sm md:text-base">
         <div class="flex mb-7">
             <div class="ml-5 w-full">
-                <p class="my-5 text-[13px] min-[360px]:text-base md:text-lg">登録情報の変更</p>
+                <p class="my-5 text-[13px] min-[360px]:text-base md:text-lg">ユーザー情報の設定</p>
                 <form action="{{ route('user_info.update') }}" method="POST">
                     @csrf
                     @method('PATCH')
