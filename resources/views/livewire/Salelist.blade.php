@@ -21,13 +21,11 @@
                     <div class="mx-auto w-full">
                         <form wire:submit="update">
                             @if ($saleHistory->is_shipped === 1)
-                                <button type="submit"
-                                    class="w-full min-[500px]:w-3/4 py-3 bg-red-500 text-white rounded-xl border-3 border-solid border-gray-200">
+                                <button type="submit" class="w-full min-[500px]:w-3/4 py-3 bg-red-500 text-white rounded-xl border-3 border-solid border-gray-200">
                                     未発送にする
                                 </button>
                             @elseif ($saleHistory->is_shipped === 0)
-                                <button type="submit"
-                                    class="w-full min-[500px]:w-3/4 py-3 text-[8px] min-[360px]:text-[9px] md:text-sm bg-indigo-500 text-white rounded-xl border-3 border-solid border-gray-200">
+                                <button type="submit" class="w-full min-[500px]:w-3/4 py-3 text-[8px] min-[360px]:text-[9px] md:text-sm bg-indigo-500 text-white rounded-xl border-3 border-solid border-gray-200">
                                     発送済みにする
                                 </button>
                             @endif
