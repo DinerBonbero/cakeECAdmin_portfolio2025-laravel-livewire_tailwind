@@ -18,7 +18,7 @@
 
 <br>
 
-https://github.com/user-attachments/assets/31499f91-495a-4820-8080-a1326f7a8f3a
+https://github.com/user-attachments/assets/3ca67220-efb9-4663-8da2-5dd59a7a66a6
 
 <br>
 
@@ -27,17 +27,19 @@ https://github.com/user-attachments/assets/31499f91-495a-4820-8080-a1326f7a8f3a
 <br>
 
 ## 使用した言語やツール<br>
-xamppを使って実装させていただきました。<br>
 
-PHP　8.2(Laravel 12.0)<br>
+PHP　8.2<br>
+Laravel 12.0<br>
 Tailwind CSS ^4.0.7<br>
 Livewire 3.6.4<br>
 
-### データベース<br>
+### XAMPP<br>
+
+#### DBサーバー
 MariaDB 10.4.32<br>
 
-### webサーバー
-Apach 2.4.58<br>
+#### Webサーバー
+php artisan serveコマンドのLaravel組み込みサーバーを使用しています。
 
 ### パッケージマネージャー<br>
 bun 1.2.15<br>
@@ -47,7 +49,7 @@ Node.jsでは複数のツールを組み合わせる必要がありますが、B
 ### イラスト<br>
 ibisPaintX(イラストアプリ)<br>
 ・イラストアプリを使ってプリンのイラストを作成しました。<br>
-<img width="300" height="300" alt="purin" src="https://github.com/user-attachments/assets/116bcee8-4e50-4258-9167-1c650c923bf1" /><br>
+<img width="100" height="100" alt="purin" src="https://github.com/user-attachments/assets/116bcee8-4e50-4258-9167-1c650c923bf1" /><br>
 
 ### 画像加工<br>
 フォトスケープx(画像加工アプリ)<br>
@@ -129,6 +131,7 @@ npm run dev
 ・N+1問題(Nが邪魔)の認識<br>
 ・欠けてはならない一連の処理にトランザクションを適用<br>
 ・コードの一貫性と綺麗さ(現時点では未熟ですが心がけました。)
+
 
 
 
