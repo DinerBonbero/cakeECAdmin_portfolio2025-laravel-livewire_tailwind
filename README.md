@@ -18,7 +18,11 @@
 
 <br>
 
-https://github.com/user-attachments/assets/1d9b1fcb-1975-4051-933c-6b63bb2ffad1
+https://github.com/user-attachments/assets/31499f91-495a-4820-8080-a1326f7a8f3a
+
+<br>
+
+こちらの動画は管理者でログイン時の販売履歴画面です。検索処理とレスポンシブデザイン、発送状況の切り替えを動画に収めました。
 
 <br>
 
@@ -95,7 +99,6 @@ order_detailsテーブルに注文レコードに対応した注文詳細のレ�
 ```
 php artisan storage:link
 ```
-設定後はstorage/app/public/にimagesフォルダを作成した後、doc/商品画像の中にある全ファイルをstorage/app/public/imagesのフォルダ内に貼り付けてください<br>
 
 6.暗号化キーを設定してください
 
@@ -126,6 +129,7 @@ npm run dev
 ・N+1問題(Nが邪魔)の認識<br>
 ・欠けてはならない一連の処理にトランザクションを適用<br>
 ・コードの一貫性と綺麗さ(現時点では未熟ですが心がけました。)
+
 
 
 
