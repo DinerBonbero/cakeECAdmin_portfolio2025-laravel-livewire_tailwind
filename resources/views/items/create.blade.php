@@ -3,7 +3,7 @@
         <span class="text-emerald-500 text-2xl">管理者</span>
     </div>
     <div class="pt-2">
-        <span class="text-base sm:text-xl">商品登録画面</span>
+        <span class="text-base sm:text-xl">商品登録</span>
     </div>
     <div class="py-3 w-4/5 sm:w-full mx-auto">
         <span class="text-emerald-500 text-xs sm:text-xl">※登録された商品の画像は1:2の縦横比で出力しますのでそれを考慮したうえでアップロードしてください</span>

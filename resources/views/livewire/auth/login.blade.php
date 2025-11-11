@@ -112,7 +112,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
 
     @if (Route::has('register'))
         <div class="space-x-1 rtl:space-x-reverse text-center text-sm text-zinc-600 dark:text-zinc-400">
-            {{ __('アカウントをお持ち得ない方は') }}
+            {{ __('アカウントをお持ちでない方は') }}
             <flux:link :href="route('register')" wire:navigate>{{ __('新規登録') }}</flux:link>
         </div>
     @endif

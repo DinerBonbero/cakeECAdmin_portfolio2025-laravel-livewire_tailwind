@@ -33,7 +33,7 @@
                     </div>
                     <div class="text-left">
                         <div class="mb-5">
-                            <label for="phone_number" class="block">電話番号</label>
+                            <label for="phone_number" class="block">電話番号 (ハイフンあり)</label>
                             <input type="tel" id="phone_number" name="phone_number"
                                 value="{{ old('phone_number') }}"
                                 class="bg-white border-1 border-solid border-gray-200 rounded-sm w-full"
@@ -45,7 +45,7 @@
                             @enderror
                         </div>
                         <div class="mb-5">
-                            <label for="postal_code" class="block">郵便番号</label>
+                            <label for="postal_code" class="block">郵便番号 (ハイフンあり)</label>
                             <input type="text" id="postal_code" name="postal_code" value="{{ old('postal_code') }}"
                                 class="bg-white border-1 border-solid border-gray-200 rounded-sm w-full"
                                 placeholder="012-3456">

@@ -4,7 +4,7 @@
     </div>
     <div class="w-7/8 md:w-5/8 mx-auto text-xs md:text-base">
         @if ($orderHistories->isEmpty())
-            <p class="text-center mt-10 p-5 text:lg bg-lime-100">注文履歴がありません</p>
+            <p class="text-center mt-10 p-5 text:lg bg-lime-100">購入履歴がありません</p>
         @else
             @foreach ($orderHistories as $orderHistory)
                 {{-- 注文レコード分ループ --}}

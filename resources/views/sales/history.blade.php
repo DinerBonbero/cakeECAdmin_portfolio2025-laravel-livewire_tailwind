@@ -77,9 +77,6 @@
         @if ($saleHistories->isEmpty())
             <p class="text-center mt-10 p-5 bg-lime-100">販売履歴がありません</p>
         @else
-            <div class="text-center w-1/4">
-                <span>発送済み</span>
-            </div>
             @foreach ($saleHistories as $saleHistory)
                 @php
                     $total = 0;

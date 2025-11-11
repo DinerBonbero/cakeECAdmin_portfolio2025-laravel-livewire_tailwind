@@ -13,7 +13,7 @@
     </div>
     <div class="w-15/16 min-[420px]:w-7/9 md:w-3/5 mx-auto text-xs sm:text-base">
         @if ($cartItems->isEmpty())
-            <p class="text-center mt-10 p-5 bg-lime-100">カートに商品が入っていません。</p>
+            <p class="text-center mt-10 p-5 bg-lime-100">カートに商品が入っていません</p>
         @else
             @foreach ($cartItems as $cartItem)
                 @php
