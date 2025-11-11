@@ -39,7 +39,7 @@
                     @enderror
                 </div>
                 <div>
-                    <span>表示する期間</span>
+                    <span class="pr-0 min-[1360px]:pr-30">表示する期間</span>
                     <div class="grid grid-cols-1 min-[1360px]:grid-cols-12">
                         <input type="date" name="start_date"
                             class="col-span-1 min-[1360px]:col-span-4 bg-white border-1 border-solid border-gray-300 rounded-sm cursor-pointer"
