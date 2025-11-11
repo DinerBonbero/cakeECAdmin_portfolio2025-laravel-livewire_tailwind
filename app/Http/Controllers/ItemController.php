@@ -82,9 +82,17 @@ class ItemController extends Controller
     }
 
     public function show(Item $item)
-    {
+    {   
 
-        return view('items.show', compact('item'));
+        if($item->is_pending === 1){
+            //掲載停止中であれば商品一覧へ
+
+            return redirect()->route('items.index');
+        } else{
+            //掲載中のとき
+            
+            return view('items.show', compact('item'));
+        }
     }
 
     public function destroy(Item $item)

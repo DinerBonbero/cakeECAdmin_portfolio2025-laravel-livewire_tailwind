@@ -20,10 +20,20 @@ class CartController extends Controller
 
     public function store(Item $item)
     {
+        // dd($item);
+        // exit();
 
-        Cart::create(['user_id' => Auth::id(), 'item_id' => $item->id, 'item_num' => 1]);
+        if ($item->is_pending === 1) {
+            //掲載停止中であれば商品一覧へ
 
-        return redirect()->route('mycart_item.index');
+            return redirect()->route('items.index');
+        } else {
+            //掲載中のとき
+
+            Cart::create(['user_id' => Auth::id(), 'item_id' => $item->id, 'item_num' => 1]);
+
+            return redirect()->route('mycart_item.index');
+        }
     }
 
     public function update(Request $request, Cart $item)
@@ -52,7 +62,7 @@ class CartController extends Controller
         $cart = Cart::where('user_id', Auth::id())->where('id', $item->id)->first();
 
         $cart->update([
-            
+
             'item_num' => $validated['item_num'][$item->id]
         ]);
 
