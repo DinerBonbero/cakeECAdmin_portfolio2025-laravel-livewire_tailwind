@@ -18,3 +18,8 @@ button:hover {
 select:hover {
   cursor: pointer;
 }
+
+input, textarea {
+  caret-color: black;   /* キャレットの色を黒に指定 */
+  cursor: text;         /* マウスを乗せたときにI字型 */
+}
