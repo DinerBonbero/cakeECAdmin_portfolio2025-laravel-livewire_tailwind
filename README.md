@@ -24,8 +24,7 @@
 
 <br>
 
-<video width="100%" src="./storage/app/public/video/デモ動画：販売履歴一覧画面.mp4" alt="デモ動画：販売履歴一覧画面" controls autoplay muted></video>
-
+[Demo Video](./storage/app/public/video/デモ動画：販売履歴一覧画面.mp4)
 こちらの動画は管理者でログイン時の販売履歴一覧画面です。検索処理とレスポンシブデザイン、発送状況の切り替えを動画に収めました。
 
 <br>
@@ -136,6 +135,7 @@ npm run dev
 ・N+1問題の認識<br>
 ・欠けてはならない一連の処理にトランザクションを適用<br>
 ・コードの一貫性と綺麗さ(現時点では未熟ですが心がけました。)
+
 
 
 
