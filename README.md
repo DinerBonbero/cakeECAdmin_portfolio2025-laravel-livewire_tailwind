@@ -24,7 +24,7 @@
 
 <br>
 
-<video src="./storage/app/public/video/デモ動画：販売履歴一覧画面.mp4" alt="デモ動画：販売履歴一覧画面" controls autoplay muted>
+<video width="100%" src="./storage/app/public/video/デモ動画：販売履歴一覧画面.mp4" alt="デモ動画：販売履歴一覧画面" controls autoplay muted>
 
 </video>
 https://github.com/user-attachments/assets/61b7c268-45db-40a5-b79c-217d41d355d4
