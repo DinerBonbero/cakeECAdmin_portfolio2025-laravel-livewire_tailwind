@@ -1,6 +1,6 @@
 # 簡易管理者機能付きECサイト<br>
 
-<img width="100%" height="1079" alt="全画面" src="./storage/app/public/video/デモ動画：販売履歴一覧画面.mp4" />
+<img width="100%" height="1079" alt="全画面" src="https://github.com/user-attachments/assets/98b9c4eb-bcaa-4ae5-a903-22dc28b8f71c" />
 
 ## アプリの説明<br>
 レスポンシブデザインにも対応した簡易的な管理者機能付きの模擬ケーキ屋ECサイトです。<br>
