@@ -24,7 +24,7 @@
 
 <br>
 
-<video width="100%" src="./storage/app/public/video/デモ動画：販売履歴一覧画面.mp4" alt="デモ動画：販売履歴一覧画面" controls autoplay muted>デモ動画</video>
+<div><video width="100%" controls src="./storage/app/public/video/デモ動画：販売履歴一覧画面.mp4" muted="false"></video></div>
 
 こちらの動画は管理者でログイン時の販売履歴一覧画面です。検索処理とレスポンシブデザイン、発送状況の切り替えを動画に収めました。
 
