@@ -93,7 +93,7 @@ cp .env.example .env
 ```
 4.マイグレーションとシーダの実行をしてください
 ```
-php artisan migrate --seed
+php artisan migrate:fresh --seed
 ```
 ※下記のレコードをインサートします。<br>
 usersテーブルは管理者1名とお客様2名のレコード<br>
@@ -136,6 +136,7 @@ npm run dev
 ・N+1問題の認識<br>
 ・欠けてはならない一連の処理にトランザクションを適用<br>
 ・コードの一貫性と綺麗さ(現時点では未熟ですが心がけました。)
+
 
 
 
