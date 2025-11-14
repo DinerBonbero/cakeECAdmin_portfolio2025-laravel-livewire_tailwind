@@ -54,6 +54,7 @@ class UserController extends Controller
     {
 
         $userInfo = Auth::user()->userInfo()->first();
+        // モデルのリレーションメソッド（userInfo()）
 
         if (isset($userInfo)) {
             //ログインユーザーのユーザー情報があれば
