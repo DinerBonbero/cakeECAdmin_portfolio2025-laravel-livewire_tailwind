@@ -69,12 +69,12 @@ ibisPaintX(イラストアプリ)<br>
 ### 稼働方法<br>
 ターミナルまたはコマンドプロンプトで以下を実行してください<br>
 
-1．プロジェクトをフォルダー「test」にクローンしてください
+1．プロジェクトを任意のフォルダーにクローンしてください
 ```
 git clone https://github.com/DinerBonbero/cakeECAdmin_portfolio2025-laravel-livewire_tailwind.git
 ```
 
-2.test/cakeECAdmin_portfolio2025-laravel-livewire_tailwind.git」にカレントディレクトリを合わせ下記のコマンドを実行してください。<br>
+2.作成されたプロジェクトフォルダに移動して下記のコマンドを実行してください。<br>
 
 プロジェクトにPHPの依存関係をインストールしてください
 ```
