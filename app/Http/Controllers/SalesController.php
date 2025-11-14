@@ -75,12 +75,12 @@ class SalesController extends Controller
                 //dateカラムの日付が終了日以前の注文情報を取得
             }
 
-            $saleHistories = $query->with('order_details.item')->with(['user' => function ($query) {
+            $saleHistories = $query->with('orderDetails.item')->with(['user' => function ($query) {
 
                 $query->select('id');
-            }, 'user.user_info'])->latest('date')->paginate(3);
+            }, 'user.userInfo'])->latest('date')->paginate(3);
             //条件で絞った注文情報とリレーション先のレコードを取得、userテーブルはパスワードなどは取得せずidのみ取得
-            //リレーション先：order_detailsとitem、userのidとuser_info
+            //リレーション先：orderDetailsとitem、userのidとuser_info
 
             //->withQueryString()検索結果のがペジネーションに反映されるように->withQueryString()
             //または->appends($request->all())を使用、今回はビューで処理しているため不要
@@ -90,12 +90,12 @@ class SalesController extends Controller
         } else {
             //入力値が一つもない場合、通常の販売履歴表示
 
-            $saleHistories = Order::with('order_details.item')->with(['user' => function ($query) {
+            $saleHistories = Order::with('orderDetails.item')->with(['user' => function ($query) {
 
                 $query->select('id');
-            }, 'user.user_info'])->latest('date')->paginate(3);
+            }, 'user.userInfo'])->latest('date')->paginate(3);
             //注文情報とリレーション先のレコードを取得、userテーブルはパスワードなどは取得せずidのみ取得
-            //リレーション先：order_detailsとitemテーブル、userのidとuser_infoテーブルも取得
+            //リレーション先：orderDetailsとitemテーブル、userのidとuser_infoテーブルも取得
 
             return  view('sales.history', compact('saleHistories'));
         }

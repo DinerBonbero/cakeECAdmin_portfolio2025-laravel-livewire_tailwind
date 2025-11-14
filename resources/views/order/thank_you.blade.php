@@ -2,9 +2,9 @@
 
     $total = 0;
 
-    foreach ($orders->order_details as $order_details) {
+    foreach ($orders->orderDetails as $orderDetails) {
         
-        $total += $order_details->item->price * $order_details->item_num;
+        $total += $orderDetails->item->price * $orderDetails->item_num;
     }
 @endphp
 <x-layouts.app.header>

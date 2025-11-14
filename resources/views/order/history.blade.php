@@ -14,7 +14,7 @@
                 <div class="w-full text-left mt-1">
                     <span class="text-lg">{{ $orderHistory->date->format('Y年m月d日') }}</span>{{-- $orderHistory->date文字型のためモデルファイルでdatetimeキャスト --}}
                 </div>
-                @foreach ($orderHistory->order_details as $order_detail)
+                @foreach ($orderHistory->orderDetails as $order_detail)
                     {{-- 注文詳細レコード分ループ --}}
                     {{-- 注文レコード1に対し注文詳細レコード多のforeachのネスト構造 --}}
                     {{-- 商品レコードは1のためネスト不要 --}}

@@ -5,13 +5,13 @@
         </div>
         <div class="text-right w-2/4">
             <span class="pr-5">
-                {{ $saleHistory->user->user_info->last_name }}{{ $saleHistory->user->user_info->first_name }}様
+                {{ $saleHistory->user->userInfo->last_name }}{{ $saleHistory->user->userInfo->first_name }}様
             </span>
         </div>
     </div>
-    @foreach ($saleHistory->order_details as $order_detail)
+    @foreach ($saleHistory->orderDetails as $orderDetail)
         @php
-            $subtotal = $order_detail->item->price * $order_detail->item_num;
+            $subtotal = $orderDetail->item->price * $orderDetail->item_num;
             $total += $subtotal;
             $orderDetailNum++;
         @endphp
@@ -34,13 +34,13 @@
                 @endif
             </div>
             <div class="w-3/9 flex items-center">
-                <img class="w-4/5 min-[500px]:w-2/3 mx-auto" src="{{ asset('storage/images/' . $order_detail->item->image) }}">
+                <img class="w-4/5 min-[500px]:w-2/3 mx-auto" src="{{ asset('storage/images/' . $orderDetail->item->image) }}">
             </div>
             <div class="flex flex-col w-4/9 pr-10 min-[550px]:pr-30">
-                <span class="mt-2">{{ $order_detail->item->name }}</span>
+                <span class="mt-2">{{ $orderDetail->item->name }}</span>
                 <div class="w-full">
                     <div class="mt-5 w-full text-center">
-                        <span class="w-3/11">{{ $order_detail->item_num }}</span>
+                        <span class="w-3/11">{{ $orderDetail->item_num }}</span>
                         <span for="item_num" class="mx-1 inline">個</span>
                     </div>
                 </div>
