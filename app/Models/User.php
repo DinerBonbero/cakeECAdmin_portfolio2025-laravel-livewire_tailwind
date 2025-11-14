@@ -46,7 +46,7 @@ class User extends Authenticatable
             ->implode('');
     }
 
-    public function user_info(): HasOne
+    public function userInfo(): HasOne
     {
 
         return $this->hasOne(UserInfo::class);

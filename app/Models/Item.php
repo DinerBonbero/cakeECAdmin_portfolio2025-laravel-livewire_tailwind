@@ -17,7 +17,7 @@ class Item extends Model
         return $this->hasMany(Cart::class);
     }
     
-    public function order_details(): HasMany
+    public function orderDetails(): HasMany
     {
 
         return $this->hasMany(OrderDetail::class);
