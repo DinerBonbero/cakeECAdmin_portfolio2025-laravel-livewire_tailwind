@@ -12,6 +12,9 @@ class UserController extends Controller
     {
 
         $userInfo = Auth::user()->userInfo()->first();
+        // モデルのリレーションメソッド（userInfo()）
+        //$userInfo = Auth::user()->userInfo()->get();
+        //userInfosレコードのみ取得,ユーザー情報は含まれない
 
         if (!isset($userInfo)) {
             //ログインユーザーのユーザー情報がなければ
@@ -87,3 +90,20 @@ class UserController extends Controller
         //ユーザー情報編集画面へリダイレクト
     }
 }
+
+// モデルのリレーションメソッド（userInfo()）
+//$userInfo = Auth::user()->userInfo()->get();
+//userInfosレコードのみ取得,ユーザー情報は含まれない
+
+//リレーションプロパティ（userInfo）
+//$userInfo = Auth::user()->userInfo;
+//userInfoレコードのみ取得 ユーザー情報は含まれない
+
+//モデルから取得（UserInfo）
+//$userInfo = UserInfo::where('user_id', Auth::id())->get();
+//userInfosレコードのみ取得（リレーションに依存しない）
+//ユーザー情報は含まれない
+
+//モデルにwithを使って親と子を取得
+//$user = UserInfo::with('user')->find(Auth::id());
+//userInfosレコード＋usersレコードを同時取得

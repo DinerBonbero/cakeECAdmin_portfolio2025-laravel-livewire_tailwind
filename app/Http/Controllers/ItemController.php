@@ -104,9 +104,12 @@ class ItemController extends Controller
 
             DB::transaction(function () use ($item) {
 
-                Item::where('id', $item->id)->update(['is_pending' => 1]); //該当商品の掲載停止
+                $item->update(['is_pending' => 1]); //該当商品の掲載停止
+                // Item::where('id', $item->id)->update(['is_pending' => 1]); //該当商品の掲載停止
 
-                Cart::where('item_id', $item->id)->delete();
+                $item->carts()->delete();
+                // Cart::where('item_id', $item->id)->delete();
+
             }, 5);
         } catch (\Exception $e) {
 
