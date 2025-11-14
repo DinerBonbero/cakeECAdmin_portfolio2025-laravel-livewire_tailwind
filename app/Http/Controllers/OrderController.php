@@ -82,7 +82,7 @@ class OrderController extends Controller
     public function thankYou()
     {
 
-        $orders = Order::with('order_details.item')->where('user_id', Auth::id())->latest('date')->first();
+        $orders = Order::with('orderDetails.item')->where('user_id', Auth::id())->latest('date')->first();
         //直近のログインユーザーの注文情報一件を取得
         return view('order.thank_you', compact('orders'));
         //サンクスページ表示かつ注文情報を渡す
@@ -91,7 +91,7 @@ class OrderController extends Controller
     public function history()
     {
 
-        $orderHistories = Order::with('order_details.item')->where('user_id', Auth::id())->latest('date')->paginate(3);
+        $orderHistories = Order::with('orderDetails.item')->where('user_id', Auth::id())->latest('date')->paginate(3);
         //ログインユーザーの注文情報を新しい日付順に1ページ3件ずつペジネーション表示で取得
 
         return  view('order.history', compact('orderHistories'));

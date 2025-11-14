@@ -11,7 +11,7 @@ class UserController extends Controller
     public function create()
     {
 
-        $userInfo = UserInfo::where('user_id', Auth::id())->first();
+        $userInfo = Auth::user()->userInfo()->first();
 
         if (!isset($userInfo)) {
             //ログインユーザーのユーザー情報がなければ
@@ -50,7 +50,7 @@ class UserController extends Controller
     public function edit()
     {
 
-        $userInfo = UserInfo::where('user_id', Auth::id())->first();
+        $userInfo = Auth::user()->userInfo()->first();
 
         if (isset($userInfo)) {
             //ログインユーザーのユーザー情報があれば
@@ -70,7 +70,7 @@ class UserController extends Controller
         $validated = $request->validated();
         //フォームリクエストバリデーション、$validatedは連想配列
 
-        $userInfo = UserInfo::where('user_id', Auth::id())->first();
+        $userInfo = Auth::user()->userInfo()->first();
 
         $userInfo->update([
             'last_name' => $validated['last_name'],
