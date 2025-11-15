@@ -108,6 +108,9 @@ class ItemController extends Controller
                 // Item::where('id', $item->id)->update(['is_pending' => 1]); //該当商品の掲載停止
 
                 $item->carts()->delete();
+                // 自動で$itemのidとリレーション先のカートレコードのカラムitem_idを取得したのち削除
+                // carts() @return \Illuminate\Database\Eloquent\Relations\HasManyかつ内部でクエリビルダを返す為
+                // delete() Illuminate\Database\Query\Builder::deleteとcartsのクエリビルダが合致して使える
                 // Cart::where('item_id', $item->id)->delete();
 
             }, 5);
