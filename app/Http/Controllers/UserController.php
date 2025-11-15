@@ -12,7 +12,8 @@ class UserController extends Controller
     {
 
         $userInfo = Auth::user()->userInfo()->first();
-        // モデルのリレーションメソッド（userInfo()）
+        //Auth::user()：@return \App\Models\User|null
+        // モデルのリレーションメソッドuserInfo() 　呼び出し:App\Models\User::userInfos @return：\Illuminate\Database\Eloquent\Relations\HasOne
         //$userInfo = Auth::user()->userInfo()->get();
         //userInfosレコードのみ取得,ユーザー情報は含まれない
 
@@ -34,8 +35,7 @@ class UserController extends Controller
         $validated = $request->validated();
         //フォームリクエストバリデーション、$validatedは連想配列
 
-        UserInfo::create([
-            'user_id' => Auth::id(),
+        Auth::user()->userInfo()->create([
             'last_name' => $validated['last_name'],
             'first_name' => $validated['first_name'],
             'phone_number' => $validated['phone_number'],

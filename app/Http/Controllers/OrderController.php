@@ -17,11 +17,18 @@ class OrderController extends Controller
     public function confirm()
     {
         
-        $cartItems = Cart::with('item')->whereRelation('item', 'is_pending', 0)->where('user_id', Auth::id())->latest('id')->get(); // テーブルが複数か単数か気を付ける
+        $cartItems = Auth::user()->carts()->with('item')->whereRelation('item', 'is_pending', 0)->latest('id')->get();
+        // テーブルが複数か単数か気を付ける
+        // $cartItems = Cart::with('item')->whereRelation('item', 'is_pending', 0)->where('user_id', Auth::id())->latest('id')->get(); // テーブルが複数か単数か気を付ける
         // latest「最新の」
 
-        $userInfo = UserInfo::where('user_id', Auth::id())->first();
+        $userInfo = Auth::user()->userInfo()->first();
+        // $userInfo = UserInfo::where('user_id', Auth::id())->first();
+        
         $mail = User::where('id', Auth::id())->value('email');
+        // $mail = Auth::user()->value('email');では他者のメールが取れてしまう。
+        // Auth::user()の @return \Illuminate\Contracts\Auth\Authenticatable|nullと@return \App\Models\User|nullの返り値と
+        // value()のIlluminate\Database\Eloquent\Builder::valueとApp\Models\User::valueに合致している表記だが、おそらくApp\Models\User::valueはvscode側の推測ミス
 
         return view('order.confirm', compact('cartItems', 'userInfo', 'mail'));
         // 注文確認画面表示かつカート情報、ユーザー情報、メールアドレスを渡す
@@ -29,7 +36,8 @@ class OrderController extends Controller
 
     public function store()
     {
-        $userInfo = UserInfo::where('user_id', Auth::id())->first();
+        $userInfo = Auth::user()->userInfo()->first();
+        // $userInfo = UserInfo::where('user_id', Auth::id())->first();
 
         if (!$userInfo) {
 
@@ -44,14 +52,19 @@ class OrderController extends Controller
                 // throw new Exception;
                 //例外を拾うかテスト用
 
-                $cartItems = Cart::with('item')->where('user_id', Auth::id())->get();
+                $cartItems = Auth::user()->carts()->with('item')->get();
+                // $cartItems = Cart::with('item')->where('user_id', Auth::id())->get();
                 //ログインユーザーのカート情報を取得
 
-                $order = Order::create([
+                $order = Auth::user()->orders()->create();
+                // 自動で認証ユーザーのidとリレーション先の注文レコードのカラムuser_idを作成　※カラムをcreateに明示して記述する必要なし
+                // 注文情報を登録
 
-                    'user_id' => Auth::id()
-                ]);
-                //注文情報を登録
+                // $order = Order::create([
+
+                //     'user_id' => Auth::id()
+                // ]);
+                
 
                 foreach ($cartItems as $cartItem) {
 
@@ -66,7 +79,8 @@ class OrderController extends Controller
                     ]);
                 }
 
-                Cart::where('user_id', Auth::id())->delete();
+                Auth::user()->carts()->delete();
+                // Cart::where('user_id', Auth::id())->delete();
                 //注文情報登録後、カート情報を削除
             }, 5);
         } catch (\Exception $e) {
@@ -82,7 +96,7 @@ class OrderController extends Controller
     public function thankYou()
     {
 
-        $orders = Order::with('orderDetails.item')->where('user_id', Auth::id())->latest('date')->first();
+        $orders = Auth::user()->orders()->with('orderDetails.item')->latest('date')->first();
         //直近のログインユーザーの注文情報一件を取得
         return view('order.thank_you', compact('orders'));
         //サンクスページ表示かつ注文情報を渡す
@@ -91,7 +105,7 @@ class OrderController extends Controller
     public function history()
     {
 
-        $orderHistories = Order::with('orderDetails.item')->where('user_id', Auth::id())->latest('date')->paginate(3);
+        $orderHistories = Auth::user()->orders()->with('orderDetails.item')->latest('date')->paginate(3);
         //ログインユーザーの注文情報を新しい日付順に1ページ3件ずつペジネーション表示で取得
 
         return  view('order.history', compact('orderHistories'));
