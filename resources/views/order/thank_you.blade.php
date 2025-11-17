@@ -14,6 +14,6 @@
             <p class="text-[10px] min-[360px]:text-xs min-[690px]:text-sm md:text-base">弊社のお菓子をお買い求め頂きありがとうございます。</p>
             <p class="text-[10px] min-[360px]:text-xs min-[690px]:text-sm md:text-base">お支い払金額は<span class="font-mono">{{ number_format($total) }}</span>円です。</p>
         </div>
-        <x-button.brown-link message="ホームに戻る" href="{{ route('items.index') }}" />
+        <x-button.link message="ホームに戻る" href="{{ route('items.index') }}" class="bg-[#e2bc96] w-full"/>
     </div>
 </x-layouts.app.header>

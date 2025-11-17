@@ -14,22 +14,20 @@
                     @can('user')
                         <form action="{{ route('mycart_item.store', $item) }}" method="POST">
                             @csrf
-                            <x-button.add-item />
+                            <x-button.simple message="カートに入れる" class="bg-[#7cc7f4] w-full"/>
                         </form>
                     @endcan
                     @can('is_admin')
                         <form action="{{ route('items.destroy', $item) }}" method="POST">
                             @method('DELETE')
                             @csrf
-                            @component('components.button.red')
-                                商品掲載停止
-                            @endcomponent
+                            <x-button.simple message="商品掲載停止" class="bg-red-500 w-full"/>
                         </form>
                     @endcan
                 @else
                     @guest
                         <div class="mt-4">
-                            <x-button.add-item />
+                            <x-button.simple message="カートに入れる" class="bg-gray-300 w-full" disabled/>
                             <p class="text-red-500 text-xs min-[570px]:text-base">カートに入れるにはログインまたは新規登録してください</p>
                         </div>
                     @endguest
@@ -38,7 +36,7 @@
         </div>
         <div class="text-center pb-10 w-full text-xs min-[570px]:text-base">
             <p class="pb-5">{{ $item->description }}</p>
-            <x-button.brown-link message="戻る" href="{{ route('items.index') }}" />
+            <x-button.link message="戻る" href="{{ route('items.index') }}" class="bg-[#e2bc96] w-full"/>
         </div>
     </div>
 </x-layouts.app.header>

@@ -102,8 +102,8 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="mx-auto text-center">
-                        <x-button.brown message="更新する" />
+                    <div class="mx-auto text-center w-1/5">
+                        <x-button.simple message="更新する" class="bg-[#e2bc96] w-full"/>
                     </div>
                 </form>
             </div>

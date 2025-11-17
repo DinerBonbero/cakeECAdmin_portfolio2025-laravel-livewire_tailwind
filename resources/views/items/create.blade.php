@@ -56,8 +56,8 @@
                 @error('description')
                     <span class="text-red-500 text-xs min-[420px]:text-sm">{{ $message }}</span>
                 @enderror
-                <div class="text-center pt-5">
-                    <x-button.brown message="商品を登録" />
+                <div class="text-center pt-5 w-1/4 mx-auto">
+                    <x-button.simple message="商品を登録" class="bg-[#e2bc96] w-full"/>
                 </div>
             </div>
         </form>

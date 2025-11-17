@@ -53,9 +53,7 @@
                             {{-- $validatedSearchInputs['end_date']が存在する場合はその値(ユーザーが以前入力した値)を表示し、存在しない場合は空文字を表示 --}}
                             {{-- 属性内に@を空白や改行が入りinput type="date"の型(HTMLのYYYY-MM-DD形式,phpではformat('Y-m-d'))が崩れてしまうため、value内ではnull合体演算子を使用する --}}
                         <div class="col-span-1 min-[1360px]:col-span-3 text-[8px] text-center mt-1 min-[1360px]:mt-0 min-[1360px]:text-xs min-[1360px]:text-left">
-                            <button class="bg-[#7cc7f4] p-1 px-2 text-white rounded-md border-3 border-solid border-gray-200">
-                                この条件で検索する
-                            </button>
+                            <x-button.simple message="この条件で検索する" class="bg-[#7cc7f4] w-3/5 min-[440px]:w-2/5 min-[690px]:w-1/4 min-[1360px]:w-full px-1 rounded-xs min-[570px]:rounded-sm"/>
                         </div>
                     </div>
                     @error('start_date')

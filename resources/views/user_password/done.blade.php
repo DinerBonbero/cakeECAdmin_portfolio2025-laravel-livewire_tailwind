@@ -3,6 +3,6 @@
         <div class="p-10 mt-15 mb-17 bg-white font-serif text-gray-800 border-1 border-solid border-gray-200">
             <p class="text-[13px] min-[360px]:text-base md:text-2xl">パスワードを変更しました。</p>
         </div>
-        <x-button.brown-link message="ホームに戻る" href="{{ route('items.index') }}" />
+        <x-button.link message="ホームに戻る" href="{{ route('items.index') }}" class="bg-[#e2bc96] w-full"/>
     </div>
 </x-layouts.app.header>

@@ -25,8 +25,8 @@
                                 autocomplete="new-password" placeholder="パスワードを再入力">
                         </div>
                     </div>
-                    <div class="mx-auto text-center">
-                        <x-button.brown message="更新する" />
+                    <div class="mx-auto text-center w-1/3">
+                        <x-button.simple message="更新する" href="{{ route('items.index') }}" class="bg-[#e2bc96] w-full"/>
                     </div>
                 </form>
             </div>

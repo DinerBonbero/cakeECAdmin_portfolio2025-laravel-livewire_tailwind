@@ -98,8 +98,8 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="mx-auto text-center">
-                        <x-button.brown message="登録" />
+                    <div class="mx-auto text-center w-1/5">
+                        <x-button.simple message="登録" class="bg-[#e2bc96] w-full"/>
                     </div>
                 </form>
             </div>

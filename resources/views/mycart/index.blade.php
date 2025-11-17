@@ -35,20 +35,24 @@
                                         class="w-3/11 bg-white border-3 border-solid border-gray-300 rounded-sm text-center">
                                     {{-- formのnameが同一によりエラーメッセージが一つにまとまってしまうため、nameを配列に変更item_num[{{ $cartItem->id }}] --}}
                                     <label for="item_num" class="mx-1 inline">個</label>
-                                    <button class="inline mx-1 py-1 w-4/11 bg-lime-500 text-white rounded-xl border-3 border-solid border-gray-200">
+                                    <x-button.simple message="数量更新" class="bg-lime-500 w-4/11 inline"/>
+                                    {{-- <button class="inline mx-1 py-1 w-4/11 bg-lime-500 text-white rounded-xl border-3 border-solid border-gray-200">
                                         数量更新
-                                    </button>
+                                    </button> --}}
                                 </form>
                             </div>
                         </div>
                     </div>
-                    <div class="w-5/13 md:w-2/9 flex flex-col">
+                    <div class="w-5/13 md:w-2/9">
                         <form action="{{ route('mycart_item.destroy', $cartItem) }}" method="POST">
                             @method('DELETE')
                             @csrf
-                            <button class="py-1 bg-rose-300 text-white rounded-xl w-3/5 border-3 border-solid border-gray-200">
+                            <div class="w-4/5">
+                                <x-button.simple message="削除" class="bg-rose-300 w-full"/>
+                            </div>
+                            {{-- <button class="py-1 bg-rose-300 text-white rounded-xl w-3/5 border-3 border-solid border-gray-200">
                                 削除
-                            </button>
+                            </button> --}}
                         </form>
                     </div>
                 </div>
@@ -70,12 +74,13 @@
                 <span class="mr-4">合計(税込み)</span><span>{{ number_format($total) }}</span><span>円</span>
             </div>
             <div class="text-center pb-10 w-full">
-                <x-button.brown-link message="戻る" href="{{ $previousUrl }}" />
+                <x-button.link message="戻る" href="{{ $previousUrl }}" class="bg-[#e2bc96] w-full"/>
                 {{-- 直前のページに戻る、もしリンク先が現在のページと同じ場合は商品一覧画面に遷移。無限ループ防止。
                 リンクを渡せるコンポーネントを使用。 --}}
-                <a href="{{ route('order.confirm') }}" class="ml-2 py-1 px-10 bg-[#7cc7f4] text-white rounded-lg w-full border-3 border-solid border-gray-200">
+                <x-button.link message="注文" href="{{ route('order.confirm') }}" class="bg-[#7cc7f4] w-full ml-2"/>
+                {{-- <a href="{{ route('order.confirm') }}" class="ml-2 py-1 px-10 bg-[#7cc7f4] text-white rounded-lg w-full border-3 border-solid border-gray-200">
                     注文
-                </a>
+                </a> --}}
             </div>
         @endif
     </div>

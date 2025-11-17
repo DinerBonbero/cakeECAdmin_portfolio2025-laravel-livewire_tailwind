@@ -34,7 +34,7 @@
                 <span class="mr-4">合計(税込み)</span><span>{{ number_format($total) }}</span><span>円</span>
             </div>
             <div class="text-right mt-2">
-                <x-button.brown-link message="カートの修正" href="{{ route('mycart_item.index') }}" />
+                <x-button.link message="カートの修正" href="{{ route('mycart_item.index') }}" class="bg-[#e2bc96] w-full"/>
             </div>
             <div class="py-1">
                 <span class="text-base md:text-2xl">送り先</span>
@@ -80,9 +80,9 @@
             </div>
             <div class="text-right mt-2">
                 @if ($userInfo !== null)
-                    <x-button.brown-link message="送り先の修正" href="{{ route('user_info.edit') }}" />
+                    <x-button.link message="送り先の修正" href="{{ route('user_info.edit') }}" class="bg-[#e2bc96] w-full"/>
                 @else
-                    <x-button.brown-link message="送り先の登録" href="{{ route('user_info.create') }}" />
+                    <x-button.link message="送り先の登録" href="{{ route('user_info.create') }}" class="bg-[#e2bc96] w-full"/>
                 @endif
             </div>
 
@@ -90,9 +90,7 @@
                 <div class="w-2/6 rounded-md min-[470px]:w-1/5 mx-auto mt-10 mb-5">
                     <form action="{{ route('order.store') }}" method="POST">
                         @csrf
-                        <button class="bg-[#7cc7f4] py-1 w-full text-white rounded-lg border-3 border-solid border-gray-200">
-                            注文確定
-                        </button>
+                        <x-button.simple message="注文確定" class="bg-[#7cc7f4] w-full"/>
                     </form>
                 </div>
             @else
@@ -100,9 +98,7 @@
                 <div class="w-2/6 min-[470px]:w-1/5 mx-auto mt-10">
                     <form action="{{ route('order.store') }}" method="POST">
                         @csrf
-                        <button class="bg-gray-300 py-1 w-full text-white rounded-lg border-3 border-solid border-gray-200" disabled>
-                            注文確定
-                        </button>
+                        <x-button.simple message="注文確定" class="bg-gray-300 w-full" disabled />
                     </form>
                 </div>
                 <div class="text-center w-full mb-5">
