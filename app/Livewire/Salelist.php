@@ -41,6 +41,6 @@ class Salelist extends Component
     public function render()
     {
 
-        return view('livewire.Salelist');
+        return view('livewire.salelist');
     }
 }

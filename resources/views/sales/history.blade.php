@@ -81,7 +81,7 @@
                     $orderDetailNum = 0;
                     // 注文レコード分ループのたびに$totalと$orderDetailNumを0に初期化
                 @endphp
-                <livewire:Salelist :saleHistory="$saleHistory" :orderDetailNum="$orderDetailNum" :total="$total" />
+                <livewire:salelist :saleHistory="$saleHistory" :orderDetailNum="$orderDetailNum" :total="$total" />
                 {{-- 注文レコードのループのたびにLivewireコンポーネントを呼び出す、0に設定した$orderDetailNum、$totalを渡す --}}
             @endforeach
             <div class="flex justify-center my-5">
