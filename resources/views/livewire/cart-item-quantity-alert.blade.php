@@ -4,7 +4,8 @@
         @csrf
         <input type="number" id="item_num" name="item_num[{{ $cartItem->id }}]"
             value="{{ old('item_num.' . $cartItem->id, $cartItem->item_num) }}" min="1" max="10" step="1"
-            class="w-3/11 bg-white border-3 border-solid border-gray-300 rounded-sm text-center">
+            class="w-3/11 bg-white border-3 border-solid @if ($isUpdate === 'true') border-gray-300 @elseif($isUpdate === 'false') border-rose-400 @else border-gray-300 @endif rounded-sm text-center"
+            wire:model.live="cartItemNum">
         {{-- formのnameが同一によりエラーメッセージが一つにまとまってしまうため、nameを配列に変更item_num[{{ $cartItem->id }}] --}}
         <label for="item_num" class="mx-1 inline">個</label>
         <x-button.simple message="数量更新" class="bg-lime-500 w-4/11 inline"/>
