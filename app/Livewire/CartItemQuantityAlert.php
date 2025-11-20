@@ -8,9 +8,11 @@ class CartItemQuantityAlert extends Component
 {
     public $cartItem;
     public $cartItemNum;
-    public $isUpdate = null;
+    public $isUpdate;
 
     public function mount(){
+        
+        $this->isUpdate = null;
 
         $this->cartItemNum = $this->cartItem->item_num;
 
@@ -18,10 +20,11 @@ class CartItemQuantityAlert extends Component
     }
 
     public function updatedCartItemNum(){
-        //wire:model+プロパティ名をinputに指定して関数にupdated+プロパティにすると自動で発火する
+        //wire:model+プロパティ名をinputに指定して関数にupdated+プロパティと命名すると自動で発火する
 
-        if($this->cartItemNum === $this->cartItem->item_num){
-
+        if($this->cartItemNum == $this->cartItem->item_num){
+            //$this->cartItemNumは文字列、$this->cartItem->item_numはintのため==で型は無視
+            
             $this->isUpdate = 'true';
         }else{
 
