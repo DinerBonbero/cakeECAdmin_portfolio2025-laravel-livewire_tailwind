@@ -7,7 +7,7 @@
     <div class="grid grid-cols-2 min-[850px]:grid-cols-3 gap-1 min-[400px]:gap-3 min-[850px]:gap-10 mx-0 min-[530px]:mx-7 text-[8px] min-[330px]:text-[10px] min-[360px]:text-xs min-[690px]:text-sm md:text-base">
         @foreach ($items as $item)
             <a href="{{ route('items.show', $item) }}">
-                <div class="bg-white p-1">
+                <div class="p-1 @if($item->is_pending == 1) bg-red-500 @else bg-white @endif">
                     <img src="{{ asset('storage/images/' . $item->image) }}">
                     <div class="flex">
                         <span class="flex-none mx-2">{{ $item->name }}</span>

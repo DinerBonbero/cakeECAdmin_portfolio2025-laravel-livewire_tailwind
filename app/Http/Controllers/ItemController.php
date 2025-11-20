@@ -8,18 +8,26 @@ use App\Models\Cart;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Exception;
+use Illuminate\Support\Facades\Auth;
 
 class ItemController extends Controller
 {
 
     public function index()
     {
+        if (Auth::check() && Auth::user()->is_admin === 1) {
 
-        $items = Item::where('is_pending', 0)
+            $items = Item::orderBy('id', 'asc')->paginate(6);
+
+            return view('items.index', compact('items'));
+        } else {
+
+            $items = Item::where('is_pending', 0)
             ->orderBy('id', 'asc')
             ->paginate(6);
 
-        return view('items.index', compact('items'));
+            return view('items.index', compact('items'));
+        }
     }
 
     public function create()
@@ -60,7 +68,7 @@ class ItemController extends Controller
 
         $validatedImage = $validated['image'];
 
-        $originalImageName = $validatedImage->getClientOriginalName();//アップロードされたファイルの元の名前を取得
+        $originalImageName = $validatedImage->getClientOriginalName(); //アップロードされたファイルの元の名前を取得
 
         $validatedImage->storeAs('images', $originalImageName, 'public');
         // <input type="file" name="image" />から渡される値を受け取るにはfile('name属性')関数を使用する
@@ -82,17 +90,31 @@ class ItemController extends Controller
     }
 
     public function show(Item $item)
-    {   
+    {
+        if(Auth::check() && Auth::user()->is_admin === 1){
+            //管理者の場合は商品の掲載・非掲載関係なく商品詳細画面に遷移可能
 
-        if($item->is_pending === 1){
-            //掲載停止中であれば商品一覧へ
-
-            return redirect()->route('items.index');
-        } else{
-            //掲載中のとき
-            
             return view('items.show', compact('item'));
+        } else {
+            //一般ユーザーもしくはゲストの場合
+
+            if ($item->is_pending === 1) {
+                //掲載停止中であれば商品一覧へ
+
+                return redirect()->route('items.index');
+            } else {
+                //掲載中のとき
+
+                return view('items.show', compact('item'));
+            }
         }
+    }
+
+    public function update(Item $item){
+
+        $item->update(['is_pending' => 0]);
+        
+        return redirect()->route('items.index');
     }
 
     public function destroy(Item $item)
@@ -112,7 +134,6 @@ class ItemController extends Controller
                 // carts() @return \Illuminate\Database\Eloquent\Relations\HasManyかつ内部でクエリビルダを返す為
                 // delete() Illuminate\Database\Query\Builder::deleteとcartsのクエリビルダが合致して使える
                 // Cart::where('item_id', $item->id)->delete();
-
             }, 5);
         } catch (\Exception $e) {
 

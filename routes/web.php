@@ -17,7 +17,7 @@ Route::get('/', function () {
 Route::get('/sales/history', [SalesController::class, 'history'])->middleware(['auth', 'admin.check'])->name('sales.history');
 //管理者用ミドルウェアadmin.checkを適用
 
-Route::resource('/items', ItemController::class)->middlewareFor(['create', 'store', 'destroy'], ['auth', 'admin.check'])->except(['edit', 'update']);
+Route::resource('/items', ItemController::class)->middlewareFor(['create', 'store', 'update', 'destroy'], ['auth', 'admin.check'])->except(['edit']);
 //管理者用ミドルウェア'create', 'store', 'destroy'メソッドのみadmin.checkを適用、Itemのリソースコントローラ
 
 Route::middleware(['auth'])->group(function () {
@@ -31,7 +31,7 @@ Route::middleware(['auth'])->group(function () {
 
 Route::middleware(['auth', 'user.check'])->group(function () {
     //一般ログインユーザー用ミドルウェアuser.checkを適用
-    //引数の渡し方に注意、公式をよく見る！一つの配列で渡すこと！二つの配列で渡したことにより時間ロス！
+    //引数の渡し方に注意して公式をよく見る、一つの配列で渡すこと二つの配列で渡したことにより時間ロス！
 
     Route::get('/mycart/items', [CartController::class, 'index'])->name('mycart_item.index');
 

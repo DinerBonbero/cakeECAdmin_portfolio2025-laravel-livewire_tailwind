@@ -18,11 +18,19 @@
                         </form>
                     @endcan
                     @can('is_admin')
-                        <form action="{{ route('items.destroy', $item) }}" method="POST">
-                            @method('DELETE')
-                            @csrf
-                            <x-button.simple message="商品掲載停止" class="bg-red-500 w-full"/>
-                        </form>
+                        @if ($item->is_pending === 1)
+                            <form action="{{ route('items.update', $item) }}" method="POST">
+                                @method('PATCH')
+                                @csrf
+                                <x-button.simple message="商品再掲載" class="bg-green-500 w-full"/>
+                            </form>
+                        @else
+                            <form action="{{ route('items.destroy', $item) }}" method="POST">
+                                @method('DELETE')
+                                @csrf
+                                <x-button.simple message="商品掲載停止" class="bg-red-500 w-full"/>
+                            </form>
+                        @endif
                     @endcan
                 @else
                     @guest
