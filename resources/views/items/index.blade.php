@@ -8,7 +8,7 @@
         @foreach ($items as $item)
             <a href="{{ route('items.show', $item) }}">
                 <div class="p-1 @if($item->is_pending == 1) bg-red-500 @else bg-white @endif">
-                    <img src="{{ asset('storage/images/' . $item->image) }}">
+                    <img src="{{ asset('storage/images/' . $item->image) }}" class="@if($item->is_pending == 1) opacity-50 @endif">
                     <div class="flex">
                         <span class="flex-none mx-2">{{ $item->name }}</span>
                         <span class="flex-1">{{ '(税込み)' . ' ' . number_format($item->price) . '円' }}</span>
