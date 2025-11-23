@@ -25,6 +25,10 @@
 
 <br>
 
+https://github.com/user-attachments/assets/5b0d9055-18c6-405a-ba04-f7525fd53694
+
+<br>
+
 https://github.com/user-attachments/assets/b894e9cc-8048-41ee-99ea-80fd15288f20
 
 こちらの動画は管理者でログイン時の販売履歴一覧画面です。検索処理とレスポンシブデザイン、ペジネーション機能、発送状況の切り替えを動画に収めました。
@@ -137,6 +141,7 @@ npm run dev
 ・N+1問題の認識<br>
 ・欠けてはならない一連の処理にトランザクションを適用<br>
 ・コードの一貫性と綺麗さ(現時点では未熟ですが心がけました。)
+
 
 
 
